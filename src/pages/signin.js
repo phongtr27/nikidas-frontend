@@ -5,6 +5,7 @@ import { Form } from "../components";
 const Signin = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [error, setError] = useState(null);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -19,13 +20,20 @@ const Signin = () => {
 			body: JSON.stringify(data),
 		});
 
-		console.log(await response.text());
+		if (response.status >= 400) {
+			const { message } = await response.json();
+			setError(message);
+		}
+
+		const { token } = await response.json();
+		localStorage.setItem("token", token);
 	};
 
 	return (
-		<Form>
+		<Form bg={`${apiUrl}/public/images/backgrounds/login-register.jpeg`}>
 			<Form.SmallForm>
 				<Form.Title>Sign In</Form.Title>
+				{error ? <Form.Error>{error}</Form.Error> : null}
 				<Form.Base onSubmit={handleSubmit}>
 					<Form.Input
 						type="text"
@@ -37,7 +45,9 @@ const Signin = () => {
 						placeholder="Password"
 						onChange={({ target }) => setPassword(target.value)}
 					/>
-					<Form.Button>Log In </Form.Button>
+					<Form.Button disabled={email === "" || password === ""}>
+						Log In{" "}
+					</Form.Button>
 				</Form.Base>
 				<Form.Text>
 					Don't have an account? <Form.Link to="#">Sign Up</Form.Link>

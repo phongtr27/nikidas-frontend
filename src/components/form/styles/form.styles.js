@@ -7,7 +7,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	background-image: url("https://adike-ecommerce.herokuapp.com//images/login-register.jpeg");
+	background-image: ${({ bg }) => (bg ? `url(${bg})` : null)};
 	background-size: cover;
 `;
 
@@ -64,12 +64,16 @@ export const Button = styled.button`
 	&:hover {
 		background-color: #0682b9;
 	}
+
+	&:disabled {
+		background-color: #a3bbc6;
+	}
 `;
 
 export const Link = styled(ReactRouterLink)``;
 
 export const Error = styled.div`
-	background-color: orange;
+	background-color: red;
 	color: white;
 	padding: 10px;
 	border-radius: 5px;
