@@ -5,7 +5,7 @@ import { UserContext } from "../context/user";
 import jwt_decode from "jwt-decode";
 
 const SignIn = () => {
-	const { user, setUser } = useContext(UserContext);
+	const { setUser } = useContext(UserContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);

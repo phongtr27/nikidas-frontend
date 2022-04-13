@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { SignIn, SignUp, Dashboard } from "./pages";
+import { SignIn, SignUp, Admin } from "./pages";
 import { UserContext } from "./context/user";
 import { ProtectedRoute } from "./components";
-import jwt_decode from "jwt-decode";
+import { getUser } from "./helpers/getUser";
 
 function App() {
-	const [user, setUser] = useState(jwt_decode(localStorage.getItem("token")));
-
-	console.log(user);
+	const [user, setUser] = useState(getUser());
 
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
@@ -20,7 +18,7 @@ function App() {
 					path="/admin"
 					element={<ProtectedRoute user={user} />}
 				>
-					<Route exact path="/admin" element={<Dashboard />} />
+					<Route exact path="/admin" element={<Admin />} />
 				</Route>
 			</Routes>
 		</UserContext.Provider>
