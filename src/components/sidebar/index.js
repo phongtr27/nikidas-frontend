@@ -1,5 +1,12 @@
 import React from "react";
-import { Container, Logo, Link, Icon, Text, LogoAlt } from "./styles/sidebar";
+import {
+	Container,
+	Logo,
+	Link,
+	Icon,
+	Text,
+	LogoAlt,
+} from "./styles/sidebar.styles";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export default function Sidebar({ children, ...restProps }) {

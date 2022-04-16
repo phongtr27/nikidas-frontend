@@ -1,5 +1,7 @@
+import { SidebarAdmin } from "../containers";
+
 const Admin = () => {
-	return <h1>Dashboard</h1>;
+	return <SidebarAdmin />;
 };
 
 export default Admin;

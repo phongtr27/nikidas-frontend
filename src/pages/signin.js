@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { apiUrl } from "../constants/routes";
+import { apiUrl, SIGNUP } from "../constants/routes";
 import { Form } from "../components";
 import { UserContext } from "../context/user";
 import jwt_decode from "jwt-decode";
@@ -59,7 +59,7 @@ const SignIn = () => {
 				</Form.Base>
 				<Form.Text>
 					Don't have an account?{" "}
-					<Form.Link to="/signup">Sign Up</Form.Link>
+					<Form.Link to={SIGNUP}>Sign Up</Form.Link>
 				</Form.Text>
 			</Form.SmallForm>
 		</Form>
