@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
-import { apiUrl, SIGNUP } from "../constants/routes";
-import { Form } from "../components";
-import { UserContext } from "../context/user";
+import { apiUrl, SIGNIN } from "../../constants/routes";
+import { Form } from "../../components";
+import { UserContext } from "../../context/user";
 import jwt_decode from "jwt-decode";
 
-const SignIn = () => {
+const SignUp = () => {
 	const { setUser } = useContext(UserContext);
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);
@@ -13,8 +14,8 @@ const SignIn = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const data = { email, password };
-		const response = await fetch(`${apiUrl}/api/auth`, {
+		const data = { name, email, password };
+		const response = await fetch(`${apiUrl}/api/user`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
@@ -37,9 +38,14 @@ const SignIn = () => {
 	return (
 		<Form bg={`${apiUrl}/public/images/backgrounds/login-register.jpeg`}>
 			<Form.SmallForm>
-				<Form.Title>Sign In</Form.Title>
+				<Form.Title>Sign Up</Form.Title>
 				{error ? <Form.Error>{error}</Form.Error> : null}
 				<Form.Base onSubmit={handleSubmit}>
+					<Form.Input
+						type="text"
+						placeholder="Name"
+						onChange={({ target }) => setName(target.value)}
+					/>
 					<Form.Input
 						type="text"
 						placeholder="Email Address"
@@ -52,18 +58,20 @@ const SignIn = () => {
 					/>
 					<Form.Button
 						type="submit"
-						disabled={email === "" || password === ""}
+						disabled={
+							name === "" || email === "" || password === ""
+						}
 					>
-						Log In
+						Sign Up
 					</Form.Button>
 				</Form.Base>
 				<Form.Text>
-					Don't have an account?{" "}
-					<Form.Link to={SIGNUP}>Sign Up</Form.Link>
+					Already have an account?{" "}
+					<Form.Link to={SIGNIN}>Sign In</Form.Link>
 				</Form.Text>
 			</Form.SmallForm>
 		</Form>
 	);
 };
 
-export default SignIn;
+export default SignUp;

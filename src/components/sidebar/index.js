@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, createContext, useContext } from "react";
 import {
 	Container,
 	Logo,
@@ -6,8 +6,13 @@ import {
 	Icon,
 	Text,
 	LogoAlt,
+	Dropdown,
+	DropdownHeader,
+	DropdownMenu,
 } from "./styles/sidebar.styles";
 import { Link as ReactRouterLink } from "react-router-dom";
+
+const ToggleContext = createContext();
 
 export default function Sidebar({ children, ...restProps }) {
 	return <Container {...restProps}>{children}</Container>;
@@ -29,18 +34,64 @@ Sidebar.LogoAlt = function SidebarLogoAlt({ to, src, ...restProps }) {
 	);
 };
 
-Sidebar.Icon = function SidebarIcon({ src, ...restProps }) {
-	return <Icon src={src} {...restProps} />;
+Sidebar.Icon = function SidebarIcon({ ...restProps }) {
+	return <Icon {...restProps} />;
 };
 
 Sidebar.Text = function SidebarText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
 };
 
-Sidebar.Link = function SidebarLink({ active, to, children, ...restProps }) {
+Sidebar.Link = function SidebarLink({ to, children, ...restProps }) {
 	return (
-		<Link to={to} {...restProps} active={active}>
+		<Link to={to} {...restProps}>
 			{children}
 		</Link>
+	);
+};
+
+Sidebar.Dropdown = function SidebarDropdown({ children, ...restProps }) {
+	const [toggleShow, setToggleShow] = useState(false);
+
+	return (
+		<ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
+			<Dropdown {...restProps}>{children}</Dropdown>
+		</ToggleContext.Provider>
+	);
+};
+
+Sidebar.DropdownHeader = function SidebarDropdownHeader({
+	children,
+	...restProps
+}) {
+	const { toggleShow, setToggleShow } = useContext(ToggleContext);
+	return (
+		<DropdownHeader
+			{...restProps}
+			onClick={() => setToggleShow(!toggleShow)}
+		>
+			{children}
+			{toggleShow ? (
+				<span style={{ marginLeft: "10px" }}>
+					<i className="fas fa-angle-down"></i>
+				</span>
+			) : (
+				<span style={{ marginLeft: "10px" }}>
+					<i className="fas fa-angle-right"></i>
+				</span>
+			)}
+		</DropdownHeader>
+	);
+};
+
+Sidebar.DropdownMenu = function SidebarDropdownMenu({
+	children,
+	...restProps
+}) {
+	const { toggleShow } = useContext(ToggleContext);
+	return (
+		<DropdownMenu className={toggleShow ? "open" : "closed"} {...restProps}>
+			{children}
+		</DropdownMenu>
 	);
 };

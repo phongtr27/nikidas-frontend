@@ -17,17 +17,43 @@ export const Logo = styled.img`
 
 export const LogoAlt = styled.img``;
 
-export const Icon = styled.img`
-	margin-left: 25px;
+export const Icon = styled.i`
+	margin-right: 10px;
 `;
 
-export const Text = styled.p`
-	margin-left: 5px;
-`;
+export const Text = styled.p``;
 
 export const Link = styled(ReactRouterLink)`
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	color: black;
+	color: ${({ active }) => (active ? "black" : "#8b91a0")};
+	padding-left: 30px;
+	&:hover {
+		color: black;
+	}
+`;
+
+export const Dropdown = styled.div`
+	padding-left: 30px;
+	cursor: pointer;
+`;
+
+export const DropdownHeader = styled.div`
+	display: flex;
+	align-items: center;
+	color: ${({ active }) => (active ? "black" : "#8b91a0")};
+
+	&:hover {
+		color: black;
+	}
+`;
+
+export const DropdownMenu = styled.div`
+	&.closed {
+		visibility: hidden;
+		height: 0;
+	}
+	&.open {
+	}
 `;

@@ -1,3 +1,9 @@
-export { default as SignIn } from "./signin";
-export { default as SignUp } from "./signup";
-export { default as Admin } from "./admin";
+export { default as Home } from "./user/home";
+export { default as SignIn } from "./user/signin";
+export { default as SignUp } from "./user/signup";
+export { default as Admin } from "./admin/admin";
+export { default as Dashboard } from "./admin/dashboard";
+export { default as Category } from "./admin/category";
+export { default as SubCategory } from "./admin/sub-category";
+export { default as Product } from "./admin/product";
+export { default as Order } from "./admin/order";
