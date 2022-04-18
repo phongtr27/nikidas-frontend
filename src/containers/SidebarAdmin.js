@@ -22,7 +22,12 @@ const SidebarAdmin = () => {
 
 			<Sidebar.Dropdown>
 				<Sidebar.DropdownHeader
-					active={pathname === ADMIN_CATEGORY ? 1 : 0}
+					active={
+						pathname === ADMIN_CATEGORY ||
+						pathname === ADMIN_SUB_CATEGORY
+							? 1
+							: 0
+					}
 				>
 					<Sidebar.Icon className="fas fa-th-large" />
 					<Sidebar.Text>Categories</Sidebar.Text>

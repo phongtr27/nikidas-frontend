@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
-	background-color: #edf1f5;
+	background-color: #f5faff;
 	position: fixed;
 	top: 0;
 	left: 0;
