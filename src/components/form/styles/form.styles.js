@@ -23,6 +23,12 @@ export const SmallForm = styled.div`
 	justify-content: space-between;
 `;
 
+export const BigForm = styled.div`
+	margin-left: 220px;
+	margin-top: 100px;
+	width: 83%;
+`;
+
 export const Title = styled.h2`
 	margin: 0;
 	margin-bottom: 30px;
@@ -34,20 +40,34 @@ export const Text = styled.p`
 	margin: 0;
 `;
 
-export const Base = styled.form`
-	display: flex;
-	flex-direction: column;
-`;
-
-export const Input = styled.input`
-	border-style: none none solid none;
-	border-width: 1px;
+export const TextArea = styled.textarea`
 	margin-bottom: 20px;
 	&:last-of-type {
 		margin-bottom: 30px;
 	}
 	padding: 10px 5px;
-	outline: none;
+	outline-color: #c3820a;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100px;
+`;
+
+export const Base = styled.form`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const Label = styled.label`
+	margin-bottom: 10px;
+`;
+
+export const Input = styled.input`
+	margin-bottom: 20px;
+	&:last-of-type {
+		margin-bottom: 30px;
+	}
+	padding: 10px 5px;
+	outline-color: #c3820a;
 `;
 
 export const Button = styled.button`

@@ -6,4 +6,5 @@ export { default as Dashboard } from "./admin/dashboard";
 export { default as Category } from "./admin/category";
 export { default as SubCategory } from "./admin/sub-category";
 export { default as Product } from "./admin/product";
+export { default as ProductDetails } from "./admin/productDetails";
 export { default as Order } from "./admin/order";

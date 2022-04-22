@@ -74,7 +74,7 @@ const SidebarAdmin = () => {
 						<Sidebar.Text>All Products</Sidebar.Text>
 					</Sidebar.Link>
 
-					<Sidebar.Link to="/">
+					<Sidebar.Link to={`${ADMIN_PRODUCT}/new`}>
 						<Sidebar.Text>New Product</Sidebar.Text>
 					</Sidebar.Link>
 				</Sidebar.DropdownMenu>

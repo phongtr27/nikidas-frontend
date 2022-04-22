@@ -9,6 +9,7 @@ import {
 	Category,
 	SubCategory,
 	Product,
+	ProductDetails,
 	Order,
 } from "./pages";
 import {
@@ -34,6 +35,7 @@ function App() {
 				<Route exact path={HOME} element={<Home />} />
 				<Route exact path={SIGNIN} element={<SignIn />} />
 				<Route exact path={SIGNUP} element={<SignUp />} />
+
 				<Route
 					exact
 					path={ADMIN}
@@ -48,6 +50,7 @@ function App() {
 						}
 					/>
 				</Route>
+
 				<Route
 					exact
 					path={ADMIN_CATEGORY}
@@ -62,6 +65,7 @@ function App() {
 						}
 					/>
 				</Route>
+
 				<Route
 					exact
 					path={ADMIN_SUB_CATEGORY}
@@ -76,6 +80,7 @@ function App() {
 						}
 					/>
 				</Route>
+
 				<Route
 					exact
 					path={ADMIN_PRODUCT}
@@ -90,6 +95,22 @@ function App() {
 						}
 					/>
 				</Route>
+
+				<Route
+					exact
+					path={`${ADMIN_PRODUCT}/:id`}
+					element={<ProtectedRoute user={user} />}
+				>
+					<Route
+						path={`${ADMIN_PRODUCT}/:id`}
+						element={
+							<Admin>
+								<ProductDetails />
+							</Admin>
+						}
+					/>
+				</Route>
+
 				<Route
 					exact
 					path={ADMIN_ORDER}
