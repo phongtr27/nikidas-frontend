@@ -6,7 +6,6 @@ export const Container = styled.div`
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	background-image: ${({ bg }) => (bg ? `url(${bg})` : null)};
 	background-size: cover;
 `;
@@ -25,8 +24,14 @@ export const SmallForm = styled.div`
 
 export const BigForm = styled.div`
 	margin-left: 220px;
-	margin-top: 100px;
+	margin-top: 55px;
 	width: 83%;
+`;
+
+export const MidForm = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
 `;
 
 export const Title = styled.h2`
@@ -41,10 +46,6 @@ export const Text = styled.p`
 `;
 
 export const TextArea = styled.textarea`
-	margin-bottom: 20px;
-	&:last-of-type {
-		margin-bottom: 30px;
-	}
 	padding: 10px 5px;
 	outline-color: #c3820a;
 	box-sizing: border-box;
@@ -58,14 +59,14 @@ export const Base = styled.form`
 `;
 
 export const Label = styled.label`
+	margin-top: 20px;
+	&:last-of-type {
+		margin-top: 30px;
+	}
 	margin-bottom: 10px;
 `;
 
 export const Input = styled.input`
-	margin-bottom: 20px;
-	&:last-of-type {
-		margin-bottom: 30px;
-	}
 	padding: 10px 5px;
 	outline-color: #c3820a;
 `;
@@ -97,4 +98,18 @@ export const Error = styled.div`
 	color: white;
 	padding: 10px;
 	border-radius: 5px;
+`;
+
+export const LabelFileInput = styled.label`
+	padding: 10px 5px;
+	border: 1px solid #767676;
+	height: 15px;
+	margin-bottom: 30px;
+`;
+
+export const LabelColorInput = styled.label`
+	padding: 10px 5px;
+	outline-color: #c3820a;
+	border: 1px solid #767676;
+	height: 15px;
 `;

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "../../constants/routes";
-import { Form } from "../../components";
+import { Form, Table } from "../../components";
 
 const ProductDetails = () => {
 	const { id } = useParams();
-	console.log(id);
 
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
@@ -34,8 +33,21 @@ const ProductDetails = () => {
 					setDiscount(data.discount);
 					setOptions(data.options);
 				});
+		} else {
+			setName("");
+			setCategory("");
+			setSubCategory("");
+			setDescription("");
+			setBasePrice("");
+			setDiscount("");
+			setOptions([
+				{
+					color: "#ffffff",
+					quantityPerSize: [{ size: "", quantity: 0 }],
+				},
+			]);
 		}
-	});
+	}, [id]);
 
 	const handleFileUpload = (index, e) => {
 		const newSelectedFile = [...selectedFile];
@@ -130,59 +142,71 @@ const ProductDetails = () => {
 						onChange={({ target }) => setDiscount(target.value)}
 					/>
 
-					<p>
+					<Form.Label>
 						Product Attributes{" "}
 						<i
 							className="fas fa-plus-square"
 							onClick={addOption}
 						></i>{" "}
-					</p>
+					</Form.Label>
 
 					{options.map((option, outerIndex) => (
-						<div key={outerIndex}>
-							<label htmlFor="color">
-								Color:
-								<input
+						<Form.MidForm key={outerIndex}>
+							<Form.Text>{`Option ${outerIndex + 1}`}</Form.Text>
+							{/* <Form.Label htmlFor="color">
+								Color{" "}
+								<Form.Input
 									type="color"
-									id="color"
 									name="color"
+									id="color"
 									value={option.color}
 									onChange={(e) =>
 										handleColorChange(outerIndex, e)
 									}
 								/>
-							</label>
+							</Form.Label> */}
+							<Form.Label htmlFor="color">Color</Form.Label>
+							<Form.ColorInput
+								type="color"
+								name="color"
+								id="color"
+								value={option.color}
+								onChange={(e) =>
+									handleColorChange(outerIndex, e)
+								}
+							/>
 
-							<label htmlFor="image">
-								Image:
-								<input
-									type="file"
-									id="image"
-									name="image"
-									onChange={(e) =>
-										handleFileUpload(outerIndex, e)
-									}
-									multiple
-								/>
-							</label>
+							<Form.Label htmlFor="image">Image</Form.Label>
+							<Form.FileInput
+								type="file"
+								name="image"
+								id="image"
+								accept="image/png, image/jpg, image/gif, image/jpeg"
+								onChange={(e) =>
+									handleFileUpload(outerIndex, e)
+								}
+								multiple
+							>
+								Choose Images
+							</Form.FileInput>
 
-							<table>
-								<thead>
-									<tr>
-										<th>Size</th>
-										<th>Quantity</th>
-									</tr>
-								</thead>
-								<tbody>
+							<Table.Base>
+								<Table.Head>
+									<Table.Row>
+										<Table.Header>Size</Table.Header>
+										<Table.Header>Quantity</Table.Header>
+									</Table.Row>
+								</Table.Head>
+								<Table.Body>
 									{option.quantityPerSize.map(
-										(subField, index) => (
-											<tr key={index}>
-												<td>
-													<input
+										(item, index) => (
+											<Table.Row key={index}>
+												<Table.Data>
+													<Form.Input
 														type="text"
 														id="size"
 														name="size"
-														value={subField.size}
+														value={item.size}
 														onChange={(e) =>
 															handleQuantityPerSizeChange(
 																outerIndex,
@@ -191,15 +215,13 @@ const ProductDetails = () => {
 															)
 														}
 													/>
-												</td>
-												<td>
-													<input
+												</Table.Data>
+												<Table.Data>
+													<Form.Input
 														type="number"
 														id="quantity"
 														name="quantity"
-														value={
-															subField.quantity
-														}
+														value={item.quantity}
 														onChange={(e) =>
 															handleQuantityPerSizeChange(
 																outerIndex,
@@ -208,17 +230,18 @@ const ProductDetails = () => {
 															)
 														}
 													/>
-												</td>
-											</tr>
+												</Table.Data>
+											</Table.Row>
 										)
 									)}
-								</tbody>
-							</table>
-							<button onClick={() => addSize(outerIndex)}>
+								</Table.Body>
+							</Table.Base>
+							<Form.Text onClick={() => addSize(outerIndex)}>
 								Add more...
-							</button>
-						</div>
+							</Form.Text>
+						</Form.MidForm>
 					))}
+					<Form.Button>Submit</Form.Button>
 				</Form.Base>
 			</Form.BigForm>
 		</Form>

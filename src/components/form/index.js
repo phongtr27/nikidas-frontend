@@ -3,6 +3,7 @@ import {
 	Container,
 	SmallForm,
 	BigForm,
+	MidForm,
 	Text,
 	TextArea,
 	Base,
@@ -12,6 +13,8 @@ import {
 	Link,
 	Error,
 	Title,
+	LabelFileInput,
+	LabelColorInput,
 } from "./styles/form.styles";
 
 export default function Form({ children, ...restProps }) {
@@ -38,12 +41,33 @@ Form.BigForm = function FormBig({ children, ...restProps }) {
 	return <BigForm {...restProps}>{children}</BigForm>;
 };
 
+Form.MidForm = function FormMid({ children, ...restProps }) {
+	return <MidForm {...restProps}>{children}</MidForm>;
+};
+
 Form.Base = function FormBase({ children, ...restProps }) {
 	return <Base {...restProps}>{children}</Base>;
 };
 
 Form.Label = function FormLabel({ children, ...restProps }) {
 	return <Label {...restProps}>{children}</Label>;
+};
+
+Form.FileInput = function FormFileInput({ children, ...restProps }) {
+	return (
+		<LabelFileInput>
+			{children}
+			<input {...restProps} style={{ display: "none" }} />
+		</LabelFileInput>
+	);
+};
+
+Form.ColorInput = function FormColorInput({ ...restProps }) {
+	return (
+		<LabelColorInput>
+			<input {...restProps} style={{ display: "none" }} />
+		</LabelColorInput>
+	);
 };
 
 Form.Input = function FormInput({ children, ...restProps }) {

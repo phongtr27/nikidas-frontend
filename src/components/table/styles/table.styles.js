@@ -3,10 +3,11 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
 	margin-left: 220px;
 	margin-top: 55px;
+	width: 83%;
 `;
 
 export const Base = styled.table`
-	width: 99%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid #8e9194;
