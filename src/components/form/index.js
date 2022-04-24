@@ -9,12 +9,14 @@ import {
 	Base,
 	Label,
 	Input,
+	ColorInput,
 	Button,
+	SmallButton,
 	Link,
 	Error,
 	Title,
 	LabelFileInput,
-	LabelColorInput,
+	Image,
 } from "./styles/form.styles";
 
 export default function Form({ children, ...restProps }) {
@@ -56,17 +58,9 @@ Form.Label = function FormLabel({ children, ...restProps }) {
 Form.FileInput = function FormFileInput({ children, ...restProps }) {
 	return (
 		<LabelFileInput>
+			<Input {...restProps} />
 			{children}
-			<input {...restProps} style={{ display: "none" }} />
 		</LabelFileInput>
-	);
-};
-
-Form.ColorInput = function FormColorInput({ ...restProps }) {
-	return (
-		<LabelColorInput>
-			<input {...restProps} style={{ display: "none" }} />
-		</LabelColorInput>
 	);
 };
 
@@ -74,8 +68,20 @@ Form.Input = function FormInput({ children, ...restProps }) {
 	return <Input {...restProps}>{children}</Input>;
 };
 
+Form.ColorInput = function FormColorInput({ children, ...restProps }) {
+	return <ColorInput {...restProps}>{children}</ColorInput>;
+};
+
 Form.Button = function FormButton({ children, ...restProps }) {
 	return <Button {...restProps}>{children}</Button>;
+};
+
+Form.SmallButton = function FormSmallButton({ children, ...restProps }) {
+	return <SmallButton {...restProps}>{children}</SmallButton>;
+};
+
+Form.Image = function FormImage({ ...restProps }) {
+	return <Image {...restProps} />;
 };
 
 Form.Link = function FormLink({ to, children, ...restProps }) {

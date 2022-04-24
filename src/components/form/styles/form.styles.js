@@ -23,15 +23,17 @@ export const SmallForm = styled.div`
 `;
 
 export const BigForm = styled.div`
-	margin-left: 220px;
+	margin-left: 15%;
 	margin-top: 55px;
-	width: 83%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
 export const MidForm = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 50px;
+	padding: 40px;
 `;
 
 export const Title = styled.h2`
@@ -56,6 +58,7 @@ export const TextArea = styled.textarea`
 export const Base = styled.form`
 	display: flex;
 	flex-direction: column;
+	width: 38%;
 `;
 
 export const Label = styled.label`
@@ -69,6 +72,11 @@ export const Label = styled.label`
 export const Input = styled.input`
 	padding: 10px 5px;
 	outline-color: #c3820a;
+`;
+
+export const ColorInput = styled.input`
+	height: 40px;
+	width: 100%;
 `;
 
 export const Button = styled.button`
@@ -101,15 +109,21 @@ export const Error = styled.div`
 `;
 
 export const LabelFileInput = styled.label`
-	padding: 10px 5px;
 	border: 1px solid #767676;
-	height: 15px;
 	margin-bottom: 30px;
+	display: flex;
+	flex-direction: column;
 `;
 
-export const LabelColorInput = styled.label`
-	padding: 10px 5px;
-	outline-color: #c3820a;
-	border: 1px solid #767676;
-	height: 15px;
+export const SmallButton = styled.span`
+	margin-top: 5px;
+	text-align: center;
+	cursor: pointer;
+`;
+
+export const Image = styled.img`
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	margin: 5px;
 `;

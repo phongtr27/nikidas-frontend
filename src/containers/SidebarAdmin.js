@@ -22,12 +22,7 @@ const SidebarAdmin = () => {
 
 			<Sidebar.Dropdown>
 				<Sidebar.DropdownHeader
-					active={
-						pathname === ADMIN_CATEGORY ||
-						pathname === ADMIN_SUB_CATEGORY
-							? 1
-							: 0
-					}
+					active={pathname.includes("category") ? 1 : 0}
 				>
 					<Sidebar.Icon className="fas fa-th-large" />
 					<Sidebar.Text>Categories</Sidebar.Text>
@@ -41,7 +36,7 @@ const SidebarAdmin = () => {
 						<Sidebar.Text>All Categories</Sidebar.Text>
 					</Sidebar.Link>
 
-					<Sidebar.Link to="/">
+					<Sidebar.Link to={`${ADMIN_CATEGORY}/new`}>
 						<Sidebar.Text>New Category</Sidebar.Text>
 					</Sidebar.Link>
 
@@ -60,7 +55,7 @@ const SidebarAdmin = () => {
 
 			<Sidebar.Dropdown>
 				<Sidebar.DropdownHeader
-					active={pathname === ADMIN_PRODUCT ? 1 : 0}
+					active={pathname.includes("/product") ? 1 : 0}
 				>
 					<Sidebar.Icon className="far fa-shopping-cart" />
 					<Sidebar.Text>Products</Sidebar.Text>
@@ -74,7 +69,10 @@ const SidebarAdmin = () => {
 						<Sidebar.Text>All Products</Sidebar.Text>
 					</Sidebar.Link>
 
-					<Sidebar.Link to={`${ADMIN_PRODUCT}/new`}>
+					<Sidebar.Link
+						to={`${ADMIN_PRODUCT}/new`}
+						active={pathname === `${ADMIN_PRODUCT}/new` ? 1 : 0}
+					>
 						<Sidebar.Text>New Product</Sidebar.Text>
 					</Sidebar.Link>
 				</Sidebar.DropdownMenu>

@@ -7,6 +7,7 @@ import {
 	Admin,
 	Dashboard,
 	Category,
+	CategoryDetails,
 	SubCategory,
 	Product,
 	ProductDetails,
@@ -61,6 +62,21 @@ function App() {
 						element={
 							<Admin>
 								<Category />
+							</Admin>
+						}
+					/>
+				</Route>
+
+				<Route
+					exact
+					path={`${ADMIN_CATEGORY}/:id`}
+					element={<ProtectedRoute user={user} />}
+				>
+					<Route
+						path={`${ADMIN_CATEGORY}/:id`}
+						element={
+							<Admin>
+								<CategoryDetails />
 							</Admin>
 						}
 					/>

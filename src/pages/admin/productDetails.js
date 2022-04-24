@@ -11,7 +11,7 @@ const ProductDetails = () => {
 	const [subCategory, setSubCategory] = useState("");
 	const [description, setDescription] = useState("");
 	const [basePrice, setBasePrice] = useState("");
-	const [discount, setDiscount] = useState("");
+	const [discount, setDiscount] = useState(0);
 	const [selectedFile, setSelectedFile] = useState([]);
 	const [options, setOptions] = useState([
 		{
@@ -39,7 +39,7 @@ const ProductDetails = () => {
 			setSubCategory("");
 			setDescription("");
 			setBasePrice("");
-			setDiscount("");
+			setDiscount(0);
 			setOptions([
 				{
 					color: "#ffffff",
@@ -83,16 +83,57 @@ const ProductDetails = () => {
 		setOptions(newOptions);
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		const formData = new FormData();
+		formData.append("name", name);
+		formData.append("category", category);
+		formData.append("subCategory", subCategory);
+		formData.append("description", description);
+		formData.append("basePrice", basePrice);
+		formData.append("discount", discount);
+		formData.append("options", JSON.stringify(options));
+
+		selectedFile.forEach((item, index) => {
+			for (let i = 0; i < item.length; i++) {
+				formData.append(`${index}`, item[i]);
+			}
+		});
+
+		fetch("http://localhost:5000/api/product", {
+			method: "POST",
+			body: formData,
+			headers: {
+				Accept: "multipart/form-data",
+				"x-auth-token": localStorage.getItem("token"),
+			},
+		})
+			.then((response) => response)
+			.then((result) => {
+				console.log("Success:", result);
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+			});
+	};
+
 	return (
 		<Form>
 			<Form.BigForm>
-				<Form.Title>New Product</Form.Title>
-				<Form.Base>
+				{id === "new" ? (
+					<Form.Title>New Product</Form.Title>
+				) : (
+					<Form.Title>Product</Form.Title>
+				)}
+
+				<Form.Base onSubmit={handleSubmit}>
 					<Form.Label htmlFor="name">Product Name</Form.Label>
 					<Form.Input
 						type="text"
 						name="name"
 						id="name"
+						required
 						value={name}
 						onChange={({ target }) => setName(target.value)}
 					/>
@@ -102,6 +143,7 @@ const ProductDetails = () => {
 						type="text"
 						name="category"
 						id="category"
+						required
 						value={category}
 						onChange={({ target }) => setCategory(target.value)}
 					/>
@@ -111,6 +153,7 @@ const ProductDetails = () => {
 						type="text"
 						name="subCategory"
 						id="subCategory"
+						required
 						value={subCategory}
 						onChange={({ target }) => setSubCategory(target.value)}
 					/>
@@ -120,6 +163,7 @@ const ProductDetails = () => {
 						type="text"
 						name="description"
 						id="description"
+						required
 						value={description}
 						onChange={({ target }) => setDescription(target.value)}
 					/>
@@ -129,42 +173,33 @@ const ProductDetails = () => {
 						type="text"
 						name="basePrice"
 						id="basePrice"
+						required
 						value={basePrice}
 						onChange={({ target }) => setBasePrice(target.value)}
 					/>
 
 					<Form.Label htmlFor="discount">Discount (%)</Form.Label>
 					<Form.Input
-						type="text"
+						type="number"
 						name="discount"
 						id="discount"
+						required
 						value={discount}
 						onChange={({ target }) => setDiscount(target.value)}
 					/>
 
 					<Form.Label>
-						Product Attributes{" "}
-						<i
-							className="fas fa-plus-square"
-							onClick={addOption}
-						></i>{" "}
+						Product Attributes{"  "}
+						<Form.SmallButton onClick={addOption}>
+							{" "}
+							<i className="fas fa-plus-square"></i>
+						</Form.SmallButton>
 					</Form.Label>
 
 					{options.map((option, outerIndex) => (
 						<Form.MidForm key={outerIndex}>
 							<Form.Text>{`Option ${outerIndex + 1}`}</Form.Text>
-							{/* <Form.Label htmlFor="color">
-								Color{" "}
-								<Form.Input
-									type="color"
-									name="color"
-									id="color"
-									value={option.color}
-									onChange={(e) =>
-										handleColorChange(outerIndex, e)
-									}
-								/>
-							</Form.Label> */}
+
 							<Form.Label htmlFor="color">Color</Form.Label>
 							<Form.ColorInput
 								type="color"
@@ -181,13 +216,24 @@ const ProductDetails = () => {
 								type="file"
 								name="image"
 								id="image"
-								accept="image/png, image/jpg, image/gif, image/jpeg"
+								accept="image/*"
+								required
 								onChange={(e) =>
 									handleFileUpload(outerIndex, e)
 								}
 								multiple
 							>
-								Choose Images
+								{option.img && (
+									<div>
+										{option.img.map((image, index) => (
+											<Form.Image
+												key={index}
+												src={`${apiUrl}/public${image}`}
+												alt="product image"
+											/>
+										))}
+									</div>
+								)}
 							</Form.FileInput>
 
 							<Table.Base>
@@ -206,6 +252,7 @@ const ProductDetails = () => {
 														type="text"
 														id="size"
 														name="size"
+														required
 														value={item.size}
 														onChange={(e) =>
 															handleQuantityPerSizeChange(
@@ -221,6 +268,7 @@ const ProductDetails = () => {
 														type="number"
 														id="quantity"
 														name="quantity"
+														required
 														value={item.quantity}
 														onChange={(e) =>
 															handleQuantityPerSizeChange(
@@ -236,9 +284,11 @@ const ProductDetails = () => {
 									)}
 								</Table.Body>
 							</Table.Base>
-							<Form.Text onClick={() => addSize(outerIndex)}>
+							<Form.SmallButton
+								onClick={() => addSize(outerIndex)}
+							>
 								Add more...
-							</Form.Text>
+							</Form.SmallButton>
 						</Form.MidForm>
 					))}
 					<Form.Button>Submit</Form.Button>

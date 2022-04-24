@@ -1,13 +1,12 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-	margin-left: 220px;
+	margin-left: 15%;
 	margin-top: 55px;
-	width: 83%;
 `;
 
 export const Base = styled.table`
-	width: 100%;
+	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid #8e9194;
@@ -21,6 +20,7 @@ export const Body = styled.tbody``;
 export const Row = styled.tr``;
 
 export const Header = styled.th`
+	background-color: #f5faff;
 	padding: 16px;
 	border: 1px solid #8e9194;
 `;
@@ -36,4 +36,5 @@ export const Text = styled.p``;
 export const Image = styled.img`
 	width: 100px;
 	height: 100px;
+	object-fit: cover;
 `;
