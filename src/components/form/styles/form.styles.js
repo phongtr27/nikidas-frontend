@@ -53,30 +53,28 @@ export const TextArea = styled.textarea`
 	box-sizing: border-box;
 	width: 100%;
 	height: 100px;
+	margin-bottom: 20px;
 `;
 
 export const Base = styled.form`
 	display: flex;
 	flex-direction: column;
-	width: 38%;
 `;
 
 export const Label = styled.label`
-	margin-top: 20px;
-	&:last-of-type {
-		margin-top: 30px;
-	}
 	margin-bottom: 10px;
 `;
 
 export const Input = styled.input`
 	padding: 10px 5px;
 	outline-color: #c3820a;
+	margin-bottom: 20px;
 `;
 
 export const ColorInput = styled.input`
 	height: 40px;
 	width: 100%;
+	margin-bottom: 20px;
 `;
 
 export const Button = styled.button`

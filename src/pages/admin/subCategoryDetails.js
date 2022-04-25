@@ -1,62 +1,45 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ADMIN_CATEGORY, apiUrl } from "../../constants/routes";
+import { ADMIN_SUB_CATEGORY, apiUrl } from "../../constants/routes";
 import { Form } from "../../components";
 
-const CategoryDetails = () => {
+const SubCategoryDetails = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
 	const [name, setName] = useState("");
-	const [selectedFile, setSelectedFile] = useState(null);
+	const [category, setCategory] = useState("");
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		return () => {
-			selectedFile && URL.revokeObjectURL(selectedFile.preview);
-		};
-	}, [selectedFile]);
-
-	console.log(selectedFile);
-
-	useEffect(() => {
 		if (id !== "new") {
-			fetch(`${apiUrl}/api/category/${id}`)
+			fetch(`${apiUrl}/api/sub-category/${id}`)
 				.then((response) => response.json())
 				.then((data) => {
 					setName(data.name);
+					setCategory(data.category);
 				});
 		} else {
 			setName("");
+			setCategory("");
 		}
 	}, [id]);
-
-	const handleFileUpload = (e) => {
-		const file = e.target.files[0];
-		if (file) {
-			file.preview = URL.createObjectURL(file);
-			setSelectedFile(file);
-		} else {
-			setSelectedFile(null);
-		}
-	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const formData = new FormData();
 		formData.append("name", name);
-		if (selectedFile) {
-			formData.append("category", selectedFile);
-		}
+		formData.append("category", category);
 
 		const response = await fetch(
-			`http://localhost:5000/api/category/${id === "new" ? "" : id}`,
+			`http://localhost:5000/api/sub-category/${id === "new" ? "" : id}`,
 			{
 				method: id === "new" ? "POST" : "PUT",
-				body: formData,
+				body: JSON.stringify({ name, category }),
 				headers: {
-					Accept: "multipart/form-data",
+					Accept: "application/json",
+					"Content-Type": "application/json",
 					"x-auth-token": localStorage.getItem("token"),
 				},
 			}
@@ -67,22 +50,21 @@ const CategoryDetails = () => {
 			setError(message);
 			return;
 		}
-
-		navigate(ADMIN_CATEGORY);
+		navigate(ADMIN_SUB_CATEGORY);
 	};
 
 	return (
 		<Form.BigForm>
 			{id === "new" ? (
-				<Form.Title>New Category</Form.Title>
+				<Form.Title>New Sub-Category</Form.Title>
 			) : (
-				<Form.Title>Category</Form.Title>
+				<Form.Title>Sub-Category</Form.Title>
 			)}
 
 			{error ? <Form.Error>{error}</Form.Error> : null}
 
 			<Form.Base onSubmit={handleSubmit}>
-				<Form.Label htmlFor="name">Category Name</Form.Label>
+				<Form.Label htmlFor="name">Sub-Category Name</Form.Label>
 				<Form.Input
 					type="text"
 					name="name"
@@ -92,17 +74,15 @@ const CategoryDetails = () => {
 					onChange={({ target }) => setName(target.value)}
 				/>
 
-				<Form.Label htmlFor="image">Image</Form.Label>
-				<Form.FileInput
-					type="file"
-					name="image"
-					id="image"
-					accept="image/*"
-					multiple
-					onChange={(e) => handleFileUpload(e)}
-				>
-					{selectedFile && <Form.Image src={selectedFile.preview} />}
-				</Form.FileInput>
+				<Form.Label htmlFor="category">Category</Form.Label>
+				<Form.Input
+					type="text"
+					name="category"
+					id="category"
+					required
+					value={category}
+					onChange={({ target }) => setCategory(target.value)}
+				/>
 
 				<Form.Button>Submit</Form.Button>
 			</Form.Base>
@@ -110,4 +90,4 @@ const CategoryDetails = () => {
 	);
 };
 
-export default CategoryDetails;
+export default SubCategoryDetails;

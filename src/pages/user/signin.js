@@ -1,10 +1,13 @@
 import { useState, useContext } from "react";
-import { apiUrl, SIGNUP } from "../../constants/routes";
+import { useNavigate } from "react-router-dom";
+import { apiUrl, HOME, SIGNUP } from "../../constants/routes";
 import { Form } from "../../components";
 import { UserContext } from "../../context/user";
 import jwt_decode from "jwt-decode";
 
 const SignIn = () => {
+	const navigate = useNavigate();
+
 	const { setUser } = useContext(UserContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -13,14 +16,13 @@ const SignIn = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const data = { email, password };
 		const response = await fetch(`${apiUrl}/api/auth`, {
 			method: "POST",
 			headers: {
 				Accept: "application/json",
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(data),
+			body: JSON.stringify({ email, password }),
 		});
 
 		if (response.status >= 400) {
@@ -32,6 +34,7 @@ const SignIn = () => {
 		const { token } = await response.json();
 		localStorage.setItem("token", token);
 		setUser(jwt_decode(token));
+		navigate(HOME);
 	};
 
 	return (
@@ -45,11 +48,13 @@ const SignIn = () => {
 						placeholder="Email Address"
 						onChange={({ target }) => setEmail(target.value)}
 					/>
+
 					<Form.Input
 						type="password"
 						placeholder="Password"
 						onChange={({ target }) => setPassword(target.value)}
 					/>
+
 					<Form.Button
 						type="submit"
 						disabled={email === "" || password === ""}
@@ -57,6 +62,7 @@ const SignIn = () => {
 						Log In
 					</Form.Button>
 				</Form.Base>
+
 				<Form.Text>
 					Don't have an account?{" "}
 					<Form.Link to={SIGNUP}>Sign Up</Form.Link>

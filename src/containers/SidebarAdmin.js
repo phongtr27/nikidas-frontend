@@ -36,7 +36,10 @@ const SidebarAdmin = () => {
 						<Sidebar.Text>All Categories</Sidebar.Text>
 					</Sidebar.Link>
 
-					<Sidebar.Link to={`${ADMIN_CATEGORY}/new`}>
+					<Sidebar.Link
+						to={`${ADMIN_CATEGORY}/new`}
+						active={pathname === `${ADMIN_CATEGORY}/new` ? 1 : 0}
+					>
 						<Sidebar.Text>New Category</Sidebar.Text>
 					</Sidebar.Link>
 
@@ -47,7 +50,12 @@ const SidebarAdmin = () => {
 						<Sidebar.Text>All Sub-Category</Sidebar.Text>
 					</Sidebar.Link>
 
-					<Sidebar.Link to="/">
+					<Sidebar.Link
+						to={`${ADMIN_SUB_CATEGORY}/new`}
+						active={
+							pathname === `${ADMIN_SUB_CATEGORY}/new` ? 1 : 0
+						}
+					>
 						<Sidebar.Text>New Sub-Category</Sidebar.Text>
 					</Sidebar.Link>
 				</Sidebar.DropdownMenu>

@@ -58,7 +58,7 @@ Form.Label = function FormLabel({ children, ...restProps }) {
 Form.FileInput = function FormFileInput({ children, ...restProps }) {
 	return (
 		<LabelFileInput>
-			<Input {...restProps} />
+			<Input {...restProps} style={{ marginBottom: 0 }} />
 			{children}
 		</LabelFileInput>
 	);
