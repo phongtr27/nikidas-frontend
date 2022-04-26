@@ -25,7 +25,7 @@ import {
 	ADMIN_ORDER,
 } from "./constants/routes";
 import { UserContext } from "./context/user";
-import { ProtectedRoute } from "./components";
+import { ProtectedRoute, ProtectSignin } from "./helpers/routes";
 import { getUser } from "./helpers/getUser";
 
 function App() {
@@ -35,8 +35,22 @@ function App() {
 		<UserContext.Provider value={{ user, setUser }}>
 			<Routes>
 				<Route exact path={HOME} element={<Home />} />
-				<Route exact path={SIGNIN} element={<SignIn />} />
-				<Route exact path={SIGNUP} element={<SignUp />} />
+
+				<Route
+					exact
+					path={SIGNIN}
+					element={<ProtectSignin user={user} />}
+				>
+					<Route path={SIGNIN} element={<SignIn />} />
+				</Route>
+
+				<Route
+					exact
+					path={SIGNUP}
+					element={<ProtectSignin user={user} />}
+				>
+					<Route exact path={SIGNUP} element={<SignUp />} />
+				</Route>
 
 				<Route
 					exact

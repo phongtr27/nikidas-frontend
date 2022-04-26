@@ -8,6 +8,7 @@ const CategoryDetails = () => {
 	const navigate = useNavigate();
 
 	const [name, setName] = useState("");
+	const [img, setImg] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
 	const [error, setError] = useState(null);
 
@@ -25,9 +26,11 @@ const CategoryDetails = () => {
 				.then((response) => response.json())
 				.then((data) => {
 					setName(data.name);
+					setImg(data.img);
 				});
 		} else {
 			setName("");
+			setImg(null);
 		}
 	}, [id]);
 
@@ -39,6 +42,7 @@ const CategoryDetails = () => {
 		} else {
 			setSelectedFile(null);
 		}
+		setImg(null);
 	};
 
 	const handleSubmit = async (e) => {
@@ -102,6 +106,12 @@ const CategoryDetails = () => {
 					onChange={(e) => handleFileUpload(e)}
 				>
 					{selectedFile && <Form.Image src={selectedFile.preview} />}
+					{img && (
+						<Form.Image
+							src={`${apiUrl}/public${img}`}
+							alt="category image"
+						/>
+					)}
 				</Form.FileInput>
 
 				<Form.Button>Submit</Form.Button>

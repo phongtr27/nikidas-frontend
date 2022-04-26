@@ -59,7 +59,7 @@ const SignIn = () => {
 						type="submit"
 						disabled={email === "" || password === ""}
 					>
-						Log In
+						Sign In
 					</Form.Button>
 				</Form.Base>
 
