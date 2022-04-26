@@ -8,6 +8,8 @@ import {
 	Data,
 	Text,
 	Image,
+	Button,
+	ReactRouterLink,
 } from "./styles/table.styles";
 
 const Table = ({ children, ...restProps }) => {
@@ -18,32 +20,40 @@ Table.Base = function TableBase({ children, ...restProps }) {
 	return <Base {...restProps}>{children}</Base>;
 };
 
-Table.Head = function TableBase({ children, ...restProps }) {
+Table.Head = function TableHead({ children, ...restProps }) {
 	return <Head {...restProps}>{children}</Head>;
 };
 
-Table.Body = function TableBase({ children, ...restProps }) {
+Table.Body = function TableBody({ children, ...restProps }) {
 	return <Body {...restProps}>{children}</Body>;
 };
 
-Table.Row = function TableBase({ children, ...restProps }) {
+Table.Row = function TableRow({ children, ...restProps }) {
 	return <Row {...restProps}>{children}</Row>;
 };
 
-Table.Header = function TableBase({ children, ...restProps }) {
+Table.Header = function TableHeader({ children, ...restProps }) {
 	return <Header {...restProps}>{children}</Header>;
 };
 
-Table.Data = function TableBase({ children, ...restProps }) {
+Table.Data = function TableData({ children, ...restProps }) {
 	return <Data {...restProps}>{children}</Data>;
 };
 
-Table.Text = function TableBase({ children, ...restProps }) {
+Table.Text = function TableText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
 };
 
-Table.Image = function TableBase({ ...restProps }) {
+Table.Image = function TableImage({ ...restProps }) {
 	return <Image {...restProps} />;
+};
+
+Table.Button = function TableButton({ children, ...restProps }) {
+	return <Button {...restProps}>{children}</Button>;
+};
+
+Table.Link = function TableLink({ children, ...restProps }) {
+	return <ReactRouterLink {...restProps}>{children}</ReactRouterLink>;
 };
 
 export default Table;

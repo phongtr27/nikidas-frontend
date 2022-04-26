@@ -33,7 +33,18 @@ const Product = () => {
 							<Table.Data>{product.basePrice}</Table.Data>
 							<Table.Data>{product.category}</Table.Data>
 							<Table.Data>{product.subCategory}</Table.Data>
-							<Table.Data>delete</Table.Data>
+							<Table.Data>
+								<Table.Button>
+									<Table.Link to={`${product._id}`}>
+										<i className="fas fa-edit"></i>
+									</Table.Link>
+								</Table.Button>
+								<Table.Button>
+									<Table.Button>
+										<i class="fas fa-trash-alt"></i>
+									</Table.Button>
+								</Table.Button>
+							</Table.Data>
 						</Table.Row>
 					))}
 				</Table.Body>

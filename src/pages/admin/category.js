@@ -33,7 +33,18 @@ const Category = () => {
 									alt={category.name}
 								/>
 							</Table.Data>
-							<Table.Data>delete</Table.Data>
+							<Table.Data>
+								<Table.Button>
+									<Table.Link to={`${category._id}`}>
+										<i className="fas fa-edit"></i>
+									</Table.Link>
+								</Table.Button>
+								<Table.Button>
+									<Table.Button>
+										<i class="fas fa-trash-alt"></i>
+									</Table.Button>
+								</Table.Button>
+							</Table.Data>
 						</Table.Row>
 					))}
 				</Table.Body>

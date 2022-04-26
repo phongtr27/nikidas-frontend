@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 	margin-left: 15%;
@@ -6,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Base = styled.table`
-	width: 90%;
+	width: 75%;
 	margin-left: auto;
 	margin-right: auto;
 	border: 1px solid #8e9194;
@@ -28,13 +29,23 @@ export const Header = styled.th`
 export const Data = styled.td`
 	border: 1px solid #8e9194;
 	text-align: center;
-	padding: 16px;
+	padding: 10px;
 `;
 
 export const Text = styled.p``;
 
 export const Image = styled.img`
-	width: 100px;
-	height: 100px;
+	width: 80px;
+	height: 80px;
 	object-fit: cover;
+`;
+
+export const Button = styled.span`
+	cursor: pointer;
+	padding: 5px;
+`;
+
+export const ReactRouterLink = styled(Link)`
+	text-decoration: none;
+	color: black;
 `;

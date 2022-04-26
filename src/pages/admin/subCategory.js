@@ -28,7 +28,18 @@ const SubCategory = () => {
 							<Table.Data>{index + 1}</Table.Data>
 							<Table.Data>{subCategory.name}</Table.Data>
 							<Table.Data>{subCategory.category}</Table.Data>
-							<Table.Data>delete</Table.Data>
+							<Table.Data>
+								<Table.Button>
+									<Table.Link to={`${subCategory._id}`}>
+										<i className="fas fa-edit"></i>
+									</Table.Link>
+								</Table.Button>
+								<Table.Button>
+									<Table.Button>
+										<i class="fas fa-trash-alt"></i>
+									</Table.Button>
+								</Table.Button>
+							</Table.Data>
 						</Table.Row>
 					))}
 				</Table.Body>
