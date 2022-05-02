@@ -38,11 +38,11 @@ const SignIn = () => {
 	};
 
 	return (
-		<Form bg={`${apiUrl}/public/images/backgrounds/login-register.jpeg`}>
-			<Form.SmallForm>
+		<Form bg="./images/backgrounds/login-register.jpeg">
+			<Form.SmallContainer>
 				<Form.Title>Sign In</Form.Title>
 				{error ? <Form.Error>{error}</Form.Error> : null}
-				<Form.Base onSubmit={handleSubmit}>
+				<Form.SigninForm onSubmit={handleSubmit}>
 					<Form.Input
 						type="text"
 						placeholder="Email Address"
@@ -61,13 +61,13 @@ const SignIn = () => {
 					>
 						Sign In
 					</Form.Button>
-				</Form.Base>
+				</Form.SigninForm>
 
 				<Form.Text>
 					Don't have an account?{" "}
 					<Form.Link to={SIGNUP}>Sign Up</Form.Link>
 				</Form.Text>
-			</Form.SmallForm>
+			</Form.SmallContainer>
 		</Form>
 	);
 };

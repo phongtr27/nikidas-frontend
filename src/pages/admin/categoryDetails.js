@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_CATEGORY, apiUrl } from "../../constants/routes";
-import { Form } from "../../components";
+import { CategoryForm } from "../../containers";
 
 const CategoryDetails = () => {
 	const { id } = useParams();
@@ -18,8 +18,6 @@ const CategoryDetails = () => {
 		};
 	}, [selectedFile]);
 
-	console.log(selectedFile);
-
 	useEffect(() => {
 		if (id !== "new") {
 			fetch(`${apiUrl}/api/category/${id}`)
@@ -32,6 +30,7 @@ const CategoryDetails = () => {
 			setName("");
 			setImg(null);
 		}
+		setError(null);
 	}, [id]);
 
 	const handleFileUpload = (e) => {
@@ -76,47 +75,16 @@ const CategoryDetails = () => {
 	};
 
 	return (
-		<Form.BigForm>
-			{id === "new" ? (
-				<Form.Title>New Category</Form.Title>
-			) : (
-				<Form.Title>Category</Form.Title>
-			)}
-
-			{error ? <Form.Error>{error}</Form.Error> : null}
-
-			<Form.Base onSubmit={handleSubmit}>
-				<Form.Label htmlFor="name">Category Name</Form.Label>
-				<Form.Input
-					type="text"
-					name="name"
-					id="name"
-					required
-					value={name}
-					onChange={({ target }) => setName(target.value)}
-				/>
-
-				<Form.Label htmlFor="image">Image</Form.Label>
-				<Form.FileInput
-					type="file"
-					name="image"
-					id="image"
-					accept="image/*"
-					multiple
-					onChange={(e) => handleFileUpload(e)}
-				>
-					{selectedFile && <Form.Image src={selectedFile.preview} />}
-					{img && (
-						<Form.Image
-							src={`${apiUrl}/public${img}`}
-							alt="category image"
-						/>
-					)}
-				</Form.FileInput>
-
-				<Form.Button>Submit</Form.Button>
-			</Form.Base>
-		</Form.BigForm>
+		<CategoryForm
+			id={id}
+			name={name}
+			setName={setName}
+			img={img}
+			selectedFile={selectedFile}
+			error={error}
+			handleFileUpload={handleFileUpload}
+			handleSubmit={handleSubmit}
+		/>
 	);
 };
 

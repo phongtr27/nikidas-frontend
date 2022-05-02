@@ -1,55 +1,76 @@
 import { useState, useEffect } from "react";
-import { Table } from "../../components";
 import { apiUrl } from "../../constants/routes";
+import { ProductTable } from "../../containers";
+import Pagination from "react-js-pagination";
+
+let PageSize = 7;
 
 const Product = () => {
 	const [products, setProducts] = useState([]);
+	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+	const [idToDelete, setIdToDelete] = useState(null);
+	const [activePage, setActivePage] = useState(1);
 
 	useEffect(() => {
-		console.log("hello");
 		fetch(`${apiUrl}/api/product`)
 			.then((response) => response.json())
 			.then((data) => setProducts([...data]));
 	}, []);
 
+	const handlePageChange = (pageNumber) => {
+		setActivePage(pageNumber);
+	};
+
+	const handleDelete = async (id) => {
+		const response = await fetch(
+			`http://localhost:5000/api/product/${id}`,
+			{
+				method: "DELETE",
+				headers: {
+					"x-auth-token": localStorage.getItem("token"),
+				},
+			}
+		);
+
+		if (response.status >= 400) {
+			const { message } = await response.json();
+			console.log(message);
+			return;
+		}
+		setShowDeleteConfirmation(false);
+		setProducts(products.filter((product) => product._id !== id));
+		setActivePage(1);
+	};
+
+	const firstPageIndex = (activePage - 1) * PageSize;
+	const lastPageIndex = firstPageIndex + PageSize;
+	const tableData = products.slice(firstPageIndex, lastPageIndex);
+
 	return (
-		<Table>
-			<Table.Base>
-				<Table.Head>
-					<Table.Row>
-						<Table.Header>No</Table.Header>
-						<Table.Header>Name</Table.Header>
-						<Table.Header>Price</Table.Header>
-						<Table.Header>Category</Table.Header>
-						<Table.Header>Sub-Category</Table.Header>
-						<Table.Header>Action</Table.Header>
-					</Table.Row>
-				</Table.Head>
-				<Table.Body>
-					{products.map((product, index) => (
-						<Table.Row key={index}>
-							<Table.Data>{index + 1}</Table.Data>
-							<Table.Data>{product.name}</Table.Data>
-							<Table.Data>{product.basePrice}</Table.Data>
-							<Table.Data>{product.category}</Table.Data>
-							<Table.Data>{product.subCategory}</Table.Data>
-							<Table.Data>
-								<Table.Button>
-									<Table.Link to={`${product._id}`}>
-										<i className="fas fa-edit"></i>
-									</Table.Link>
-								</Table.Button>
-								<Table.Button>
-									<Table.Button>
-										<i class="fas fa-trash-alt"></i>
-									</Table.Button>
-								</Table.Button>
-							</Table.Data>
-						</Table.Row>
-					))}
-				</Table.Body>
-			</Table.Base>
-		</Table>
+		<>
+			<ProductTable
+				products={tableData}
+				showDeleteConfirmation={showDeleteConfirmation}
+				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				handleDelete={handleDelete}
+				idToDelete={idToDelete}
+				setIdToDelete={setIdToDelete}
+			/>
+
+			<Pagination
+				activePage={activePage}
+				itemsCountPerPage={PageSize}
+				totalItemsCount={products.length}
+				pageRangeDisplayed={5}
+				onChange={handlePageChange}
+				hideDisabled={true}
+				itemClass="page-item"
+				linkClass="page-link"
+				hideFirstLastPages={true}
+				prevPageText={<i className="fas fa-chevron-left"></i>}
+				nextPageText={<i className="fas fa-chevron-right"></i>}
+			/>
+		</>
 	);
 };
 

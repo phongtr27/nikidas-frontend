@@ -10,7 +10,7 @@ export const Container = styled.div`
 	background-size: cover;
 `;
 
-export const SmallForm = styled.div`
+export const SmallContainer = styled.div`
 	width: 20%;
 	height: 355px;
 	margin: auto;
@@ -22,7 +22,7 @@ export const SmallForm = styled.div`
 	justify-content: space-between;
 `;
 
-export const BigForm = styled.div`
+export const BigContainer = styled.div`
 	margin-left: 15%;
 	margin-top: 55px;
 	display: flex;
@@ -30,7 +30,7 @@ export const BigForm = styled.div`
 	align-items: center;
 `;
 
-export const MidForm = styled.div`
+export const MidContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding: 40px;
@@ -57,6 +57,12 @@ export const TextArea = styled.textarea`
 `;
 
 export const Base = styled.form`
+	width: 35%;
+	display: flex;
+	flex-direction: column;
+`;
+
+export const SigninForm = styled.form`
 	display: flex;
 	flex-direction: column;
 `;
@@ -108,7 +114,7 @@ export const Error = styled.div`
 
 export const LabelFileInput = styled.label`
 	border: 1px solid #767676;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
 `;

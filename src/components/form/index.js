@@ -1,12 +1,13 @@
 import React from "react";
 import {
 	Container,
-	SmallForm,
-	BigForm,
-	MidForm,
+	SmallContainer,
+	BigContainer,
+	MidContainer,
 	Text,
 	TextArea,
 	Base,
+	SigninForm,
 	Label,
 	Input,
 	ColorInput,
@@ -35,20 +36,24 @@ Form.TextArea = function FormTextArea({ children, ...restProps }) {
 	return <TextArea {...restProps}>{children}</TextArea>;
 };
 
-Form.SmallForm = function FormSmall({ children, ...restProps }) {
-	return <SmallForm {...restProps}>{children}</SmallForm>;
+Form.SmallContainer = function FormSmallContainer({ children, ...restProps }) {
+	return <SmallContainer {...restProps}>{children}</SmallContainer>;
 };
 
-Form.BigForm = function FormBig({ children, ...restProps }) {
-	return <BigForm {...restProps}>{children}</BigForm>;
+Form.BigContainer = function FormBigContainer({ children, ...restProps }) {
+	return <BigContainer {...restProps}>{children}</BigContainer>;
 };
 
-Form.MidForm = function FormMid({ children, ...restProps }) {
-	return <MidForm {...restProps}>{children}</MidForm>;
+Form.MidContainer = function FormMidContainer({ children, ...restProps }) {
+	return <MidContainer {...restProps}>{children}</MidContainer>;
 };
 
 Form.Base = function FormBase({ children, ...restProps }) {
 	return <Base {...restProps}>{children}</Base>;
+};
+
+Form.SigninForm = function FormSigninForm({ children, ...restProps }) {
+	return <SigninForm {...restProps}>{children}</SigninForm>;
 };
 
 Form.Label = function FormLabel({ children, ...restProps }) {

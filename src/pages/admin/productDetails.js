@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_PRODUCT, apiUrl } from "../../constants/routes";
-import { Form, Table } from "../../components";
+import { ProductForm } from "../../containers";
 
 const ProductDetails = () => {
 	const { id } = useParams();
@@ -49,6 +49,7 @@ const ProductDetails = () => {
 				},
 			]);
 		}
+		setError(null);
 	}, [id]);
 
 	const handleFileUpload = (index, e) => {
@@ -126,173 +127,29 @@ const ProductDetails = () => {
 	};
 
 	return (
-		<Form.BigForm>
-			{id === "new" ? (
-				<Form.Title>New Product</Form.Title>
-			) : (
-				<Form.Title>Product</Form.Title>
-			)}
-
-			{error ? <Form.Error>{error}</Form.Error> : null}
-
-			<Form.Base onSubmit={handleSubmit}>
-				<Form.Label htmlFor="name">Product Name</Form.Label>
-				<Form.Input
-					type="text"
-					name="name"
-					id="name"
-					required
-					value={name}
-					onChange={({ target }) => setName(target.value)}
-				/>
-
-				<Form.Label htmlFor="category">Category</Form.Label>
-				<Form.Input
-					type="text"
-					name="category"
-					id="category"
-					required
-					value={category}
-					onChange={({ target }) => setCategory(target.value)}
-				/>
-
-				<Form.Label htmlFor="subCategory">Sub-Category</Form.Label>
-				<Form.Input
-					type="text"
-					name="subCategory"
-					id="subCategory"
-					required
-					value={subCategory}
-					onChange={({ target }) => setSubCategory(target.value)}
-				/>
-
-				<Form.Label htmlFor="description">Description</Form.Label>
-				<Form.TextArea
-					type="text"
-					name="description"
-					id="description"
-					required
-					value={description}
-					onChange={({ target }) => setDescription(target.value)}
-				/>
-
-				<Form.Label htmlFor="basePrice">Price ($)</Form.Label>
-				<Form.Input
-					type="text"
-					name="basePrice"
-					id="basePrice"
-					required
-					value={basePrice}
-					onChange={({ target }) => setBasePrice(target.value)}
-				/>
-
-				<Form.Label htmlFor="discount">Discount (%)</Form.Label>
-				<Form.Input
-					type="number"
-					name="discount"
-					id="discount"
-					required
-					value={discount}
-					onChange={({ target }) => setDiscount(target.value)}
-				/>
-
-				<Form.Label>
-					Product Attributes{"  "}
-					<Form.SmallButton onClick={addOption}>
-						{" "}
-						<i className="fas fa-plus-square"></i>
-					</Form.SmallButton>
-				</Form.Label>
-
-				{options.map((option, outerIndex) => (
-					<Form.MidForm key={outerIndex}>
-						<Form.Text>{`Option ${outerIndex + 1}`}</Form.Text>
-
-						<Form.Label htmlFor="color">Color</Form.Label>
-						<Form.ColorInput
-							type="color"
-							name="color"
-							id="color"
-							value={option.color}
-							onChange={(e) => handleColorChange(outerIndex, e)}
-						/>
-
-						<Form.Label htmlFor="image">Image</Form.Label>
-						<Form.FileInput
-							type="file"
-							name="image"
-							id="image"
-							accept="image/*"
-							onChange={(e) => handleFileUpload(outerIndex, e)}
-							multiple
-						>
-							{option.img && (
-								<div>
-									{option.img.map((image, index) => (
-										<Form.Image
-											key={index}
-											src={`${apiUrl}/public${image}`}
-											alt="product image"
-										/>
-									))}
-								</div>
-							)}
-						</Form.FileInput>
-
-						<Table.Base>
-							<Table.Head>
-								<Table.Row>
-									<Table.Header>Size</Table.Header>
-									<Table.Header>Quantity</Table.Header>
-								</Table.Row>
-							</Table.Head>
-							<Table.Body>
-								{option.quantityPerSize.map((item, index) => (
-									<Table.Row key={index}>
-										<Table.Data>
-											<Form.Input
-												type="text"
-												id="size"
-												name="size"
-												required
-												value={item.size}
-												onChange={(e) =>
-													handleQuantityPerSizeChange(
-														outerIndex,
-														index,
-														e
-													)
-												}
-											/>
-										</Table.Data>
-										<Table.Data>
-											<Form.Input
-												type="number"
-												id="quantity"
-												name="quantity"
-												required
-												value={item.quantity}
-												onChange={(e) =>
-													handleQuantityPerSizeChange(
-														outerIndex,
-														index,
-														e
-													)
-												}
-											/>
-										</Table.Data>
-									</Table.Row>
-								))}
-							</Table.Body>
-						</Table.Base>
-						<Form.SmallButton onClick={() => addSize(outerIndex)}>
-							Add more...
-						</Form.SmallButton>
-					</Form.MidForm>
-				))}
-				<Form.Button>Submit</Form.Button>
-			</Form.Base>
-		</Form.BigForm>
+		<ProductForm
+			id={id}
+			name={name}
+			setName={setName}
+			category={category}
+			setCategory={setCategory}
+			subCategory={subCategory}
+			setSubCategory={setSubCategory}
+			description={description}
+			setDescription={setDescription}
+			basePrice={basePrice}
+			setBasePrice={setBasePrice}
+			discount={discount}
+			setDiscount={setDiscount}
+			options={options}
+			error={error}
+			addOption={addOption}
+			addSize={addSize}
+			handleColorChange={handleColorChange}
+			handleFileUpload={handleFileUpload}
+			handleQuantityPerSizeChange={handleQuantityPerSizeChange}
+			handleSubmit={handleSubmit}
+		/>
 	);
 };
 

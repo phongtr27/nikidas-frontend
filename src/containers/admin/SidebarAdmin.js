@@ -1,4 +1,4 @@
-import { Sidebar } from "../components";
+import { Sidebar } from "../../components";
 import { useLocation } from "react-router-dom";
 import {
 	ADMIN,
@@ -6,7 +6,7 @@ import {
 	ADMIN_SUB_CATEGORY,
 	ADMIN_PRODUCT,
 	ADMIN_ORDER,
-} from "../constants/routes";
+} from "../../constants/routes";
 
 const SidebarAdmin = () => {
 	const { pathname } = useLocation();
