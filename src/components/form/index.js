@@ -7,7 +7,6 @@ import {
 	Text,
 	TextArea,
 	Base,
-	SigninForm,
 	Label,
 	Input,
 	ColorInput,
@@ -50,10 +49,6 @@ Form.MidContainer = function FormMidContainer({ children, ...restProps }) {
 
 Form.Base = function FormBase({ children, ...restProps }) {
 	return <Base {...restProps}>{children}</Base>;
-};
-
-Form.SigninForm = function FormSigninForm({ children, ...restProps }) {
-	return <SigninForm {...restProps}>{children}</SigninForm>;
 };
 
 Form.Label = function FormLabel({ children, ...restProps }) {

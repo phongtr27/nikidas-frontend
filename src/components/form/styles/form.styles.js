@@ -57,12 +57,7 @@ export const TextArea = styled.textarea`
 `;
 
 export const Base = styled.form`
-	width: 35%;
-	display: flex;
-	flex-direction: column;
-`;
-
-export const SigninForm = styled.form`
+	width: ${({ width }) => (width ? width : "auto")};
 	display: flex;
 	flex-direction: column;
 `;

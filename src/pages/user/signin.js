@@ -42,7 +42,7 @@ const SignIn = () => {
 			<Form.SmallContainer>
 				<Form.Title>Sign In</Form.Title>
 				{error ? <Form.Error>{error}</Form.Error> : null}
-				<Form.SigninForm onSubmit={handleSubmit}>
+				<Form.Base onSubmit={handleSubmit}>
 					<Form.Input
 						type="text"
 						placeholder="Email Address"
@@ -61,7 +61,7 @@ const SignIn = () => {
 					>
 						Sign In
 					</Form.Button>
-				</Form.SigninForm>
+				</Form.Base>
 
 				<Form.Text>
 					Don't have an account?{" "}

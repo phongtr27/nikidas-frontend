@@ -19,7 +19,7 @@ const SubCategoryForm = ({
 
 			{error ? <Form.Error>{error}</Form.Error> : null}
 
-			<Form.Base onSubmit={handleSubmit}>
+			<Form.Base onSubmit={handleSubmit} width="35%">
 				<Form.Label htmlFor="name">Sub-Category Name</Form.Label>
 				<Form.Input
 					type="text"
