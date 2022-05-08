@@ -42,7 +42,7 @@ const CategoryForm = ({
 					onChange={(e) => handleFileUpload(e)}
 				>
 					{selectedFile && <Form.Image src={selectedFile.preview} />}
-					{img && (
+					{img && !selectedFile && (
 						<Form.Image
 							src={`${apiUrl}/public${img}`}
 							alt="category image"

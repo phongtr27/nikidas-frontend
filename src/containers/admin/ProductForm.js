@@ -15,6 +15,7 @@ const ProductForm = ({
 	setBasePrice,
 	discount,
 	setDiscount,
+	selectedFile,
 	options,
 	error,
 	addOption,
@@ -23,6 +24,8 @@ const ProductForm = ({
 	handleFileUpload,
 	handleQuantityPerSizeChange,
 	handleSubmit,
+	categories,
+	subCategories,
 }) => {
 	return (
 		<Form.BigContainer>
@@ -46,24 +49,37 @@ const ProductForm = ({
 				/>
 
 				<Form.Label htmlFor="category">Category</Form.Label>
-				<Form.Input
-					type="text"
+				<Form.Select
 					name="category"
 					id="category"
 					required
 					value={category}
 					onChange={({ target }) => setCategory(target.value)}
-				/>
+				>
+					<Form.Option value="" disabled hidden>
+						--- Select an option ---
+					</Form.Option>
+					{categories?.map((option, index) => (
+						<Form.Option value={option?.name} key={index}>
+							{option?.name}
+						</Form.Option>
+					))}
+				</Form.Select>
 
 				<Form.Label htmlFor="subCategory">Sub-Category</Form.Label>
-				<Form.Input
-					type="text"
+				<Form.Select
 					name="subCategory"
 					id="subCategory"
 					required
 					value={subCategory}
 					onChange={({ target }) => setSubCategory(target.value)}
-				/>
+				>
+					{subCategories?.map((option, index) => (
+						<Form.Option value={option?.name} key={index}>
+							{option?.name}
+						</Form.Option>
+					))}
+				</Form.Select>
 
 				<Form.Label htmlFor="description">Description</Form.Label>
 				<Form.TextArea
@@ -125,17 +141,19 @@ const ProductForm = ({
 							onChange={(e) => handleFileUpload(outerIndex, e)}
 							multiple
 						>
-							{option.img && (
-								<div>
-									{option.img.map((image, index) => (
-										<Form.Image
-											key={index}
-											src={`${apiUrl}/public${image}`}
-											alt="product image"
-										/>
-									))}
-								</div>
-							)}
+							{option.img &&
+								(!selectedFile[outerIndex] ||
+									selectedFile[outerIndex]?.length === 0) && (
+									<div>
+										{option.img.map((image, index) => (
+											<Form.Image
+												key={index}
+												src={`${apiUrl}/public${image}`}
+												alt="product image"
+											/>
+										))}
+									</div>
+								)}
 						</Form.FileInput>
 
 						<Table.Base>

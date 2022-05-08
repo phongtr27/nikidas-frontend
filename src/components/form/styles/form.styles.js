@@ -126,3 +126,11 @@ export const Image = styled.img`
 	object-fit: cover;
 	margin: 5px;
 `;
+
+export const Select = styled.select`
+	padding: 10px 5px;
+	outline-color: #c3820a;
+	margin-bottom: 20px;
+`;
+
+export const Option = styled.option``;

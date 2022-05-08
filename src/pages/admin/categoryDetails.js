@@ -41,7 +41,6 @@ const CategoryDetails = () => {
 		} else {
 			setSelectedFile(null);
 		}
-		setImg(null);
 	};
 
 	const handleSubmit = async (e) => {
@@ -73,6 +72,8 @@ const CategoryDetails = () => {
 
 		navigate(ADMIN_CATEGORY);
 	};
+
+	console.log(img);
 
 	return (
 		<CategoryForm

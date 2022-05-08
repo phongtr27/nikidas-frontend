@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_PRODUCT, apiUrl } from "../../constants/routes";
 import { ProductForm } from "../../containers";
+import useFetch from "../../hooks/useFetch";
 
 const ProductDetails = () => {
 	const { id } = useParams();
@@ -21,6 +22,12 @@ const ProductDetails = () => {
 		},
 	]);
 	const [error, setError] = useState(null);
+
+	const { data: categories } = useFetch(`${apiUrl}/api/category`);
+	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
+	const filteredSubCategories = subCategories?.filter(
+		(item) => item.category === category
+	);
 
 	useEffect(() => {
 		if (id !== "new") {
@@ -141,6 +148,7 @@ const ProductDetails = () => {
 			setBasePrice={setBasePrice}
 			discount={discount}
 			setDiscount={setDiscount}
+			selectedFile={selectedFile}
 			options={options}
 			error={error}
 			addOption={addOption}
@@ -149,6 +157,8 @@ const ProductDetails = () => {
 			handleFileUpload={handleFileUpload}
 			handleQuantityPerSizeChange={handleQuantityPerSizeChange}
 			handleSubmit={handleSubmit}
+			categories={categories}
+			subCategories={filteredSubCategories}
 		/>
 	);
 };

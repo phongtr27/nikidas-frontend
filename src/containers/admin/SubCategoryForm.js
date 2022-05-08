@@ -8,6 +8,7 @@ const SubCategoryForm = ({
 	setCategory,
 	error,
 	handleSubmit,
+	categories,
 }) => {
 	return (
 		<Form.BigContainer>
@@ -31,14 +32,22 @@ const SubCategoryForm = ({
 				/>
 
 				<Form.Label htmlFor="category">Category</Form.Label>
-				<Form.Input
-					type="text"
+				<Form.Select
 					name="category"
 					id="category"
 					required
 					value={category}
 					onChange={({ target }) => setCategory(target.value)}
-				/>
+				>
+					<Form.Option value="" disabled hidden>
+						--- Select an option ---
+					</Form.Option>
+					{categories?.map((option, index) => (
+						<Form.Option value={option?.name} key={index}>
+							{option?.name}
+						</Form.Option>
+					))}
+				</Form.Select>
 
 				<Form.Button>Submit</Form.Button>
 			</Form.Base>

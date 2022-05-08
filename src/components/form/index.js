@@ -17,6 +17,8 @@ import {
 	Title,
 	LabelFileInput,
 	Image,
+	Select,
+	Option,
 } from "./styles/form.styles";
 
 export default function Form({ children, ...restProps }) {
@@ -94,4 +96,12 @@ Form.Link = function FormLink({ to, children, ...restProps }) {
 
 Form.Error = function FormError({ children, ...restProps }) {
 	return <Error {...restProps}>{children}</Error>;
+};
+
+Form.Select = function FormSelect({ children, ...restProps }) {
+	return <Select {...restProps}>{children}</Select>;
+};
+
+Form.Option = function FormOption({ children, ...restProps }) {
+	return <Option {...restProps}>{children}</Option>;
 };

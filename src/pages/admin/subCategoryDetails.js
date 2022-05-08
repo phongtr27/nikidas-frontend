@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_SUB_CATEGORY, apiUrl } from "../../constants/routes";
 import { SubCategoryForm } from "../../containers";
+import useFetch from "../../hooks/useFetch";
 
 const SubCategoryDetails = () => {
 	const { id } = useParams();
@@ -10,6 +11,7 @@ const SubCategoryDetails = () => {
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [error, setError] = useState(null);
+	const { data: categories } = useFetch(`${apiUrl}/api/category`);
 
 	useEffect(() => {
 		if (id !== "new") {
@@ -63,6 +65,7 @@ const SubCategoryDetails = () => {
 			setCategory={setCategory}
 			error={error}
 			handleSubmit={handleSubmit}
+			categories={categories}
 		/>
 	);
 };
