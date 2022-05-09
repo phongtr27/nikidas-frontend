@@ -1,8 +1,9 @@
 import React from "react";
-import { Table } from "../../components";
+import { Loading, Table } from "../../components";
 import { DeleteConfirmation } from "../../containers";
 
 const ProductTable = ({
+	isLoading,
 	products,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -12,6 +13,7 @@ const ProductTable = ({
 }) => {
 	return (
 		<>
+			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
 			<Table>
 				<Table.Base>
 					<Table.Head>
@@ -32,7 +34,7 @@ const ProductTable = ({
 
 								<Table.Data>{product.name}</Table.Data>
 
-								<Table.Data>{product.basePrice}</Table.Data>
+								<Table.Data>{product.price}</Table.Data>
 
 								<Table.Data>{product.category}</Table.Data>
 

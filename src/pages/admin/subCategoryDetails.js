@@ -8,6 +8,7 @@ const SubCategoryDetails = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
+	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [error, setError] = useState(null);
@@ -25,6 +26,7 @@ const SubCategoryDetails = () => {
 			setName("");
 			setCategory("");
 		}
+		setIsLoading(false);
 		setError(null);
 	}, [id]);
 
@@ -59,6 +61,7 @@ const SubCategoryDetails = () => {
 	return (
 		<SubCategoryForm
 			id={id}
+			isLoading={isLoading}
 			name={name}
 			setName={setName}
 			category={category}

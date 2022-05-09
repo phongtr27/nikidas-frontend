@@ -6,6 +6,7 @@ import Pagination from "react-js-pagination";
 let PageSize = 7;
 
 const Product = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [products, setProducts] = useState([]);
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
@@ -14,7 +15,10 @@ const Product = () => {
 	useEffect(() => {
 		fetch(`${apiUrl}/api/product`)
 			.then((response) => response.json())
-			.then((data) => setProducts([...data]));
+			.then((data) => {
+				setProducts([...data]);
+				setIsLoading(false);
+			});
 	}, []);
 
 	const handlePageChange = (pageNumber) => {
@@ -49,6 +53,7 @@ const Product = () => {
 	return (
 		<>
 			<ProductTable
+				isLoading={isLoading}
 				products={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}

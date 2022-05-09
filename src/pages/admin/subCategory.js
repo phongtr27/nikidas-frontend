@@ -6,6 +6,7 @@ import Pagination from "react-js-pagination";
 let PageSize = 7;
 
 const SubCategory = () => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [subCategories, setSubCategories] = useState([]);
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
@@ -14,7 +15,10 @@ const SubCategory = () => {
 	useEffect(() => {
 		fetch(`${apiUrl}/api/sub-category`)
 			.then((response) => response.json())
-			.then((data) => setSubCategories([...data]));
+			.then((data) => {
+				setSubCategories([...data]);
+				setIsLoading(false);
+			});
 	}, []);
 
 	const handlePageChange = (pageNumber) => {
@@ -50,6 +54,7 @@ const SubCategory = () => {
 	return (
 		<>
 			<SubCategoryTable
+				isLoading={isLoading}
 				subCategories={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}

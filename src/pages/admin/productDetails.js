@@ -8,11 +8,12 @@ const ProductDetails = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
+	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
 	const [subCategory, setSubCategory] = useState("");
 	const [description, setDescription] = useState("");
-	const [basePrice, setBasePrice] = useState("");
+	const [price, setPrice] = useState("");
 	const [discount, setDiscount] = useState(0);
 	const [selectedFile, setSelectedFile] = useState([]);
 	const [options, setOptions] = useState([
@@ -38,7 +39,7 @@ const ProductDetails = () => {
 					setCategory(data.category);
 					setSubCategory(data.subCategory);
 					setDescription(data.description);
-					setBasePrice(data.basePrice);
+					setPrice(data.price);
 					setDiscount(data.discount);
 					setOptions(data.options);
 				});
@@ -47,7 +48,7 @@ const ProductDetails = () => {
 			setCategory("");
 			setSubCategory("");
 			setDescription("");
-			setBasePrice("");
+			setPrice("");
 			setDiscount(0);
 			setOptions([
 				{
@@ -56,6 +57,7 @@ const ProductDetails = () => {
 				},
 			]);
 		}
+		setIsLoading(false);
 		setError(null);
 	}, [id]);
 
@@ -101,7 +103,7 @@ const ProductDetails = () => {
 		formData.append("category", category);
 		formData.append("subCategory", subCategory);
 		formData.append("description", description);
-		formData.append("basePrice", basePrice);
+		formData.append("price", price);
 		formData.append("discount", discount);
 		formData.append("options", JSON.stringify(options));
 
@@ -136,6 +138,7 @@ const ProductDetails = () => {
 	return (
 		<ProductForm
 			id={id}
+			isLoading={isLoading}
 			name={name}
 			setName={setName}
 			category={category}
@@ -144,8 +147,8 @@ const ProductDetails = () => {
 			setSubCategory={setSubCategory}
 			description={description}
 			setDescription={setDescription}
-			basePrice={basePrice}
-			setBasePrice={setBasePrice}
+			price={price}
+			setPrice={setPrice}
 			discount={discount}
 			setDiscount={setDiscount}
 			selectedFile={selectedFile}

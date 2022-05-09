@@ -1,9 +1,10 @@
 import React from "react";
-import { Table } from "../../components";
+import { Loading, Table } from "../../components";
 import { DeleteConfirmation } from "../../containers";
 import { apiUrl } from "../../constants/routes";
 
 const CategoryTable = ({
+	isLoading,
 	categories,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -13,6 +14,7 @@ const CategoryTable = ({
 }) => {
 	return (
 		<>
+			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
 			<Table>
 				<Table.Base>
 					<Table.Head>

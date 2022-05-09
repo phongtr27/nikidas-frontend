@@ -1,8 +1,9 @@
 import React from "react";
-import { Table } from "../../components";
+import { Loading, Table } from "../../components";
 import { DeleteConfirmation } from "../../containers";
 
 const SubCategoryTable = ({
+	isLoading,
 	subCategories,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -12,6 +13,7 @@ const SubCategoryTable = ({
 }) => {
 	return (
 		<>
+			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
 			<Table>
 				<Table.Base>
 					<Table.Head>

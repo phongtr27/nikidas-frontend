@@ -7,6 +7,7 @@ const CategoryDetails = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 
+	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [img, setImg] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
@@ -30,6 +31,7 @@ const CategoryDetails = () => {
 			setName("");
 			setImg(null);
 		}
+		setIsLoading(false);
 		setError(null);
 	}, [id]);
 
@@ -78,6 +80,7 @@ const CategoryDetails = () => {
 	return (
 		<CategoryForm
 			id={id}
+			isLoading={isLoading}
 			name={name}
 			setName={setName}
 			img={img}
