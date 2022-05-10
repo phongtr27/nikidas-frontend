@@ -8,7 +8,6 @@ const CategoryForm = ({
 	setName,
 	img,
 	selectedFile,
-	error,
 	handleFileUpload,
 	handleSubmit,
 }) => {
@@ -21,8 +20,6 @@ const CategoryForm = ({
 				) : (
 					<Form.Title>Category</Form.Title>
 				)}
-
-				{error ? <Form.Error>{error}</Form.Error> : null}
 
 				<Form.Base onSubmit={handleSubmit} width="35%">
 					<Form.Label htmlFor="name">Category Name</Form.Label>

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_PRODUCT, apiUrl } from "../../constants/routes";
 import { ProductForm } from "../../containers";
 import useFetch from "../../hooks/useFetch";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
 	const { id } = useParams();
@@ -22,7 +23,6 @@ const ProductDetails = () => {
 			quantityPerSize: [{ size: "", quantity: 0 }],
 		},
 	]);
-	const [error, setError] = useState(null);
 
 	const { data: categories } = useFetch(`${apiUrl}/api/category`);
 	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
@@ -58,7 +58,6 @@ const ProductDetails = () => {
 			]);
 		}
 		setIsLoading(false);
-		setError(null);
 	}, [id]);
 
 	const handleFileUpload = (index, e) => {
@@ -126,13 +125,13 @@ const ProductDetails = () => {
 				},
 			}
 		);
-
+		const { message } = await response.json();
 		if (response.status >= 400) {
-			const { message } = await response.json();
-			setError(message);
+			toast.error(message);
 			return;
 		}
 		navigate(ADMIN_PRODUCT);
+		toast.success(message);
 	};
 
 	return (
@@ -153,7 +152,6 @@ const ProductDetails = () => {
 			setDiscount={setDiscount}
 			selectedFile={selectedFile}
 			options={options}
-			error={error}
 			addOption={addOption}
 			addSize={addSize}
 			handleColorChange={handleColorChange}

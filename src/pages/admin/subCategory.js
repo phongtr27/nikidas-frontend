@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { apiUrl } from "../../constants/routes";
 import { SubCategoryTable } from "../../containers";
 import Pagination from "react-js-pagination";
+import { toast } from "react-toastify";
 
 let PageSize = 7;
 
@@ -36,15 +37,17 @@ const SubCategory = () => {
 			}
 		);
 
+		const { message } = await response.json();
 		if (response.status >= 400) {
-			const { message } = await response.json();
-			console.log(message);
+			toast.error(message);
 			return;
 		}
 		setShowDeleteConfirmation(false);
 		setSubCategories(
 			subCategories.filter((subCategory) => subCategory._id !== id)
 		);
+		toast.success(message);
+		setActivePage(1);
 	};
 
 	const firstPageIndex = (activePage - 1) * PageSize;

@@ -18,7 +18,6 @@ const ProductForm = ({
 	setDiscount,
 	selectedFile,
 	options,
-	error,
 	addOption,
 	addSize,
 	handleColorChange,
@@ -37,8 +36,6 @@ const ProductForm = ({
 				) : (
 					<Form.Title>Product</Form.Title>
 				)}
-
-				{error ? <Form.Error>{error}</Form.Error> : null}
 
 				<Form.Base onSubmit={handleSubmit}>
 					<Form.Label htmlFor="name">Product Name</Form.Label>
@@ -77,6 +74,9 @@ const ProductForm = ({
 						value={subCategory}
 						onChange={({ target }) => setSubCategory(target.value)}
 					>
+						<Form.Option value="" disabled hidden>
+							--- Select an option ---
+						</Form.Option>
 						{subCategories?.map((option, index) => (
 							<Form.Option value={option?.name} key={index}>
 								{option?.name}

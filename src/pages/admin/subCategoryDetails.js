@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_SUB_CATEGORY, apiUrl } from "../../constants/routes";
 import { SubCategoryForm } from "../../containers";
 import useFetch from "../../hooks/useFetch";
+import { toast } from "react-toastify";
 
 const SubCategoryDetails = () => {
 	const { id } = useParams();
@@ -11,7 +12,6 @@ const SubCategoryDetails = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
-	const [error, setError] = useState(null);
 	const { data: categories } = useFetch(`${apiUrl}/api/category`);
 
 	useEffect(() => {
@@ -27,7 +27,6 @@ const SubCategoryDetails = () => {
 			setCategory("");
 		}
 		setIsLoading(false);
-		setError(null);
 	}, [id]);
 
 	const handleSubmit = async (e) => {
@@ -50,12 +49,13 @@ const SubCategoryDetails = () => {
 			}
 		);
 
+		const { message } = await response.json();
 		if (response.status >= 400) {
-			const { message } = await response.json();
-			setError(message);
+			toast.error(message);
 			return;
 		}
 		navigate(ADMIN_SUB_CATEGORY);
+		toast.success(message);
 	};
 
 	return (
@@ -66,7 +66,6 @@ const SubCategoryDetails = () => {
 			setName={setName}
 			category={category}
 			setCategory={setCategory}
-			error={error}
 			handleSubmit={handleSubmit}
 			categories={categories}
 		/>

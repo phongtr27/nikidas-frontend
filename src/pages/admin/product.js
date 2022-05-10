@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { apiUrl } from "../../constants/routes";
 import { ProductTable } from "../../containers";
 import Pagination from "react-js-pagination";
+import { toast } from "react-toastify";
 
 let PageSize = 7;
 
@@ -36,13 +37,14 @@ const Product = () => {
 			}
 		);
 
+		const { message } = await response.json();
 		if (response.status >= 400) {
-			const { message } = await response.json();
-			console.log(message);
+			toast.error(message);
 			return;
 		}
 		setShowDeleteConfirmation(false);
 		setProducts(products.filter((product) => product._id !== id));
+		toast.success(message);
 		setActivePage(1);
 	};
 

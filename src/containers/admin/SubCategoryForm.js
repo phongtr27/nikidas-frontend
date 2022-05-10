@@ -7,7 +7,6 @@ const SubCategoryForm = ({
 	setName,
 	category,
 	setCategory,
-	error,
 	handleSubmit,
 	categories,
 }) => {
@@ -20,8 +19,6 @@ const SubCategoryForm = ({
 				) : (
 					<Form.Title>Sub-Category</Form.Title>
 				)}
-
-				{error ? <Form.Error>{error}</Form.Error> : null}
 
 				<Form.Base onSubmit={handleSubmit} width="35%">
 					<Form.Label htmlFor="name">Sub-Category Name</Form.Label>

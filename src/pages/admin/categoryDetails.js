@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ADMIN_CATEGORY, apiUrl } from "../../constants/routes";
 import { CategoryForm } from "../../containers";
+import { toast } from "react-toastify";
 
 const CategoryDetails = () => {
 	const { id } = useParams();
@@ -11,7 +12,6 @@ const CategoryDetails = () => {
 	const [name, setName] = useState("");
 	const [img, setImg] = useState(null);
 	const [selectedFile, setSelectedFile] = useState(null);
-	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		return () => {
@@ -32,7 +32,6 @@ const CategoryDetails = () => {
 			setImg(null);
 		}
 		setIsLoading(false);
-		setError(null);
 	}, [id]);
 
 	const handleFileUpload = (e) => {
@@ -66,16 +65,15 @@ const CategoryDetails = () => {
 			}
 		);
 
+		const { message } = await response.json();
 		if (response.status >= 400) {
-			const { message } = await response.json();
-			setError(message);
+			toast.error(message);
 			return;
 		}
 
 		navigate(ADMIN_CATEGORY);
+		toast.success(message);
 	};
-
-	console.log(img);
 
 	return (
 		<CategoryForm
@@ -85,7 +83,6 @@ const CategoryDetails = () => {
 			setName={setName}
 			img={img}
 			selectedFile={selectedFile}
-			error={error}
 			handleFileUpload={handleFileUpload}
 			handleSubmit={handleSubmit}
 		/>

@@ -60,6 +60,7 @@ export const Base = styled.form`
 	width: ${({ width }) => (width ? width : "auto")};
 	display: flex;
 	flex-direction: column;
+	padding-bottom: 30px;
 `;
 
 export const Label = styled.label`
@@ -79,7 +80,6 @@ export const ColorInput = styled.input`
 `;
 
 export const Button = styled.button`
-	margin-bottom: 30px;
 	border-radius: 20px;
 	padding: 10px 5px;
 	border-width: 0;
@@ -100,11 +100,16 @@ export const Button = styled.button`
 
 export const Link = styled(ReactRouterLink)``;
 
-export const Error = styled.div`
-	background-color: red;
-	color: white;
-	padding: 10px;
-	border-radius: 5px;
+// export const Error = styled.div`
+// 	background-color: red;
+// 	color: white;
+// 	padding: 10px;
+// 	border-radius: 5px;
+// `;
+
+export const Error = styled.p`
+	color: red;
+	text-align: center;
 `;
 
 export const LabelFileInput = styled.label`
