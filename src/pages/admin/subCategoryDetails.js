@@ -21,7 +21,8 @@ const SubCategoryDetails = () => {
 				.then((data) => {
 					setName(data.name);
 					setCategory(data.category);
-				});
+				})
+				.catch((err) => toast.error("Internal Server Error."));
 		} else {
 			setName("");
 			setCategory("");
@@ -54,6 +55,7 @@ const SubCategoryDetails = () => {
 			toast.error(message);
 			return;
 		}
+
 		navigate(ADMIN_SUB_CATEGORY);
 		toast.success(message);
 	};

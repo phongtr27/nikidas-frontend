@@ -42,7 +42,8 @@ const ProductDetails = () => {
 					setPrice(data.price);
 					setDiscount(data.discount);
 					setOptions(data.options);
-				});
+				})
+				.catch((err) => toast.error("Internal Server Error."));
 		} else {
 			setName("");
 			setCategory("");

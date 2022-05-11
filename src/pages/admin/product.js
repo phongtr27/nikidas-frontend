@@ -19,7 +19,8 @@ const Product = () => {
 			.then((data) => {
 				setProducts([...data]);
 				setIsLoading(false);
-			});
+			})
+			.catch((err) => toast.error("Internal Server Error."));
 	}, []);
 
 	const handlePageChange = (pageNumber) => {
@@ -42,6 +43,7 @@ const Product = () => {
 			toast.error(message);
 			return;
 		}
+
 		setShowDeleteConfirmation(false);
 		setProducts(products.filter((product) => product._id !== id));
 		toast.success(message);

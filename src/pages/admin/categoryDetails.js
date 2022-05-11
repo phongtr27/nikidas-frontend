@@ -26,7 +26,8 @@ const CategoryDetails = () => {
 				.then((data) => {
 					setName(data.name);
 					setImg(data.img);
-				});
+				})
+				.catch((err) => toast.error("Internal Server Error."));
 		} else {
 			setName("");
 			setImg(null);
