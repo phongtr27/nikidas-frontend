@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 	margin-left: 15%;
-	margin-top: 55px;
+	margin-top: 80px;
 `;
 
 export const Base = styled.table`

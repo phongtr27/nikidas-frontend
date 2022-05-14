@@ -24,7 +24,7 @@ export const SmallContainer = styled.div`
 
 export const BigContainer = styled.div`
 	margin-left: 15%;
-	margin-top: 55px;
+	margin-top: 80px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

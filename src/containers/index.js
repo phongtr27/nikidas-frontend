@@ -1,4 +1,5 @@
 export { default as SidebarAdmin } from "./admin/SidebarAdmin";
+export { default as NavbarAdmin } from "./admin/NavbarAdmin";
 export { default as CategoryTable } from "./admin/CategoryTable";
 export { default as CategoryForm } from "./admin/CategoryForm";
 export { default as SubCategoryTable } from "./admin/SubCategoryTable";
