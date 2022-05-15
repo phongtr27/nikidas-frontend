@@ -1,9 +1,63 @@
 import styled from "styled-components/macro";
+import { Link as ReactRouterLink } from "react-router-dom";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+	position: relative;
+`;
 
-export const Dropdown = styled.div``;
+export const Dropdown = styled.div`
+	border: 1px solid white;
+	box-shadow: 1px 0 20px rgb(0 0 0 / 20%);
+	background-color: white;
+	position: absolute;
+	top: 43px;
+	right: -26px;
+	width: 110px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
 
-export const Name = styled.p``;
+	&.closed {
+		visibility: hidden;
+		height: 0;
+	}
+	&.open {
+	}
+`;
 
-export const Button = styled.div``;
+export const Icon = styled.i`
+	margin-right: 5px;
+	width: 20px;
+`;
+
+export const Name = styled.p`
+	cursor: pointer;
+`;
+
+export const Text = styled.p`
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+`;
+
+export const Link = styled(ReactRouterLink)`
+	text-decoration: none;
+	color: black;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	:hover {
+		background-color: #e0e2e8;
+	}
+`;
+
+export const Button = styled.div`
+	color: black;
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	:hover {
+		background-color: #e0e2e8;
+	}
+`;

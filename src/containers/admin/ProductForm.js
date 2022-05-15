@@ -29,7 +29,7 @@ const ProductForm = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
 					<Form.Title>New Product</Form.Title>

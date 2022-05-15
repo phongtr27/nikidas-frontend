@@ -1,6 +1,7 @@
 import {
 	Container,
 	Base,
+	Title,
 	Head,
 	Body,
 	Row,
@@ -18,6 +19,10 @@ const Table = ({ children, ...restProps }) => {
 
 Table.Base = function TableBase({ children, ...restProps }) {
 	return <Base {...restProps}>{children}</Base>;
+};
+
+Table.Title = function TableTitle({ children, ...restProps }) {
+	return <Title {...restProps}>{children}</Title>;
 };
 
 Table.Head = function TableHead({ children, ...restProps }) {

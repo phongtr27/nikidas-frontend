@@ -1,15 +1,15 @@
 import { useState, useContext } from "react";
-import { apiUrl, SIGNIN } from "../../constants/routes";
+import { apiUrl, LOGIN } from "../../constants/routes";
 import { Form } from "../../components";
 import { UserContext } from "../../context/user";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
 	const { setUser } = useContext(UserContext);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(null);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -26,7 +26,7 @@ const SignUp = () => {
 
 		if (response.status >= 400) {
 			const { message } = await response.json();
-			setError(message);
+			toast.error(message);
 			return;
 		}
 
@@ -39,8 +39,8 @@ const SignUp = () => {
 		<Form bg="./images/backgrounds/login-register.jpeg">
 			<Form.SmallContainer>
 				<Form.Title>Sign Up</Form.Title>
-				{error ? <Form.Error>{error}</Form.Error> : null}
-				<Form.SigninForm onSubmit={handleSubmit}>
+
+				<Form.Base onSubmit={handleSubmit}>
 					<Form.Input
 						type="text"
 						placeholder="Name"
@@ -64,10 +64,10 @@ const SignUp = () => {
 					>
 						Sign Up
 					</Form.Button>
-				</Form.SigninForm>
+				</Form.Base>
 				<Form.Text>
 					Already have an account?{" "}
-					<Form.Link to={SIGNIN}>Sign In</Form.Link>
+					<Form.Link to={LOGIN}>Log In</Form.Link>
 				</Form.Text>
 			</Form.SmallContainer>
 		</Form>

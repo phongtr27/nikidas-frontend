@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 	margin-left: 15%;
-	margin-top: 80px;
+	margin-top: 60px;
+	padding: 30px 30px 0px 30px;
 `;
 
 export const Base = styled.table`
-	width: 75%;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
+
 	border: 1px solid #8e9194;
 	border-collapse: collapse;
+`;
+
+export const Title = styled.h2`
+	margin: 0;
+	margin-bottom: 30px;
+	font-weight: 500;
 `;
 
 export const Head = styled.thead``;

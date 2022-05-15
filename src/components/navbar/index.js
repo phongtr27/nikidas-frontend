@@ -4,8 +4,8 @@ const Navbar = ({ children, ...restProps }) => {
 	return <Container {...restProps}>{children}</Container>;
 };
 
-Navbar.Logo = function NavbarLogo({ ...restProps }) {
-	return <Logo {...restProps} />;
+Navbar.Logo = function NavbarLogo({ children, ...restProps }) {
+	return <Logo {...restProps}>{children}</Logo>;
 };
 
 Navbar.Wrapper = function NavbarWrapper({ children, ...restProps }) {

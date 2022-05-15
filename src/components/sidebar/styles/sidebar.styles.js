@@ -2,9 +2,9 @@ import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
-	background-color: #f5faff;
+	box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 	position: fixed;
-	top: 0;
+	top: 60px;
 	left: 0;
 	height: 100%;
 	width: 15%;
@@ -27,10 +27,10 @@ export const Link = styled(ReactRouterLink)`
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	color: ${({ active }) => (active ? "black" : "#8b91a0")};
+	color: ${({ active }) => (active ? "#6f42c1" : "#797f91")};
 	padding-left: 30px;
 	&:hover {
-		color: black;
+		color: #6f42c1;
 	}
 `;
 
@@ -42,10 +42,10 @@ export const Dropdown = styled.div`
 export const DropdownHeader = styled.div`
 	display: flex;
 	align-items: center;
-	color: ${({ active }) => (active ? "black" : "#8b91a0")};
+	color: ${({ active }) => (active ? "#6f42c1" : "#797f91")};
 
 	&:hover {
-		color: black;
+		color: #6f42c1;
 	}
 `;
 

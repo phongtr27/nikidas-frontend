@@ -24,10 +24,12 @@ export const SmallContainer = styled.div`
 
 export const BigContainer = styled.div`
 	margin-left: 15%;
-	margin-top: 80px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	margin-top: 60px;
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* align-items: center; */
+	padding: 30px 30px 0px 30px;
+	border: 1px solid white;
 `;
 
 export const MidContainer = styled.div`
@@ -100,13 +102,6 @@ export const Button = styled.button`
 
 export const Link = styled(ReactRouterLink)``;
 
-// export const Error = styled.div`
-// 	background-color: red;
-// 	color: white;
-// 	padding: 10px;
-// 	border-radius: 5px;
-// `;
-
 export const Error = styled.p`
 	color: red;
 	text-align: center;
@@ -136,6 +131,7 @@ export const Select = styled.select`
 	padding: 10px 5px;
 	outline-color: #c3820a;
 	margin-bottom: 20px;
+	height: 40px;
 `;
 
 export const Option = styled.option``;

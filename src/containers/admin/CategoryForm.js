@@ -13,7 +13,7 @@ const CategoryForm = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
 					<Form.Title>New Category</Form.Title>
@@ -21,7 +21,7 @@ const CategoryForm = ({
 					<Form.Title>Category</Form.Title>
 				)}
 
-				<Form.Base onSubmit={handleSubmit} width="35%">
+				<Form.Base onSubmit={handleSubmit}>
 					<Form.Label htmlFor="name">Category Name</Form.Label>
 					<Form.Input
 						type="text"

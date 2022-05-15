@@ -4,6 +4,7 @@ import { apiUrl, HOME, SIGNUP } from "../../constants/routes";
 import { Form } from "../../components";
 import { UserContext } from "../../context/user";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
 	const navigate = useNavigate();
@@ -11,7 +12,6 @@ const SignIn = () => {
 	const { setUser } = useContext(UserContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(null);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -27,7 +27,7 @@ const SignIn = () => {
 
 		if (response.status >= 400) {
 			const { message } = await response.json();
-			setError(message);
+			toast.error(message);
 			return;
 		}
 
@@ -40,8 +40,8 @@ const SignIn = () => {
 	return (
 		<Form bg="./images/backgrounds/login-register.jpeg">
 			<Form.SmallContainer>
-				<Form.Title>Sign In</Form.Title>
-				{error ? <Form.Error>{error}</Form.Error> : null}
+				<Form.Title>Log In</Form.Title>
+
 				<Form.Base onSubmit={handleSubmit}>
 					<Form.Input
 						type="text"
@@ -59,7 +59,7 @@ const SignIn = () => {
 						type="submit"
 						disabled={email === "" || password === ""}
 					>
-						Sign In
+						Log In
 					</Form.Button>
 				</Form.Base>
 

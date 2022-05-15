@@ -14,8 +14,10 @@ const CategoryTable = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Table>
+				<Table.Title>Category Table</Table.Title>
+
 				<Table.Base>
 					<Table.Head>
 						<Table.Row>

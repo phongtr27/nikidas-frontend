@@ -12,7 +12,7 @@ const SubCategoryForm = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
 					<Form.Title>New Sub-Category</Form.Title>
@@ -20,7 +20,7 @@ const SubCategoryForm = ({
 					<Form.Title>Sub-Category</Form.Title>
 				)}
 
-				<Form.Base onSubmit={handleSubmit} width="35%">
+				<Form.Base onSubmit={handleSubmit}>
 					<Form.Label htmlFor="name">Sub-Category Name</Form.Label>
 					<Form.Input
 						type="text"

@@ -13,8 +13,6 @@ const SidebarAdmin = () => {
 
 	return (
 		<Sidebar>
-			<Sidebar.Logo src="/images/logos/nikidas.png" alt="logo" to="/" />
-
 			<Sidebar.Link to={ADMIN} active={pathname === ADMIN ? 1 : 0}>
 				<Sidebar.Icon className="fas fa-chart-line" />
 				<Sidebar.Text>Dashboard</Sidebar.Text>

@@ -13,8 +13,10 @@ const SubCategoryTable = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Table>
+				<Table.Title>Sub-Category Table</Table.Title>
+
 				<Table.Base>
 					<Table.Head>
 						<Table.Row>

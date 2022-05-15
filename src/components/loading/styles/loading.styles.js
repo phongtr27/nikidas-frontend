@@ -1,5 +1,5 @@
 import { keyframes } from "styled-components";
-import styled, { createGlobalStyle } from "styled-components/macro";
+import styled from "styled-components/macro";
 
 const spinner = keyframes`
   0% {
@@ -27,16 +27,4 @@ export const Spinner = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: 350px;
-`;
-
-export const LockBody = createGlobalStyle`
-  body {
-    overflow: hidden;
-  }
-`;
-
-export const ReleaseBody = createGlobalStyle`
-  body {
-    overflow: visible;
-  }
 `;

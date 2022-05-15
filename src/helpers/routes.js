@@ -4,6 +4,6 @@ export const ProtectedRoute = ({ user }) => {
 	return user?.isAdmin ? <Outlet /> : <Navigate to="/" />;
 };
 
-export const ProtectSignin = ({ user }) => {
+export const ProtectLogIn = ({ user }) => {
 	return !user ? <Outlet /> : <Navigate to="/" />;
 };

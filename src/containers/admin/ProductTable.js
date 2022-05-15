@@ -13,8 +13,10 @@ const ProductTable = ({
 }) => {
 	return (
 		<>
-			{isLoading ? <Loading /> : <Loading.ReleaseBody />}
+			{isLoading ? <Loading /> : null}
 			<Table>
+				<Table.Title>Product Table</Table.Title>
+
 				<Table.Base>
 					<Table.Head>
 						<Table.Row>

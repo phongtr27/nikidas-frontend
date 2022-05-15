@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import {
 	Home,
-	SignIn,
+	LogIn,
 	SignUp,
 	Admin,
 	Dashboard,
@@ -13,10 +13,11 @@ import {
 	Product,
 	ProductDetails,
 	Order,
+	User,
 } from "./pages";
 import {
 	HOME,
-	SIGNIN,
+	LOGIN,
 	SIGNUP,
 	ADMIN,
 	ADMIN_CATEGORY,
@@ -25,7 +26,7 @@ import {
 	ADMIN_ORDER,
 } from "./constants/routes";
 import { UserContext } from "./context/user";
-import { ProtectedRoute, ProtectSignin } from "./helpers/routes";
+import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
 import { getUser } from "./helpers/getUser";
 
 function App() {
@@ -34,20 +35,28 @@ function App() {
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
 			<Routes>
-				<Route exact path={HOME} element={<Home />} />
+				<Route
+					exact
+					path={HOME}
+					element={
+						<User>
+							<Home />
+						</User>
+					}
+				/>
 
 				<Route
 					exact
-					path={SIGNIN}
-					element={<ProtectSignin user={user} />}
+					path={LOGIN}
+					element={<ProtectLogIn user={user} />}
 				>
-					<Route path={SIGNIN} element={<SignIn />} />
+					<Route path={LOGIN} element={<LogIn />} />
 				</Route>
 
 				<Route
 					exact
 					path={SIGNUP}
-					element={<ProtectSignin user={user} />}
+					element={<ProtectLogIn user={user} />}
 				>
 					<Route exact path={SIGNUP} element={<SignUp />} />
 				</Route>
