@@ -1,5 +1,7 @@
+import { BannerContainer } from "../../containers";
+
 const Home = () => {
-	return <h1>Hello</h1>;
+	return <BannerContainer url="/images/banners/background_1.jpeg" />;
 };
 
 export default Home;

@@ -27,8 +27,10 @@ export const Dropdown = styled.div`
 `;
 
 export const Icon = styled.i`
-	margin-right: 5px;
-	width: 20px;
+	:first-of-type {
+		margin-right: 5px;
+		width: 20px;
+	}
 `;
 
 export const Name = styled.p`
