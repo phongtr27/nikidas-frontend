@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
 	padding-top: 230px;
-	padding-left: 30px;
+	padding-left: 60px;
 	width: 40%;
 `;
 

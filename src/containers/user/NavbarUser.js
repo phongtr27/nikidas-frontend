@@ -8,7 +8,7 @@ const NavbarUser = () => {
 	const { user, setUser } = useContext(UserContext);
 
 	return (
-		<Navbar>
+		<Navbar side_padding="60px">
 			<Navbar.Logo to="/">NIKIDAS</Navbar.Logo>
 
 			<Navbar.Wrapper width="30%">

@@ -13,8 +13,10 @@ export const Container = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: ${({ side_padding }) =>
+		side_padding ? side_padding : "30px"};
+	padding-right: ${({ side_padding }) =>
+		side_padding ? side_padding : "30px"};
 `;
 
 export const Logo = styled(ReactRouterLink)`

@@ -4,7 +4,6 @@ import { ADMIN, HOME } from "../../constants/routes";
 
 const ProfileContainer = ({ user, setUser }) => {
 	const { pathname } = useLocation();
-	console.log(pathname);
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
