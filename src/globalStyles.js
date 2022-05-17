@@ -59,4 +59,6 @@ export const GlobalStyles = createGlobalStyle`
     }
 
   }
+
+
 `;

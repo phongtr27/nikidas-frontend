@@ -5,6 +5,8 @@ import {
 	SmallTitle,
 	Text,
 	Button,
+	PrevButton,
+	NextButton,
 } from "./styles/banner.styles";
 
 const Banner = ({ children, ...restProps }) => {
@@ -29,6 +31,14 @@ Banner.Text = function BannerText({ children, ...restProps }) {
 
 Banner.Button = function BannerButton({ children, ...restProps }) {
 	return <Button {...restProps}>{children}</Button>;
+};
+
+Banner.PrevButton = function BannerPrevButton({ children, ...restProps }) {
+	return <PrevButton {...restProps}>{children}</PrevButton>;
+};
+
+Banner.NextButton = function BannerNextButton({ children, ...restProps }) {
+	return <NextButton {...restProps}>{children}</NextButton>;
 };
 
 export default Banner;

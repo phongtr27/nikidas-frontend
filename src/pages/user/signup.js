@@ -61,6 +61,7 @@ const SignUp = () => {
 						disabled={
 							name === "" || email === "" || password === ""
 						}
+						border_radius="20px"
 					>
 						Sign Up
 					</Form.Button>

@@ -52,7 +52,13 @@ const CategoryForm = ({
 						)}
 					</Form.FileInput>
 
-					<Form.Button>Submit</Form.Button>
+					<Form.Button
+						type="submit"
+						background_color="#00c292"
+						hover_color="#009c75"
+					>
+						Submit
+					</Form.Button>
 				</Form.Base>
 			</Form.BigContainer>
 		</>

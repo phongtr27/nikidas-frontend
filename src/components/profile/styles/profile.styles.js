@@ -12,7 +12,7 @@ export const Dropdown = styled.div`
 	position: absolute;
 	top: 43px;
 	right: -26px;
-	width: 110px;
+	min-width: 80px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

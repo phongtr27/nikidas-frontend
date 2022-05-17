@@ -58,6 +58,7 @@ const SignIn = () => {
 					<Form.Button
 						type="submit"
 						disabled={email === "" || password === ""}
+						border_radius="20px"
 					>
 						Log In
 					</Form.Button>

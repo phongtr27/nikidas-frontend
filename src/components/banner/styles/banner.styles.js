@@ -3,7 +3,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
 	margin-top: 60px;
-	height: 800px;
+	min-height: 800px;
 	background-image: url(${({ url }) => url && url});
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -49,4 +49,18 @@ export const Button = styled(ReactRouterLink)`
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 3px;
+`;
+
+export const PrevButton = styled.i`
+	position: absolute;
+	left: 10px;
+	top: 400px;
+	cursor: pointer;
+`;
+
+export const NextButton = styled.i`
+	position: absolute;
+	right: 10px;
+	top: 400px;
+	cursor: pointer;
 `;

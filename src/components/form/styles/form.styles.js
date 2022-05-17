@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-export const Container = styled.div`
+export const ContainerBG = styled.div`
 	width: 100%;
 	height: 100vh;
 	display: flex;
@@ -25,9 +25,6 @@ export const SmallContainer = styled.div`
 export const BigContainer = styled.div`
 	margin-left: 15%;
 	margin-top: 60px;
-	/* display: flex; */
-	/* flex-direction: column; */
-	/* align-items: center; */
 	padding: 30px 30px 0px 30px;
 	border: 1px solid white;
 `;
@@ -82,17 +79,21 @@ export const ColorInput = styled.input`
 `;
 
 export const Button = styled.button`
-	border-radius: 20px;
+	border-radius: ${({ border_radius }) =>
+		border_radius ? border_radius : "5px"};
 	padding: 10px 5px;
 	border-width: 0;
-	background-color: #03a9f3;
+	width: ${(width) => (width ? width : "100%")};
+	background-color: ${({ background_color }) =>
+		background_color ? background_color : "#03a9f3"};
 	color: #ffffff;
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 17px;
 	cursor: pointer;
 
 	&:hover {
-		background-color: #0682b9;
+		background-color: ${({ hover_color }) =>
+			hover_color ? hover_color : "#0682b9"};
 	}
 
 	&:disabled {
@@ -101,11 +102,6 @@ export const Button = styled.button`
 `;
 
 export const Link = styled(ReactRouterLink)``;
-
-export const Error = styled.p`
-	color: red;
-	text-align: center;
-`;
 
 export const LabelFileInput = styled.label`
 	border: 1px solid #767676;

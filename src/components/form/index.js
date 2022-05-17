@@ -1,6 +1,6 @@
 import React from "react";
 import {
-	Container,
+	ContainerBG,
 	SmallContainer,
 	BigContainer,
 	MidContainer,
@@ -13,7 +13,6 @@ import {
 	Button,
 	SmallButton,
 	Link,
-	Error,
 	Title,
 	LabelFileInput,
 	Image,
@@ -22,7 +21,7 @@ import {
 } from "./styles/form.styles";
 
 export default function Form({ children, ...restProps }) {
-	return <Container {...restProps}>{children}</Container>;
+	return <ContainerBG {...restProps}>{children}</ContainerBG>;
 }
 
 Form.Title = function FormTitle({ children, ...restProps }) {
@@ -92,10 +91,6 @@ Form.Link = function FormLink({ to, children, ...restProps }) {
 			{children}
 		</Link>
 	);
-};
-
-Form.Error = function FormError({ children, ...restProps }) {
-	return <Error {...restProps}>{children}</Error>;
 };
 
 Form.Select = function FormSelect({ children, ...restProps }) {

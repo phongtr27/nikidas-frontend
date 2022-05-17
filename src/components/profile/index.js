@@ -13,6 +13,7 @@ const ToggleContext = createContext();
 
 const Profile = ({ children, ...restProps }) => {
 	const [toggleShow, setToggleShow] = useState(false);
+
 	return (
 		<ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
 			<Container {...restProps}>{children}</Container>

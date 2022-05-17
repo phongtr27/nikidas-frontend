@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { Banner } from "../../components";
 import BannerContainer from "./BannerContainer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -12,14 +14,35 @@ const BannerSlider = () => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 3000,
+	};
+
+	const sliderRef = useRef();
+
+	const goToNext = () => {
+		sliderRef.current.slickNext();
+	};
+
+	const goToPrevious = () => {
+		sliderRef.current.slickPrev();
 	};
 
 	return (
-		<Slider {...settings}>
-			<BannerContainer url="/images/banners/background_1.jpeg" />
-			<BannerContainer url="/images/banners/background_2.jpeg" />
-		</Slider>
+		<>
+			<Slider {...settings} ref={sliderRef}>
+				<BannerContainer url="/images/banners/background_1.jpeg" />
+				<BannerContainer url="/images/banners/background_2.jpeg" />
+			</Slider>
+
+			<Banner.PrevButton
+				className="fas fa-chevron-left"
+				onClick={goToPrevious}
+			/>
+			<Banner.NextButton
+				className="fas fa-chevron-right"
+				onClick={goToNext}
+			/>
+		</>
 	);
 };
 
