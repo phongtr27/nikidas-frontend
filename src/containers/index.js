@@ -11,3 +11,4 @@ export { default as DeleteConfirmation } from "./admin/DeleteConfirmation";
 export { default as NavbarUser } from "./user/NavbarUser";
 export { default as BannerContainer } from "./user/BannerContainer";
 export { default as BannerSlider } from "./user/BannerSlider";
+export { default as ProductCard } from "./user/ProductCard";

@@ -19,7 +19,9 @@ const ProfileContainer = ({ user, setUser }) => {
 
 			<Profile.Dropdown>
 				{user.isAdmin ? (
-					<Profile.Link to={pathname === ADMIN ? HOME : ADMIN}>
+					<Profile.Link
+						to={pathname.includes("/admin") ? HOME : ADMIN}
+					>
 						<Profile.Icon
 							className={
 								pathname === ADMIN

@@ -12,7 +12,7 @@ const CategoryForm = ({
 	handleSubmit,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
@@ -61,7 +61,7 @@ const CategoryForm = ({
 					</Form.Button>
 				</Form.Base>
 			</Form.BigContainer>
-		</>
+		</div>
 	);
 };
 

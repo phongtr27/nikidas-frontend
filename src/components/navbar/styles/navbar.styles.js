@@ -2,9 +2,7 @@ import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
-	z-index: 999;
-	position: fixed;
-	top: 0;
+	${({ sticky }) => sticky && `z-index: 999; position: sticky; top: 0; `}
 	width: 100%;
 	height: 60px;
 	color: ${({ color }) => (color ? color : "black")};

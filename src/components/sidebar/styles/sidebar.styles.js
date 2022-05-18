@@ -4,7 +4,6 @@ import { Link as ReactRouterLink } from "react-router-dom";
 export const Container = styled.div`
 	box-shadow: 1px 0 20px rgb(0 0 0 / 8%);
 	position: fixed;
-	top: 60px;
 	left: 0;
 	height: 100%;
 	width: 15%;

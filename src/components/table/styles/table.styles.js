@@ -2,14 +2,11 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-	margin-left: 15%;
-	margin-top: 60px;
 	padding: 30px 30px 0px 30px;
 `;
 
 export const Base = styled.table`
 	width: 100%;
-
 	border: 1px solid #8e9194;
 	border-collapse: collapse;
 `;

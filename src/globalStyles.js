@@ -60,5 +60,7 @@ export const GlobalStyles = createGlobalStyle`
 
   }
 
-
+  .main {
+    margin-left: 15%
+  }
 `;

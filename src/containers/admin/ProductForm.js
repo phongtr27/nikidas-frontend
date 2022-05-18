@@ -28,7 +28,7 @@ const ProductForm = ({
 	subCategories,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
@@ -230,7 +230,7 @@ const ProductForm = ({
 					</Form.Button>
 				</Form.Base>
 			</Form.BigContainer>
-		</>
+		</div>
 	);
 };
 

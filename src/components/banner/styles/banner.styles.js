@@ -2,7 +2,6 @@ import styled from "styled-components/macro";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export const Container = styled.div`
-	margin-top: 60px;
 	min-height: 800px;
 	background-image: url(${({ url }) => url && url});
 	background-repeat: no-repeat;

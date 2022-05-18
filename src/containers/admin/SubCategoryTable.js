@@ -12,7 +12,7 @@ const SubCategoryTable = ({
 	setIdToDelete,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Table>
 				<Table.Title>Sub-Category Table</Table.Title>
@@ -64,7 +64,7 @@ const SubCategoryTable = ({
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 			/>
-		</>
+		</div>
 	);
 };
 

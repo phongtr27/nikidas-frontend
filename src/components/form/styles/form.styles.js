@@ -23,8 +23,6 @@ export const SmallContainer = styled.div`
 `;
 
 export const BigContainer = styled.div`
-	margin-left: 15%;
-	margin-top: 60px;
 	padding: 30px 30px 0px 30px;
 	border: 1px solid white;
 `;

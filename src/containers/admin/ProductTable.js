@@ -12,7 +12,7 @@ const ProductTable = ({
 	setIdToDelete,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Table>
 				<Table.Title>Product Table</Table.Title>
@@ -70,7 +70,7 @@ const ProductTable = ({
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 			/>
-		</>
+		</div>
 	);
 };
 

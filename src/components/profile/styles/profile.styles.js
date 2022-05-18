@@ -6,6 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Dropdown = styled.div`
+	z-index: 999;
 	border: 1px solid white;
 	box-shadow: 1px 0 20px rgb(0 0 0 / 20%);
 	background-color: white;

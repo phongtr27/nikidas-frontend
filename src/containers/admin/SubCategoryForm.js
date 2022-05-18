@@ -11,7 +11,7 @@ const SubCategoryForm = ({
 	categories,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
@@ -58,7 +58,7 @@ const SubCategoryForm = ({
 					</Form.Button>
 				</Form.Base>
 			</Form.BigContainer>
-		</>
+		</div>
 	);
 };
 

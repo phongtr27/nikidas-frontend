@@ -7,7 +7,7 @@ const NavBarAdmin = () => {
 	const { user, setUser } = useContext(UserContext);
 
 	return (
-		<Navbar background_color="#6f42c1" color="white">
+		<Navbar background_color="#6f42c1" color="white" sticky={true}>
 			<Navbar.Logo to="/" color="white">
 				NIKIDAS
 			</Navbar.Logo>

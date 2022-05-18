@@ -13,7 +13,7 @@ const CategoryTable = ({
 	setIdToDelete,
 }) => {
 	return (
-		<>
+		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Table>
 				<Table.Title>Category Table</Table.Title>
@@ -70,7 +70,7 @@ const CategoryTable = ({
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 			/>
-		</>
+		</div>
 	);
 };
 

@@ -1,9 +1,10 @@
-import { BannerSlider } from "../../containers";
+import { BannerSlider, ProductCard } from "../../containers";
 
 const Home = () => {
 	return (
 		<>
 			<BannerSlider />
+			<ProductCard />
 		</>
 	);
 };
