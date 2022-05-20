@@ -3,13 +3,15 @@ import { apiUrl } from "../../constants/routes";
 
 const ProductCard = ({ product }) => {
 	return (
-		<Card.Item to="#">
-			<Card.Image
-				src={`${apiUrl}/public${product.options[0].img[0]}`}
-				alt="product"
-			/>
+		<Card.Item>
+			<Card.Link to="#">
+				<Card.Image
+					src={`${apiUrl}/public${product.options[0].img[1]}`}
+					alt="product"
+				/>
+			</Card.Link>
 			<Card.Name>{product.name}</Card.Name>
-			<Card.Text>{product.price}</Card.Text>
+			<Card.Text>{`$${product.price}`}</Card.Text>
 		</Card.Item>
 	);
 };

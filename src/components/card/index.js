@@ -6,6 +6,7 @@ import {
 	Image,
 	Title,
 	Text,
+	Link,
 } from "./styles/card.styles";
 
 const Card = ({ children, ...restProps }) => {
@@ -26,6 +27,10 @@ Card.Text = function CardText({ children, ...restProps }) {
 
 Card.List = function CardList({ children, ...restProps }) {
 	return <List {...restProps}>{children}</List>;
+};
+
+Card.Link = function CardLink({ children, ...restProps }) {
+	return <Link {...restProps}>{children}</Link>;
 };
 
 Card.Item = function CardItem({ children, ...restProps }) {

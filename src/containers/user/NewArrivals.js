@@ -15,13 +15,13 @@ const NewArrivals = () => {
 		speed: 500,
 		slidesToShow: products?.length < 4 ? products.length : 4,
 		slidesToScroll: 1,
-		// autoplay: true,
-		// autoplaySpeed: 2000,
+		autoplay: false,
+		autoplaySpeed: 2000,
 	};
 
 	return (
 		<Card>
-			<Card.Title>New Arrivals</Card.Title>
+			<Card.Title>NEW ARRIVALS</Card.Title>
 			<Card.List>
 				<Slider {...settings}>
 					{products?.map((product) => (
