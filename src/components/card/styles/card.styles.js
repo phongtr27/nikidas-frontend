@@ -10,12 +10,17 @@ export const Title = styled.h3``;
 
 export const List = styled.div``;
 
-export const Item = styled(ReactRouterLink)``;
+export const Item = styled(ReactRouterLink)`
+	margin-left: 5px;
+	margin-right: 5px;
+	text-decoration: none;
+	color: black;
+`;
 
-export const Name = styled.h6``;
+export const Name = styled.h5``;
 
 export const Image = styled.img`
-	width: 95%;
+	width: 100%;
 	height: 260px;
 	margin-left: auto;
 	margin-right: auto;

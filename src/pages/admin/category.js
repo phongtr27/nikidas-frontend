@@ -29,7 +29,7 @@ const Category = () => {
 
 	const handleDelete = async (id) => {
 		const response = await fetch(
-			`http://localhost:5000/api/category/${id}`,
+			`${apiUrl}/api/category/${id}`,
 			{
 				method: "DELETE",
 				headers: {

@@ -116,7 +116,7 @@ const ProductDetails = () => {
 		});
 
 		const response = await fetch(
-			`http://localhost:5000/api/product/${id === "new" ? "" : id}`,
+			`${apiUrl}/api/product/${id === "new" ? "" : id}`,
 			{
 				method: id === "new" ? "POST" : "PUT",
 				body: formData,

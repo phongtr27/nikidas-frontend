@@ -38,7 +38,7 @@ const SubCategoryDetails = () => {
 		formData.append("category", category);
 
 		const response = await fetch(
-			`http://localhost:5000/api/sub-category/${id === "new" ? "" : id}`,
+			`${apiUrl}/api/sub-category/${id === "new" ? "" : id}`,
 			{
 				method: id === "new" ? "POST" : "PUT",
 				body: JSON.stringify({ name, category }),
