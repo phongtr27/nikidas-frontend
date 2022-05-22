@@ -1,10 +1,11 @@
-import { NavbarUser } from "../../containers";
+import { NavbarUser, FooterContainer } from "../../containers";
 
 const User = ({ children }) => {
 	return (
 		<>
 			<NavbarUser />
 			{children}
+			<FooterContainer />
 		</>
 	);
 };

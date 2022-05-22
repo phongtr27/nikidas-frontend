@@ -6,8 +6,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { apiUrl } from "../../constants/routes";
 
-const NewArrivals = () => {
-	const { data: products } = useFetch(`${apiUrl}/api/product/latest`);
+const Discount = () => {
+	const { data: products } = useFetch(`${apiUrl}/api/product/discount`);
 
 	const settings = {
 		arrows: false,
@@ -21,7 +21,7 @@ const NewArrivals = () => {
 
 	return (
 		<Card>
-			<Card.Title>NEW ARRIVALS</Card.Title>
+			<Card.Title>HOT SALES</Card.Title>
 			<Card.List>
 				<Slider {...settings}>
 					{products?.map((product, index) => (
@@ -33,4 +33,4 @@ const NewArrivals = () => {
 	);
 };
 
-export default NewArrivals;
+export default Discount;

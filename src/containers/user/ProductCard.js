@@ -1,17 +1,24 @@
 import { Card } from "../../components";
-import { apiUrl } from "../../constants/routes";
+import { apiUrl, SHOP } from "../../constants/routes";
 
 const ProductCard = ({ product }) => {
 	return (
-		<Card.Item>
-			<Card.Link to="#">
+		<Card.Item to={`${SHOP}/${product._id}`}>
+			<Card.Wrapper>
 				<Card.Image
-					src={`${apiUrl}/public${product.options[0].img[1]}`}
+					src={`${apiUrl}/public${product.options[0].img[0]}`}
 					alt="product"
 				/>
-			</Card.Link>
+				{product.discount > 0 && <Card.Tag>SALE</Card.Tag>}
+			</Card.Wrapper>
 			<Card.Name>{product.name}</Card.Name>
-			<Card.Text>{`$${product.price}`}</Card.Text>
+			<Card.Text>{`$${(
+				product.price *
+				(1 - product.discount / 100)
+			).toFixed(2)}`}</Card.Text>
+			{product.discount > 0 && (
+				<Card.SubText>{`$${product.price}`}</Card.SubText>
+			)}
 		</Card.Item>
 	);
 };

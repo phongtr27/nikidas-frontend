@@ -6,7 +6,9 @@ import {
 	Image,
 	Title,
 	Text,
-	Link,
+	SubText,
+	Wrapper,
+	Tag,
 } from "./styles/card.styles";
 
 const Card = ({ children, ...restProps }) => {
@@ -25,12 +27,16 @@ Card.Text = function CardText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
 };
 
+Card.SubText = function CardSubText({ children, ...restProps }) {
+	return <SubText {...restProps}>{children}</SubText>;
+};
+
 Card.List = function CardList({ children, ...restProps }) {
 	return <List {...restProps}>{children}</List>;
 };
 
-Card.Link = function CardLink({ children, ...restProps }) {
-	return <Link {...restProps}>{children}</Link>;
+Card.Wrapper = function CardWrapper({ children, ...restProps }) {
+	return <Wrapper {...restProps}>{children}</Wrapper>;
 };
 
 Card.Item = function CardItem({ children, ...restProps }) {
@@ -39,6 +45,10 @@ Card.Item = function CardItem({ children, ...restProps }) {
 
 Card.Name = function CardName({ children, ...restProps }) {
 	return <Name {...restProps}>{children}</Name>;
+};
+
+Card.Tag = function CardTag({ children, ...restProps }) {
+	return <Tag {...restProps}>{children}</Tag>;
 };
 
 export default Card;

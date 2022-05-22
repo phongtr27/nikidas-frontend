@@ -48,6 +48,10 @@ export const Button = styled(ReactRouterLink)`
 	color: #ffffff;
 	background: #000000;
 	letter-spacing: 3px;
+
+	:hover {
+		opacity: 0.7;
+	}
 `;
 
 export const PrevButton = styled.i`

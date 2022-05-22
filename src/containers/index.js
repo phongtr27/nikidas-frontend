@@ -13,3 +13,8 @@ export { default as BannerContainer } from "./user/BannerContainer";
 export { default as BannerSlider } from "./user/BannerSlider";
 export { default as NewArrivals } from "./user/NewArrivals";
 export { default as ProductCard } from "./user/ProductCard";
+export { default as Category } from "./user/Category";
+export { default as CategoryCard } from "./user/CategoryCard";
+export { default as Discount } from "./user/Discount";
+export { default as FooterContainer } from "./user/FooterContainer";
+export { default as ProductViewContainer } from "./user/ProductViewContainer";

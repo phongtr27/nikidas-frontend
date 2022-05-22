@@ -7,3 +7,5 @@ export { default as Modal } from "./modal";
 export { default as Loading } from "./loading";
 export { default as Banner } from "./banner";
 export { default as Card } from "./card";
+export { default as Footer } from "./footer";
+export { default as ProductView } from "./productView";

@@ -18,10 +18,14 @@ export const Title = styled.h3`
 
 export const List = styled.div``;
 
-export const Item = styled.div`
-	padding-left: 5px;
-	padding-right: 5px;
-	text-align: left;
+export const Item = styled(ReactRouterLink)`
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	position: relative;
+	padding-left: 3px;
+	padding-right: 3px;
+	text-align: ${({ center }) => (center ? "center" : "left")};
 `;
 
 export const Name = styled.h5`
@@ -31,21 +35,46 @@ export const Name = styled.h5`
 
 export const Image = styled.img`
 	width: 100%;
+	min-height: 400px;
+	max-height: 482px;
 	margin-left: auto;
 	margin-right: auto;
-	object-fit: contain;
+	object-fit: cover;
 	transition: 0.5s;
 
 	&:hover {
 		transform: scale(1.1);
+		opacity: 0.7;
 	}
 `;
 
-export const Link = styled(ReactRouterLink)`
-	text-decoration: none;
-	color: black;
+export const Wrapper = styled.div`
+	overflow: hidden;
+	position: relative;
 `;
 
 export const Text = styled.p`
 	margin-top: 0;
+`;
+
+export const Tag = styled.span`
+	padding: 5px 10px;
+	background-color: black;
+	color: white;
+	font-size: 11px;
+	letter-spacing: 2px;
+	position: absolute;
+	left: 0;
+	top: 30px;
+`;
+
+export const SubText = styled.span`
+	position: absolute;
+	bottom: 16px;
+	left: 65px;
+	text-decoration: line-through;
+	font-size: 14px;
+	font-weight: lighter;
+	margin-left: 5px;
+	color: #848484;
 `;

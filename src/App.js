@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import {
 	Home,
+	Shop,
 	LogIn,
 	SignUp,
 	Admin,
@@ -14,9 +15,11 @@ import {
 	ProductDetails,
 	Order,
 	User,
+	ProductUser,
 } from "./pages";
 import {
 	HOME,
+	SHOP,
 	LOGIN,
 	SIGNUP,
 	ADMIN,
@@ -41,6 +44,26 @@ function App() {
 					element={
 						<User>
 							<Home />
+						</User>
+					}
+				/>
+
+				<Route
+					exact
+					path={SHOP}
+					element={
+						<User>
+							<Shop />
+						</User>
+					}
+				/>
+
+				<Route
+					exact
+					path={`${SHOP}/:id`}
+					element={
+						<User>
+							<ProductUser />
 						</User>
 					}
 				/>
