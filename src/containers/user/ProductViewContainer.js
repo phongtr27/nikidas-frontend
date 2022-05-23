@@ -6,7 +6,7 @@ import { apiUrl } from "../../constants/routes";
 
 const ProductViewContainer = ({ product, option, setOption }) => {
 	const settings = {
-		arrows: false,
+		arrows: true,
 		dots: false,
 		speed: 500,
 		slidesToShow: 1,
@@ -16,20 +16,37 @@ const ProductViewContainer = ({ product, option, setOption }) => {
 	return (
 		<ProductView>
 			<ProductView.Wrapper>
-				<ProductView.Text>{`$${(
-					product?.price *
-					(1 - product?.discount / 100)
-				).toFixed(2)}`}</ProductView.Text>
+				<ProductView.Text color="#f6aa8d" fontWeight="700">
+					{`$${(
+						product?.price *
+						(1 - product?.discount / 100)
+					).toFixed(2)}`}
+				</ProductView.Text>
 
 				<ProductView.Name>{product?.name}</ProductView.Name>
-				<ProductView.Text>{product?.subCategory}</ProductView.Text>
-				<ProductView.Text>{product?.description}</ProductView.Text>
+
+				<ProductView.Text uppercase={true} fontWeight="540">
+					{product?.subCategory}
+				</ProductView.Text>
+
+				<ProductView.Text italic={true}>
+					{product?.description}
+				</ProductView.Text>
+
 				{product?.options.map((option, index) => (
 					<ProductView.ImagePreview
 						key={index}
 						src={`${apiUrl}/public${option.img[0]}`}
 						onClick={() => setOption(index)}
 					/>
+				))}
+
+				<ProductView.Title>SIZE:</ProductView.Title>
+
+				{product?.options[option].quantityPerSize.map((size, index) => (
+					<ProductView.Option key={index}>
+						{size.size}
+					</ProductView.Option>
 				))}
 			</ProductView.Wrapper>
 
@@ -42,15 +59,6 @@ const ProductViewContainer = ({ product, option, setOption }) => {
 						/>
 					))}
 				</Slider>
-			</ProductView.Wrapper>
-
-			<ProductView.Wrapper>
-				<ProductView.Title>SIZE:</ProductView.Title>
-				{product?.options[option].quantityPerSize.map((size, index) => (
-					<ProductView.Option key={index}>
-						{size.size}
-					</ProductView.Option>
-				))}
 			</ProductView.Wrapper>
 		</ProductView>
 	);

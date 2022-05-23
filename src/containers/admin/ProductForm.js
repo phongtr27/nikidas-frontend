@@ -19,7 +19,9 @@ const ProductForm = ({
 	selectedFile,
 	options,
 	addOption,
+	deleteOption,
 	addSize,
+	deleteSize,
 	handleColorChange,
 	handleFileUpload,
 	handleQuantityPerSizeChange,
@@ -125,7 +127,14 @@ const ProductForm = ({
 
 					{options.map((option, outerIndex) => (
 						<Form.MidContainer key={outerIndex}>
-							<Form.Text>{`Option ${outerIndex + 1}`}</Form.Text>
+							<Form.Text>
+								{`Option ${outerIndex + 1}`}{" "}
+								<Form.SmallButton
+									onClick={() => deleteOption(outerIndex)}
+								>
+									<i className="fas fa-minus-square"></i>
+								</Form.SmallButton>
+							</Form.Text>
 
 							<Form.Label htmlFor="color">Color</Form.Label>
 							<Form.ColorInput
@@ -170,6 +179,7 @@ const ProductForm = ({
 									<Table.Row>
 										<Table.Header>Size</Table.Header>
 										<Table.Header>Quantity</Table.Header>
+										<Table.Header>Action</Table.Header>
 									</Table.Row>
 								</Table.Head>
 								<Table.Body>
@@ -192,6 +202,7 @@ const ProductForm = ({
 														}
 													/>
 												</Table.Data>
+
 												<Table.Data>
 													<Form.Input
 														type="number"
@@ -208,6 +219,19 @@ const ProductForm = ({
 															)
 														}
 													/>
+												</Table.Data>
+
+												<Table.Data>
+													<Table.Button
+														onClick={() =>
+															deleteSize(
+																outerIndex,
+																index
+															)
+														}
+													>
+														<i className="fas fa-trash-alt"></i>
+													</Table.Button>
 												</Table.Data>
 											</Table.Row>
 										)

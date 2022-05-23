@@ -75,11 +75,27 @@ const ProductDetails = () => {
 		setOptions([...options, newOption]);
 	};
 
+	const deleteOption = (index) => {
+		const newOptions = [...options];
+		if (newOptions.length > 1) {
+			newOptions.splice(index, 1);
+			setOptions(newOptions);
+		}
+	};
+
 	const addSize = (index) => {
 		const newSize = { size: "", quantity: 0 };
 		const newOptions = [...options];
 		newOptions[index].quantityPerSize.push(newSize);
 		setOptions(newOptions);
+	};
+
+	const deleteSize = (outerIndex, index) => {
+		const newOptions = [...options];
+		if (newOptions[outerIndex].quantityPerSize.length > 1) {
+			newOptions[outerIndex].quantityPerSize.splice(index, 1);
+			setOptions(newOptions);
+		}
 	};
 
 	const handleColorChange = (index, e) => {
@@ -154,7 +170,9 @@ const ProductDetails = () => {
 			selectedFile={selectedFile}
 			options={options}
 			addOption={addOption}
+			deleteOption={deleteOption}
 			addSize={addSize}
+			deleteSize={deleteSize}
 			handleColorChange={handleColorChange}
 			handleFileUpload={handleFileUpload}
 			handleQuantityPerSizeChange={handleQuantityPerSizeChange}
