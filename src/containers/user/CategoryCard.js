@@ -3,7 +3,7 @@ import { apiUrl } from "../../constants/routes";
 
 const CategoryCard = ({ category }) => {
 	return (
-		<Card.Item to="#" center={true}>
+		<Card.Item to="#" center={1}>
 			<Card.Wrapper>
 				<Card.Image
 					src={`${apiUrl}/public${category.img}`}

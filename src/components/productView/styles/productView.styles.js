@@ -16,11 +16,20 @@ export const Wrapper = styled.div`
 export const Option = styled.span`
 	display: inline-block;
 	margin-right: 30px;
-	margin-bottom: 30px;
 	color: #848484;
+	padding: 10px 15px;
+	border: 1px solid;
+	border-color: ${({ active }) => (active ? "#f6aa8d" : "#848484")};
+	border-radius: 12px;
+	cursor: pointer;
+`;
+
+export const Input = styled.input`
+	display: inline-block;
 	padding: 10px 15px;
 	border: 1px solid #848484;
 	border-radius: 12px;
+	outline-color: #f6aa8d;
 `;
 
 export const Name = styled.h2`
@@ -46,7 +55,8 @@ export const ImagePreview = styled.img`
 	object-fit: cover;
 	cursor: pointer;
 	margin-right: 5px;
-	border: 1px solid transparent;
+	border: 1px solid;
+	border-color: ${({ active }) => (active ? "#f6aa8d" : "transparent")};
 	border-radius: 12px;
 `;
 

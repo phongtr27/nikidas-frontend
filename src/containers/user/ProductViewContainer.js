@@ -4,7 +4,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { apiUrl } from "../../constants/routes";
 
-const ProductViewContainer = ({ product, option, setOption }) => {
+const ProductViewContainer = ({
+	product,
+	optionIndex,
+	handleOptionChange,
+	size,
+	handleSizeChange,
+	quantity,
+	handleQuantityChange,
+}) => {
 	const settings = {
 		arrows: true,
 		dots: false,
@@ -37,22 +45,40 @@ const ProductViewContainer = ({ product, option, setOption }) => {
 					<ProductView.ImagePreview
 						key={index}
 						src={`${apiUrl}/public${option.img[0]}`}
-						onClick={() => setOption(index)}
+						onClick={() => handleOptionChange(index)}
+						active={optionIndex === index}
 					/>
 				))}
 
 				<ProductView.Title>SIZE:</ProductView.Title>
 
-				{product?.options[option].quantityPerSize.map((size, index) => (
-					<ProductView.Option key={index}>
-						{size.size}
-					</ProductView.Option>
-				))}
+				{product?.options[optionIndex].quantityPerSize.map(
+					(item, index) => (
+						<ProductView.Option
+							key={index}
+							onClick={() => handleSizeChange(item.size)}
+							active={size === item.size}
+						>
+							{item.size}
+						</ProductView.Option>
+					)
+				)}
+
+				<ProductView.Title>QUANTITY:</ProductView.Title>
+				<ProductView.Input
+					type="number"
+					value={quantity}
+					min={1}
+					required
+					onChange={({ target }) =>
+						handleQuantityChange(target.value)
+					}
+				/>
 			</ProductView.Wrapper>
 
 			<ProductView.Wrapper>
 				<Slider {...settings}>
-					{product?.options[option].img.map((image, index) => (
+					{product?.options[optionIndex].img.map((image, index) => (
 						<ProductView.Image
 							key={index}
 							src={`${apiUrl}/public${image}`}

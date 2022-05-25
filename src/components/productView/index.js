@@ -7,6 +7,7 @@ import {
 	ImagePreview,
 	Image,
 	Option,
+	Input,
 } from "./styles/productView.styles";
 
 const ProductView = ({ children, ...restProps }) => {
@@ -19,6 +20,10 @@ ProductView.Wrapper = function ProductViewWrapper({ children, ...restProps }) {
 
 ProductView.Option = function ProductViewOption({ children, ...restProps }) {
 	return <Option {...restProps}>{children}</Option>;
+};
+
+ProductView.Input = function ProductViewInput({ children, ...restProps }) {
+	return <Input {...restProps}>{children}</Input>;
 };
 
 ProductView.Name = function ProductViewName({ children, ...restProps }) {
