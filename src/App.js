@@ -16,6 +16,7 @@ import {
 	Order,
 	User,
 	ProductUser,
+	Contact,
 } from "./pages";
 import {
 	HOME,
@@ -27,6 +28,7 @@ import {
 	ADMIN_SUB_CATEGORY,
 	ADMIN_PRODUCT,
 	ADMIN_ORDER,
+	CONTACT,
 } from "./constants/routes";
 import { UserContext } from "./context/user";
 import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
@@ -64,6 +66,16 @@ function App() {
 					element={
 						<User>
 							<ProductUser />
+						</User>
+					}
+				/>
+
+				<Route
+					exact
+					path={CONTACT}
+					element={
+						<User>
+							<Contact />
 						</User>
 					}
 				/>

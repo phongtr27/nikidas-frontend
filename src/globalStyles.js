@@ -63,4 +63,12 @@ export const GlobalStyles = createGlobalStyle`
   .main {
     margin-left: 15%
   }
+
+  .slick-prev:before {
+    color: black;
+  }
+
+  .slick-next:before {
+    color: black;
+  }
 `;

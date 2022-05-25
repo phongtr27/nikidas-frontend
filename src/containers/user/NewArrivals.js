@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Card } from "../../components";
 import { ProductCard } from "../../containers";
 import useFetch from "../../hooks/useFetch";
@@ -17,18 +18,40 @@ const NewArrivals = () => {
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
+		lazyLoad: true,
+	};
+
+	const sliderRef = useRef();
+
+	const goToNext = () => {
+		sliderRef.current.slickNext();
+	};
+
+	const goToPrevious = () => {
+		sliderRef.current.slickPrev();
 	};
 
 	return (
 		<Card>
 			<Card.Title>NEW ARRIVALS</Card.Title>
+
 			<Card.List>
-				<Slider {...settings}>
+				<Slider {...settings} ref={sliderRef}>
 					{products?.map((product, index) => (
 						<ProductCard key={index} product={product} />
 					))}
 				</Slider>
 			</Card.List>
+
+			<Card.PrevButton
+				className="fas fa-chevron-left"
+				onClick={goToPrevious}
+			/>
+
+			<Card.NextButton
+				className="fas fa-chevron-right"
+				onClick={goToNext}
+			/>
 		</Card>
 	);
 };

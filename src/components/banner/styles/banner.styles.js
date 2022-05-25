@@ -57,13 +57,13 @@ export const Button = styled(ReactRouterLink)`
 export const PrevButton = styled.i`
 	position: absolute;
 	left: 10px;
-	top: 400px;
+	top: 50%;
 	cursor: pointer;
 `;
 
 export const NextButton = styled.i`
 	position: absolute;
 	right: 10px;
-	top: 400px;
+	top: 50%;
 	cursor: pointer;
 `;

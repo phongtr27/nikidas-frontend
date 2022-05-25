@@ -9,6 +9,8 @@ import {
 	SubText,
 	Wrapper,
 	Tag,
+	NextButton,
+	PrevButton,
 } from "./styles/card.styles";
 
 const Card = ({ children, ...restProps }) => {
@@ -49,6 +51,14 @@ Card.Name = function CardName({ children, ...restProps }) {
 
 Card.Tag = function CardTag({ children, ...restProps }) {
 	return <Tag {...restProps}>{children}</Tag>;
+};
+
+Card.PrevButton = function CardPrevButton({ children, ...restProps }) {
+	return <PrevButton {...restProps}>{children}</PrevButton>;
+};
+
+Card.NextButton = function CardNextButton({ children, ...restProps }) {
+	return <NextButton {...restProps}>{children}</NextButton>;
 };
 
 export default Card;

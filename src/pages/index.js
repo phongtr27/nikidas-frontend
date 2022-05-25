@@ -13,3 +13,4 @@ export { default as ProductDetails } from "./admin/productDetails";
 export { default as Order } from "./admin/order";
 export { default as User } from "./user/user";
 export { default as ProductUser } from "./user/productUser";
+export { default as Contact } from "./user/contact";

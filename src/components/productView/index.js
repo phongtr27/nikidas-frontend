@@ -8,6 +8,10 @@ import {
 	Image,
 	Option,
 	Input,
+	Button,
+	SubText,
+	PrevButton,
+	NextButton,
 } from "./styles/productView.styles";
 
 const ProductView = ({ children, ...restProps }) => {
@@ -36,6 +40,28 @@ ProductView.Title = function ProductViewTitle({ children, ...restProps }) {
 
 ProductView.Text = function ProductViewText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
+};
+
+ProductView.SubText = function ProductViewSubText({ children, ...restProps }) {
+	return <SubText {...restProps}>{children}</SubText>;
+};
+
+ProductView.Button = function ProductViewButton({ children, ...restProps }) {
+	return <Button {...restProps}>{children}</Button>;
+};
+
+ProductView.PrevButton = function ProductViewPrevButton({
+	children,
+	...restProps
+}) {
+	return <PrevButton {...restProps}>{children}</PrevButton>;
+};
+
+ProductView.NextButton = function ProductViewNextButton({
+	children,
+	...restProps
+}) {
+	return <NextButton {...restProps}>{children}</NextButton>;
 };
 
 ProductView.Image = function ProductViewImage({ ...restProps }) {

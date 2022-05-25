@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navbar } from "../../components";
 import { ProfileContainer } from "../../containers";
 import { UserContext } from "../../context/user";
-import { LOGIN, HOME, SHOP } from "../../constants/routes";
+import { LOGIN, HOME, SHOP, CONTACT } from "../../constants/routes";
 
 const NavbarUser = () => {
 	const { user, setUser } = useContext(UserContext);
@@ -14,7 +14,7 @@ const NavbarUser = () => {
 			<Navbar.Wrapper width="30%">
 				<Navbar.Link to={HOME}>Home</Navbar.Link>
 				<Navbar.Link to={SHOP}>Shop</Navbar.Link>
-				<Navbar.Link to="#">Contacts</Navbar.Link>
+				<Navbar.Link to={CONTACT}>Contact Us</Navbar.Link>
 				<Navbar.Link to="#">Checkout</Navbar.Link>
 			</Navbar.Wrapper>
 

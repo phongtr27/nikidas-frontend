@@ -9,13 +9,19 @@ const ProductUser = () => {
 	const { data: product } = useFetch(`${apiUrl}/api/product/${id}`);
 	const [option, setOption] = useState(0);
 	const [size, setSize] = useState(null);
-	const [quantity, setQuantity] = useState(1);
+	const [quantity, setQuantity] = useState("1");
+
+	const handleOptionChange = (index) => {
+		setOption(index);
+		setSize(null);
+		setQuantity(1);
+	};
 
 	return (
 		<ProductViewContainer
 			product={product}
 			optionIndex={option}
-			handleOptionChange={setOption}
+			handleOptionChange={handleOptionChange}
 			size={size}
 			handleSizeChange={setSize}
 			quantity={quantity}

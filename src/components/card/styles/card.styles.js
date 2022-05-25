@@ -6,6 +6,7 @@ export const Container = styled.div`
 	padding-left: 60px;
 	padding-right: 60px;
 	text-align: center;
+	position: relative;
 `;
 
 export const Title = styled.h3`
@@ -55,6 +56,7 @@ export const Wrapper = styled.div`
 
 export const Text = styled.p`
 	margin-top: 0;
+	font-size: 14px;
 `;
 
 export const Tag = styled.span`
@@ -70,11 +72,25 @@ export const Tag = styled.span`
 
 export const SubText = styled.span`
 	position: absolute;
-	bottom: 16px;
-	left: 65px;
+	bottom: 14px;
+	left: 60px;
 	text-decoration: line-through;
 	font-size: 14px;
 	font-weight: lighter;
 	margin-left: 5px;
 	color: #848484;
+`;
+
+export const PrevButton = styled.i`
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	cursor: pointer;
+`;
+
+export const NextButton = styled.i`
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	cursor: pointer;
 `;
