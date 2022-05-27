@@ -33,6 +33,7 @@ import {
 import { UserContext } from "./context/user";
 import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
 import { getUser } from "./helpers/getUser";
+import NotFound from "./pages/user/notFound";
 
 function App() {
 	const [user, setUser] = useState(getUser());
@@ -215,6 +216,15 @@ function App() {
 						}
 					/>
 				</Route>
+
+				<Route
+					path="*"
+					element={
+						<User>
+							<NotFound />
+						</User>
+					}
+				/>
 			</Routes>
 		</UserContext.Provider>
 	);
