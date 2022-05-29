@@ -1,3 +1,4 @@
+export { default as ScrollToTop } from "./scrollToTop";
 export { default as Form } from "./form";
 export { default as Sidebar } from "./sidebar";
 export { default as Profile } from "./profile";

@@ -26,10 +26,10 @@ export const Link = styled(ReactRouterLink)`
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	color: ${({ active }) => (active ? "#6f42c1" : "#797f91")};
+	color: ${({ active }) => (active ? "#794aff" : "#797f91")};
 	padding-left: 30px;
 	&:hover {
-		color: #6f42c1;
+		color: #794aff;
 	}
 `;
 
@@ -41,10 +41,10 @@ export const Dropdown = styled.div`
 export const DropdownHeader = styled.div`
 	display: flex;
 	align-items: center;
-	color: ${({ active }) => (active ? "#6f42c1" : "#797f91")};
+	color: ${({ active }) => (active ? "#794aff" : "#797f91")};
 
 	&:hover {
-		color: #6f42c1;
+		color: #794aff;
 	}
 `;
 

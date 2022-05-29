@@ -4,14 +4,26 @@ import {
 	NewArrivals,
 	Discount,
 } from "../../containers";
+import Fade from "react-reveal/Fade";
 
 const Home = () => {
 	return (
 		<>
-			<BannerSlider />
-			<Category />
-			<NewArrivals />
-			<Discount />
+			<Fade>
+				<BannerSlider />
+			</Fade>
+
+			<Fade>
+				<Category />
+			</Fade>
+
+			<Fade>
+				<NewArrivals />
+			</Fade>
+
+			<Fade>
+				<Discount />
+			</Fade>
 		</>
 	);
 };

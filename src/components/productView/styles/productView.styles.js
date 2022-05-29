@@ -1,8 +1,8 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-	padding: 60px 60px 60px 60px;
-	min-height: 0px;
+	padding: 60px 60px 0px 60px;
+	min-height: 100vh;
 	min-width: 0px;
 	display: flex;
 	justify-content: space-evenly;

@@ -1,10 +1,10 @@
 const NotFound = () => {
 	return (
-		<div style={{ textAlign: "center" }}>
+		<div style={{ textAlign: "center", height: "100vh" }}>
 			<img
 				src="/images/misc/404.jpg"
 				alt="404"
-				style={{ marginTop: "60px" }}
+				style={{ paddingTop: "60px" }}
 			/>
 		</div>
 	);

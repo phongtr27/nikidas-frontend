@@ -9,11 +9,7 @@ import { apiUrl } from "../../constants/routes";
 import { toast } from "react-toastify";
 
 const NewArrivals = () => {
-	const {
-		data: products,
-		isLoading,
-		error,
-	} = useFetch(`${apiUrl}/api/product/latest`);
+	const { data: products, error } = useFetch(`${apiUrl}/api/product/latest`);
 
 	const settings = {
 		arrows: false,

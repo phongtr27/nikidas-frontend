@@ -9,11 +9,9 @@ import { apiUrl } from "../../constants/routes";
 import { toast } from "react-toastify";
 
 const Discount = () => {
-	const {
-		data: products,
-		isLoading,
-		error,
-	} = useFetch(`${apiUrl}/api/product/discount`);
+	const { data: products, error } = useFetch(
+		`${apiUrl}/api/product/discount`
+	);
 
 	const settings = {
 		arrows: false,
