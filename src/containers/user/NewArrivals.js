@@ -6,9 +6,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { apiUrl } from "../../constants/routes";
+import { toast } from "react-toastify";
 
 const NewArrivals = () => {
-	const { data: products } = useFetch(`${apiUrl}/api/product/latest`);
+	const {
+		data: products,
+		isLoading,
+		error,
+	} = useFetch(`${apiUrl}/api/product/latest`);
 
 	const settings = {
 		arrows: false,
@@ -18,7 +23,6 @@ const NewArrivals = () => {
 		slidesToScroll: 1,
 		autoplay: true,
 		autoplaySpeed: 2000,
-		lazyLoad: true,
 	};
 
 	const sliderRef = useRef();
@@ -30,6 +34,10 @@ const NewArrivals = () => {
 	const goToPrevious = () => {
 		sliderRef.current.slickPrev();
 	};
+
+	if (error) {
+		toast.error(error.statusText);
+	}
 
 	return (
 		<Card>

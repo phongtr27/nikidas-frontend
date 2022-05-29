@@ -22,12 +22,20 @@ const CategoryDetails = () => {
 	useEffect(() => {
 		if (id !== "new") {
 			fetch(`${apiUrl}/api/category/${id}`)
-				.then((response) => response.json())
+				.then((response) => {
+					if (response.ok) {
+						return response.json();
+					}
+					return Promise.reject(response);
+				})
 				.then((data) => {
 					setName(data.name);
 					setImg(data.img);
 				})
-				.catch((err) => toast.error("Internal Server Error."));
+				.catch((err) => {
+					navigate(`${ADMIN_CATEGORY}/new`);
+					toast.error(err.statusText);
+				});
 		} else {
 			setName("");
 			setImg(null);

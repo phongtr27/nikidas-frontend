@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { apiUrl } from "../../constants/routes";
 import { ProductViewContainer } from "../../containers";
+import { toast } from "react-toastify";
 
 const ProductUser = () => {
+	const navigate = useNavigate();
 	const { id } = useParams();
-	const { data: product } = useFetch(`${apiUrl}/api/product/${id}`);
+	const {
+		data: product,
+		isLoading,
+		error,
+	} = useFetch(`${apiUrl}/api/product/${id}`);
 	const [option, setOption] = useState(0);
 	const [size, setSize] = useState(null);
 	const [quantity, setQuantity] = useState("1");
@@ -16,6 +22,14 @@ const ProductUser = () => {
 		setSize(null);
 		setQuantity(1);
 	};
+
+	if (error) {
+		if (error.status >= 400) {
+			navigate("/not-found");
+		} else {
+			toast.error(error.statusText);
+		}
+	}
 
 	return (
 		<ProductViewContainer

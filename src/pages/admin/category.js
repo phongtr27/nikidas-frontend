@@ -28,15 +28,12 @@ const Category = () => {
 	};
 
 	const handleDelete = async (id) => {
-		const response = await fetch(
-			`${apiUrl}/api/category/${id}`,
-			{
-				method: "DELETE",
-				headers: {
-					"x-auth-token": localStorage.getItem("token"),
-				},
-			}
-		);
+		const response = await fetch(`${apiUrl}/api/category/${id}`, {
+			method: "DELETE",
+			headers: {
+				"x-auth-token": localStorage.getItem("token"),
+			},
+		});
 
 		const { message } = await response.json();
 		if (response.status >= 400) {

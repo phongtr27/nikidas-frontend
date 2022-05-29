@@ -1,17 +1,28 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 const useFetch = (url) => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [data, setData] = useState(null);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		fetch(url)
-			.then((response) => response.json())
-			.then((data) => setData(data))
-			.catch((error) => toast.error("Internal Server Error."));
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				}
+				return Promise.reject(response);
+			})
+			.then((data) => {
+				setData(data);
+				setIsLoading(false);
+			})
+			.catch((err) => {
+				setError(err);
+			});
 	}, [url]);
 
-	return { data };
+	return { data, error, isLoading };
 };
 
 export default useFetch;

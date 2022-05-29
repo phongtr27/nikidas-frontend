@@ -17,12 +17,20 @@ const SubCategoryDetails = () => {
 	useEffect(() => {
 		if (id !== "new") {
 			fetch(`${apiUrl}/api/sub-category/${id}`)
-				.then((response) => response.json())
+				.then((response) => {
+					if (response.ok) {
+						return response.json();
+					}
+					return Promise.reject(response);
+				})
 				.then((data) => {
 					setName(data.name);
 					setCategory(data.category);
 				})
-				.catch((err) => toast.error("Internal Server Error."));
+				.catch((err) => {
+					navigate(`${ADMIN_SUB_CATEGORY}/new`);
+					toast.error(err.statusText);
+				});
 		} else {
 			setName("");
 			setCategory("");

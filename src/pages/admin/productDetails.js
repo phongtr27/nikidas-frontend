@@ -33,7 +33,12 @@ const ProductDetails = () => {
 	useEffect(() => {
 		if (id !== "new") {
 			fetch(`${apiUrl}/api/product/${id}`)
-				.then((response) => response.json())
+				.then((response) => {
+					if (response.ok) {
+						return response.json();
+					}
+					return Promise.reject(response);
+				})
 				.then((data) => {
 					setName(data.name);
 					setCategory(data.category);
@@ -43,7 +48,10 @@ const ProductDetails = () => {
 					setDiscount(data.discount);
 					setOptions(data.options);
 				})
-				.catch((err) => toast.error("Internal Server Error."));
+				.catch((err) => {
+					navigate(`${ADMIN_PRODUCT}/new`);
+					toast.error(err.statusText);
+				});
 		} else {
 			setName("");
 			setCategory("");
