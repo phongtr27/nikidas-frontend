@@ -19,8 +19,6 @@ const Discount = () => {
 		speed: 500,
 		slidesToShow: products?.length < 4 ? products.length : 4,
 		slidesToScroll: 1,
-		autoplay: true,
-		autoplaySpeed: 2000,
 	};
 
 	const sliderRef = useRef();
@@ -34,7 +32,7 @@ const Discount = () => {
 	};
 
 	if (error) {
-		toast.error(error.statusText);
+		toast.error("Internal Server Error.");
 	}
 
 	return (

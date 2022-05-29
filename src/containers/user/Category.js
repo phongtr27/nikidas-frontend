@@ -5,9 +5,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { apiUrl } from "../../constants/routes";
+import { toast } from "react-toastify";
 
 const Category = () => {
-	const { data: categories } = useFetch(`${apiUrl}/api/category`);
+	const { data: categories, error } = useFetch(`${apiUrl}/api/category`);
 
 	const settings = {
 		arrows: false,
@@ -17,6 +18,10 @@ const Category = () => {
 		slidesToScroll: 1,
 		lazyLoad: true,
 	};
+
+	if (error) {
+		toast.error("Internal Server Error.");
+	}
 
 	return (
 		<Card>

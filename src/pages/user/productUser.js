@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 import { apiUrl } from "../../constants/routes";
 import { ProductViewContainer } from "../../containers";
 import { toast } from "react-toastify";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const ProductUser = () => {
 	const navigate = useNavigate();
@@ -24,12 +24,12 @@ const ProductUser = () => {
 		if (error.status >= 400) {
 			navigate("/not-found");
 		} else {
-			toast.error(error.statusText);
+			toast.error("Internal Server Error.");
 		}
 	}
 
 	return (
-		<Fade>
+		<Fade triggerOnce>
 			<ProductViewContainer
 				product={product}
 				optionIndex={option}

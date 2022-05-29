@@ -67,7 +67,7 @@ const ProductDetails = () => {
 			]);
 		}
 		setIsLoading(false);
-	}, [id]);
+	}, [id, navigate]);
 
 	const handleFileUpload = (index, e) => {
 		const newSelectedFile = [...selectedFile];

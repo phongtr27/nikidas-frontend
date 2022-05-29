@@ -41,7 +41,7 @@ const CategoryDetails = () => {
 			setImg(null);
 		}
 		setIsLoading(false);
-	}, [id]);
+	}, [id, navigate]);
 
 	const handleFileUpload = (e) => {
 		const file = e.target.files[0];

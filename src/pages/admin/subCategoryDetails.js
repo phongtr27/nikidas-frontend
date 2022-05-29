@@ -36,7 +36,7 @@ const SubCategoryDetails = () => {
 			setCategory("");
 		}
 		setIsLoading(false);
-	}, [id]);
+	}, [id, navigate]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

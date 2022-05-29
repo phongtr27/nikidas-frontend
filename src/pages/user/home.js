@@ -4,24 +4,24 @@ import {
 	NewArrivals,
 	Discount,
 } from "../../containers";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
 	return (
 		<>
-			<Fade>
+			<Fade triggerOnce>
 				<BannerSlider />
 			</Fade>
 
-			<Fade>
+			<Fade triggerOnce>
 				<Category />
 			</Fade>
 
-			<Fade>
+			<Fade triggerOnce>
 				<NewArrivals />
 			</Fade>
 
-			<Fade>
+			<Fade triggerOnce>
 				<Discount />
 			</Fade>
 		</>
