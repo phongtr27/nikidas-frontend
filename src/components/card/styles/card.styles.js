@@ -19,11 +19,17 @@ export const Title = styled.h3`
 
 export const List = styled.div``;
 
+export const Grid = styled.div`
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	column-gap: 20px;
+	row-gap: 20px;
+`;
+
 export const Item = styled(ReactRouterLink)`
 	display: inline-block;
 	text-decoration: none;
 	color: black;
-	position: relative;
 	padding-left: 3px;
 	padding-right: 3px;
 	text-align: ${({ center }) => (center ? "center" : "left")};
@@ -36,8 +42,9 @@ export const Name = styled.h5`
 
 export const Image = styled.img`
 	width: 100%;
-	min-height: 400px;
-	max-height: 482px;
+	/* min-height: 400px; */
+	/* max-height: 482px; */
+	height: 400px;
 	margin-left: auto;
 	margin-right: auto;
 	object-fit: cover;
@@ -57,6 +64,7 @@ export const Wrapper = styled.div`
 export const Text = styled.p`
 	margin-top: 0;
 	font-size: 14px;
+	position: relative;
 `;
 
 export const Tag = styled.span`
@@ -72,7 +80,6 @@ export const Tag = styled.span`
 
 export const SubText = styled.span`
 	position: absolute;
-	bottom: 14px;
 	left: 60px;
 	text-decoration: line-through;
 	font-size: 14px;

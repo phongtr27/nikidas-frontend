@@ -11,14 +11,18 @@ const ProductCard = ({ product }) => {
 				/>
 				{product.discount > 0 && <Card.Tag>SALE</Card.Tag>}
 			</Card.Wrapper>
+
 			<Card.Name>{product.name}</Card.Name>
-			<Card.Text>{`$${(
-				product.price *
-				(1 - product.discount / 100)
-			).toFixed(2)}`}</Card.Text>
-			{product.discount > 0 && (
-				<Card.SubText>{`$${product.price}`}</Card.SubText>
-			)}
+
+			<Card.Text>
+				{`$${(product.price * (1 - product.discount / 100)).toFixed(
+					2
+				)}`}
+
+				{product.discount > 0 && (
+					<Card.SubText>{`$${product.price}`}</Card.SubText>
+				)}
+			</Card.Text>
 		</Card.Item>
 	);
 };

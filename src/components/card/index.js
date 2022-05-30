@@ -1,5 +1,6 @@
 import {
 	Container,
+	Grid,
 	List,
 	Item,
 	Name,
@@ -15,6 +16,10 @@ import {
 
 const Card = ({ children, ...restProps }) => {
 	return <Container {...restProps}>{children}</Container>;
+};
+
+Card.Grid = function CardGrid({ children, ...restProps }) {
+	return <Grid {...restProps}>{children}</Grid>;
 };
 
 Card.Image = function CardImage({ ...restProps }) {

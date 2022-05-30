@@ -18,3 +18,5 @@ export { default as CategoryCard } from "./user/CategoryCard";
 export { default as Discount } from "./user/Discount";
 export { default as FooterContainer } from "./user/FooterContainer";
 export { default as ProductViewContainer } from "./user/ProductViewContainer";
+export { default as ProductContainer } from "./user/ProductContainer";
+export { default as FilterSidebar } from "./user/FilterSidebar";

@@ -1,6 +1,7 @@
 import { useState, createContext, useContext } from "react";
 import {
 	Container,
+	ContainerFixed,
 	Logo,
 	Link,
 	Icon,
@@ -17,6 +18,13 @@ const ToggleContext = createContext();
 export default function Sidebar({ children, ...restProps }) {
 	return <Container {...restProps}>{children}</Container>;
 }
+
+Sidebar.ContainerFixed = function SidebarContainerFixed({
+	children,
+	...restProps
+}) {
+	return <ContainerFixed {...restProps}>{children}</ContainerFixed>;
+};
 
 Sidebar.Logo = function SidebarLogo({ to, src, ...restProps }) {
 	return (

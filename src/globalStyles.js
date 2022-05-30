@@ -64,5 +64,10 @@ export const GlobalStyles = createGlobalStyle`
     margin-left: 15%
   }
 
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
 
 `;
