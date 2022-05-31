@@ -20,3 +20,4 @@ export { default as FooterContainer } from "./user/FooterContainer";
 export { default as ProductViewContainer } from "./user/ProductViewContainer";
 export { default as ProductContainer } from "./user/ProductContainer";
 export { default as FilterSidebar } from "./user/FilterSidebar";
+export { default as SizeTable } from "./user/SizeTable";

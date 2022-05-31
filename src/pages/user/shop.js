@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { ProductContainer, FilterSidebar } from "../../containers";
 import useFetch from "../../hooks/useFetch";
-import { filterProduct } from "../../helpers/filterProduct";
+import {
+	filterByField,
+	filterByPrice,
+	filterBySize,
+} from "../../helpers/filterProduct";
 import { apiUrl } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
 
@@ -13,6 +17,8 @@ const Shop = () => {
 	const [filterCategory, setFilterCategory] = useState([]);
 	const [filterSubCategory, setFilterSubCategory] = useState([]);
 	const [filterSale, setFilterSale] = useState(false);
+	const [filterPrice, setFilterPrice] = useState([]);
+	const [filterSize, setFilterSize] = useState([]);
 
 	const handleFilterCategoryChange = (item) => {
 		const newFilterCategory = [...filterCategory];
@@ -42,16 +48,46 @@ const Shop = () => {
 		setFilterSale(!filterSale);
 	};
 
+	const handleFilterPriceChange = (item) => {
+		const newFilterPrice = [...filterPrice];
+		if (newFilterPrice.includes(item)) {
+			const index = newFilterPrice.indexOf(item);
+			newFilterPrice.splice(index, 1);
+		} else {
+			newFilterPrice.push(item);
+		}
+		setFilterPrice(newFilterPrice);
+	};
+
+	const handleFilterSizeChange = (item) => {
+		const newFilterSize = [...filterSize];
+		if (newFilterSize.includes(item)) {
+			const index = newFilterSize.indexOf(item);
+			newFilterSize.splice(index, 1);
+		} else {
+			newFilterSize.push(item);
+		}
+		setFilterSize(newFilterSize);
+	};
+
 	if (filterCategory.length > 0) {
-		products = filterProduct(products, filterCategory, "category");
+		products = filterByField(products, filterCategory, "category");
 	}
 
 	if (filterSubCategory.length > 0) {
-		products = filterProduct(products, filterSubCategory, "subCategory");
+		products = filterByField(products, filterSubCategory, "subCategory");
 	}
 
 	if (filterSale) {
 		products = products.filter((item) => item.discount > 0);
+	}
+
+	if (filterPrice.length > 0) {
+		products = filterByPrice(products, filterPrice);
+	}
+
+	if (filterSize.length > 0) {
+		products = filterBySize(products, filterSize);
 	}
 
 	return (
@@ -65,7 +101,10 @@ const Shop = () => {
 						handleFilterSubCategoryChange
 					}
 					handleFilterSaleChange={handleFilterSaleChange}
+					handleFilterPriceChange={handleFilterPriceChange}
+					handleFilterSizeChange={handleFilterSizeChange}
 				/>
+
 				<ProductContainer products={products} />
 			</div>
 		</Fade>

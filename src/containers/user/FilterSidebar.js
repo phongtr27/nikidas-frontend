@@ -1,4 +1,5 @@
 import { Sidebar } from "../../components";
+import { SizeTable } from "../../containers";
 
 const FilterSidebar = ({
 	categories,
@@ -6,6 +7,8 @@ const FilterSidebar = ({
 	handleFilterCategoryChange,
 	handleFilterSubCategoryChange,
 	handleFilterSaleChange,
+	handleFilterPriceChange,
+	handleFilterSizeChange,
 }) => {
 	return (
 		<Sidebar>
@@ -70,11 +73,36 @@ const FilterSidebar = ({
 				</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu hovercolor="#f6aa8d">
-					<Sidebar.Text paddingLeft="30px">{`< $200`}</Sidebar.Text>
-					<Sidebar.Text paddingLeft="30px">$200 - $299</Sidebar.Text>
-					<Sidebar.Text paddingLeft="30px">$300 - $399</Sidebar.Text>
-					<Sidebar.Text paddingLeft="30px">$400 - $499</Sidebar.Text>
-					<Sidebar.Text paddingLeft="30px">{`> $500`}</Sidebar.Text>
+					<Sidebar.Text
+						paddingLeft="30px"
+						onClick={() => handleFilterPriceChange("[0, 200]")}
+					>{`< $200`}</Sidebar.Text>
+
+					<Sidebar.Text
+						paddingLeft="30px"
+						onClick={() => handleFilterPriceChange("[200, 299]")}
+					>
+						$200 - $299
+					</Sidebar.Text>
+
+					<Sidebar.Text
+						paddingLeft="30px"
+						onClick={() => handleFilterPriceChange("[300, 399]")}
+					>
+						$300 - $399
+					</Sidebar.Text>
+
+					<Sidebar.Text
+						paddingLeft="30px"
+						onClick={() => handleFilterPriceChange("[400, 499]")}
+					>
+						$400 - $499
+					</Sidebar.Text>
+
+					<Sidebar.Text
+						paddingLeft="30px"
+						onClick={() => handleFilterPriceChange("[500]")}
+					>{`> $500`}</Sidebar.Text>
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 
@@ -82,6 +110,12 @@ const FilterSidebar = ({
 				<Sidebar.DropdownHeader hovercolor="#f6aa8d">
 					SIZES
 				</Sidebar.DropdownHeader>
+
+				<Sidebar.DropdownMenu>
+					<SizeTable
+						handleFilterSizeChange={handleFilterSizeChange}
+					/>
+				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 		</Sidebar>
 	);
