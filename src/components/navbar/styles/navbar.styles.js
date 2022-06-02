@@ -35,4 +35,21 @@ export const Wrapper = styled.div`
 export const Link = styled(ReactRouterLink)`
 	text-decoration: none;
 	color: black;
+	position: relative;
+`;
+
+export const Tag = styled.span`
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: baseline;
+	padding: 3px 5px;
+	background-color: #ffc107;
+	border-radius: 50%;
+	position: absolute;
+	bottom: -9px;
+	left: 7px;
 `;

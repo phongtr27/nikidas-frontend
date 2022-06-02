@@ -21,7 +21,7 @@ export const List = styled.div``;
 
 export const Grid = styled.div`
 	display: grid;
-	grid-template-columns: 340px 340px 340px;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 	column-gap: 20px;
 	row-gap: 20px;
 `;

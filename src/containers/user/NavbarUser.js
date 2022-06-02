@@ -3,9 +3,11 @@ import { Navbar } from "../../components";
 import { ProfileContainer } from "../../containers";
 import { UserContext } from "../../context/user";
 import { LOGIN, HOME, SHOP, CONTACT } from "../../constants/routes";
+import { getProductsInCart } from "../../helpers/getProductsInCart";
 
 const NavbarUser = () => {
 	const { user, setUser } = useContext(UserContext);
+	const products = getProductsInCart();
 
 	return (
 		<Navbar side_padding="60px">
@@ -25,6 +27,7 @@ const NavbarUser = () => {
 
 				<Navbar.Link to="#">
 					<i className="fas fa-shopping-bag"></i>
+					<Navbar.Tag>{products.length}</Navbar.Tag>
 				</Navbar.Link>
 
 				{user ? (
