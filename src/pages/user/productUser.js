@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { apiUrl } from "../../constants/routes";
 import { ProductViewContainer } from "../../containers";
 import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
+import { CartContext } from "../../context/cart";
+import { addToCart } from "../../helpers/addToCart";
 
 const ProductUser = () => {
+	const { cart, setCart } = useContext(CartContext);
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const { data: product, error } = useFetch(`${apiUrl}/api/product/${id}`);
@@ -18,6 +21,12 @@ const ProductUser = () => {
 		setOption(index);
 		setSize(null);
 		setQuantity(1);
+	};
+
+	const handleAddToCart = (productId, color, size, quantity) => {
+		addToCart(productId, color, size, quantity);
+		const item = { productId, color, size, quantity };
+		setCart([...cart, item]);
 	};
 
 	if (error) {
@@ -38,6 +47,7 @@ const ProductUser = () => {
 				handleSizeChange={setSize}
 				quantity={quantity}
 				handleQuantityChange={setQuantity}
+				handleAddToCart={handleAddToCart}
 			/>
 		</Fade>
 	);

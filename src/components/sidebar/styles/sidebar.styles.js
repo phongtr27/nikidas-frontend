@@ -12,7 +12,7 @@ export const ContainerFixed = styled.div`
 export const Container = styled.div`
 	padding-top: 60px;
 	padding-left: 30px;
-	width: 15%;
+	max-width: 15%;
 	height: 100vh;
 `;
 
@@ -29,6 +29,7 @@ export const Icon = styled.i`
 
 export const Text = styled.p`
 	${({ paddingLeft }) => paddingLeft && { "padding-left": paddingLeft }}
+	${({ active }) => active && { backgroundColor: "#eeeeee" }}
 `;
 
 export const Link = styled(ReactRouterLink)`
@@ -68,7 +69,7 @@ export const DropdownMenu = styled.div`
 
 	${Text} {
 		:hover {
-			color: ${({ hovercolor }) => hovercolor};
+			${({ hoverbox }) => hoverbox && { backgroundColor: "#eeeeee" }}
 		}
 	}
 `;

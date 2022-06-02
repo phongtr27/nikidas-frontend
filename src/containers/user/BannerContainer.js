@@ -1,4 +1,5 @@
 import { Banner } from "../../components";
+import { SHOP } from "../../constants/routes";
 
 const BannerContainer = ({ url }) => {
 	return (
@@ -11,7 +12,7 @@ const BannerContainer = ({ url }) => {
 					crafted with an unwavering commitment to exceptional
 					quality.
 				</Banner.Text>
-				<Banner.Button to="#">SHOP NOW</Banner.Button>
+				<Banner.Button to={SHOP}>SHOP NOW</Banner.Button>
 			</Banner.Content>
 		</Banner>
 	);

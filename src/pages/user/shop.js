@@ -1,22 +1,24 @@
 import { useState } from "react";
 import { ProductContainer, FilterSidebar } from "../../containers";
 import useFetch from "../../hooks/useFetch";
-import {
-	filterByField,
-	filterByPrice,
-	filterBySize,
-} from "../../helpers/filterProduct";
+import { filterProduct } from "../../helpers/filterProduct";
 import { apiUrl } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
+import { useSearchParams } from "react-router-dom";
 
 const Shop = () => {
+	const [searchParams] = useSearchParams();
 	let { data: products } = useFetch(`${apiUrl}/api/product`);
 	const { data: categories } = useFetch(`${apiUrl}/api/category`);
 	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
 
-	const [filterCategory, setFilterCategory] = useState([]);
+	const [filterCategory, setFilterCategory] = useState(
+		searchParams.get("category") ? [searchParams.get("category")] : []
+	);
 	const [filterSubCategory, setFilterSubCategory] = useState([]);
-	const [filterSale, setFilterSale] = useState(false);
+	const [filterSale, setFilterSale] = useState(
+		searchParams.get("sale") ? true : false
+	);
 	const [filterPrice, setFilterPrice] = useState([]);
 	const [filterSize, setFilterSize] = useState([]);
 
@@ -70,25 +72,14 @@ const Shop = () => {
 		setFilterSize(newFilterSize);
 	};
 
-	if (filterCategory.length > 0) {
-		products = filterByField(products, filterCategory, "category");
-	}
-
-	if (filterSubCategory.length > 0) {
-		products = filterByField(products, filterSubCategory, "subCategory");
-	}
-
-	if (filterSale) {
-		products = products.filter((item) => item.discount > 0);
-	}
-
-	if (filterPrice.length > 0) {
-		products = filterByPrice(products, filterPrice);
-	}
-
-	if (filterSize.length > 0) {
-		products = filterBySize(products, filterSize);
-	}
+	const filteredProducts = filterProduct(
+		products,
+		filterCategory,
+		filterSubCategory,
+		filterSale,
+		filterPrice,
+		filterSize
+	);
 
 	return (
 		<Fade triggerOnce>
@@ -96,6 +87,10 @@ const Shop = () => {
 				<FilterSidebar
 					categories={categories}
 					subCategories={subCategories}
+					filterCategory={filterCategory}
+					filterSubCategory={filterSubCategory}
+					filterSale={filterSale}
+					filterPrice={filterPrice}
 					handleFilterCategoryChange={handleFilterCategoryChange}
 					handleFilterSubCategoryChange={
 						handleFilterSubCategoryChange
@@ -105,7 +100,7 @@ const Shop = () => {
 					handleFilterSizeChange={handleFilterSizeChange}
 				/>
 
-				<ProductContainer products={products} />
+				<ProductContainer products={filteredProducts} />
 			</div>
 		</Fade>
 	);

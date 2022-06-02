@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { apiUrl } from "../../constants/routes";
-import { addToCart } from "../../helpers/addToCart";
 
 const ProductViewContainer = ({
 	product,
@@ -14,6 +13,7 @@ const ProductViewContainer = ({
 	handleSizeChange,
 	quantity,
 	handleQuantityChange,
+	handleAddToCart,
 }) => {
 	const settings = {
 		arrows: false,
@@ -98,7 +98,7 @@ const ProductViewContainer = ({
 				<ProductView.Button
 					disabled={size === null}
 					onClick={() =>
-						addToCart(
+						handleAddToCart(
 							product._id,
 							product.options[optionIndex].color,
 							size,

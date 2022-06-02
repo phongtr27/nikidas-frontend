@@ -37,7 +37,7 @@ const Discount = () => {
 
 	return (
 		<Card>
-			<Card.Title>HOT SALES</Card.Title>
+			<Card.Title>HOT SALE</Card.Title>
 			<Card.List>
 				<Slider {...settings} ref={sliderRef}>
 					{products?.map((product, index) => (

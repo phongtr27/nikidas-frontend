@@ -1,10 +1,10 @@
-export const filterByField = (data, arr, field) => {
+const filterByField = (data, arr, field) => {
 	let filterSet = new Set(arr);
 	let filteredData = data?.filter((item) => filterSet.has(item[field]));
 	return filteredData;
 };
 
-export const filterByPrice = (data, arr) => {
+const filterByPrice = (data, arr) => {
 	arr = arr.map((i) => JSON.parse(i));
 
 	let filterData = [];
@@ -25,9 +25,7 @@ export const filterByPrice = (data, arr) => {
 	return filterData;
 };
 
-export const filterBySize = (data, arr) => {
-	// console.log(arr);
-
+const filterBySize = (data, arr) => {
 	data?.forEach((item) => {
 		item.sizes = [];
 		item.options.forEach((option) => {
@@ -38,7 +36,36 @@ export const filterBySize = (data, arr) => {
 	let filteredData = data?.filter((item) =>
 		item.sizes.some((value) => arr.includes(value))
 	);
-
-	// console.log(filteredData);
 	return filteredData;
+};
+
+export const filterProduct = (
+	data,
+	filterCategory,
+	filterSubCategory,
+	filterSale,
+	filterPrice,
+	filterSize
+) => {
+	if (filterCategory.length > 0) {
+		data = filterByField(data, filterCategory, "category");
+	}
+
+	if (filterSubCategory.length > 0) {
+		data = filterByField(data, filterSubCategory, "subCategory");
+	}
+
+	if (filterSale) {
+		data = data?.filter((item) => item.discount > 0);
+	}
+
+	if (filterPrice.length > 0) {
+		data = filterByPrice(data, filterPrice);
+	}
+
+	if (filterSize.length > 0) {
+		data = filterBySize(data, filterSize);
+	}
+
+	return data;
 };
