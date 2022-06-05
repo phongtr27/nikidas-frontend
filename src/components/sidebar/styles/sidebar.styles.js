@@ -13,7 +13,7 @@ export const Container = styled.div`
 	padding-top: 60px;
 	padding-left: 30px;
 	max-width: 15%;
-	height: 100vh;
+	height: 100%;
 `;
 
 export const Logo = styled.img`
@@ -30,6 +30,13 @@ export const Icon = styled.i`
 export const Text = styled.p`
 	${({ paddingLeft }) => paddingLeft && { "padding-left": paddingLeft }}
 	${({ active }) => active && { backgroundColor: "#eeeeee" }}
+	${({ active }) => !active && `${Icon} {visibility: hidden}`}
+	position: relative;
+
+	${Icon} {
+		position: absolute;
+		right: 0;
+	}
 `;
 
 export const Link = styled(ReactRouterLink)`
@@ -68,6 +75,8 @@ export const DropdownMenu = styled.div`
 	}
 
 	${Text} {
+		padding-top: 5px;
+		padding-bottom: 5px;
 		:hover {
 			${({ hoverbox }) => hoverbox && { backgroundColor: "#eeeeee" }}
 		}

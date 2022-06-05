@@ -58,8 +58,12 @@ Sidebar.Link = function SidebarLink({ to, children, ...restProps }) {
 	);
 };
 
-Sidebar.Dropdown = function SidebarDropdown({ children, ...restProps }) {
-	const [toggleShow, setToggleShow] = useState(false);
+Sidebar.Dropdown = function SidebarDropdown({
+	defaultToggleShow,
+	children,
+	...restProps
+}) {
+	const [toggleShow, setToggleShow] = useState(defaultToggleShow || false);
 
 	return (
 		<ToggleContext.Provider value={{ toggleShow, setToggleShow }}>

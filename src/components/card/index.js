@@ -10,6 +10,7 @@ import {
 	SubText,
 	Wrapper,
 	Tag,
+	Button,
 	NextButton,
 	PrevButton,
 } from "./styles/card.styles";
@@ -56,6 +57,10 @@ Card.Name = function CardName({ children, ...restProps }) {
 
 Card.Tag = function CardTag({ children, ...restProps }) {
 	return <Tag {...restProps}>{children}</Tag>;
+};
+
+Card.Button = function CardButton({ children, ...restProps }) {
+	return <Button {...restProps}>{children}</Button>;
 };
 
 Card.PrevButton = function CardPrevButton({ children, ...restProps }) {

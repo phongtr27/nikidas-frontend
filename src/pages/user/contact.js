@@ -13,7 +13,7 @@ const Contact = () => {
 				title="location"
 			></iframe>
 
-			<Card>
+			<Card center>
 				<Card.Title>CONTACT US</Card.Title>
 				<Card.Text>
 					As you might expect from a big company like us, we pay

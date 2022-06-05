@@ -8,6 +8,7 @@ const FilterSidebar = ({
 	filterSubCategory,
 	filterSale,
 	filterPrice,
+	filterSize,
 	handleFilterCategoryChange,
 	handleFilterSubCategoryChange,
 	handleFilterSaleChange,
@@ -16,7 +17,7 @@ const FilterSidebar = ({
 }) => {
 	return (
 		<Sidebar>
-			<Sidebar.Dropdown>
+			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>CATEGORIES</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu hoverbox>
@@ -30,12 +31,13 @@ const FilterSidebar = ({
 							}
 						>
 							{category.name}
+							<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 						</Sidebar.Text>
 					))}
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 
-			<Sidebar.Dropdown>
+			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>SUB-CATEGORIES</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu hoverbox>
@@ -51,12 +53,13 @@ const FilterSidebar = ({
 							}
 						>
 							{subCategory.name}
+							<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 						</Sidebar.Text>
 					))}
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 
-			<Sidebar.Dropdown>
+			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>ON SALE</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu hoverbox>
@@ -66,11 +69,12 @@ const FilterSidebar = ({
 						onClick={handleFilterSaleChange}
 					>
 						Sale
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 					</Sidebar.Text>
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 
-			<Sidebar.Dropdown>
+			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>PRICE</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu hoverbox>
@@ -78,7 +82,10 @@ const FilterSidebar = ({
 						paddingLeft="30px"
 						active={filterPrice.includes("[0, 200]")}
 						onClick={() => handleFilterPriceChange("[0, 200]")}
-					>{`< $200`}</Sidebar.Text>
+					>
+						{`< $200`}
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
+					</Sidebar.Text>
 
 					<Sidebar.Text
 						paddingLeft="30px"
@@ -86,6 +93,7 @@ const FilterSidebar = ({
 						onClick={() => handleFilterPriceChange("[200, 299]")}
 					>
 						$200 - $299
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 					</Sidebar.Text>
 
 					<Sidebar.Text
@@ -94,6 +102,7 @@ const FilterSidebar = ({
 						onClick={() => handleFilterPriceChange("[300, 399]")}
 					>
 						$300 - $399
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 					</Sidebar.Text>
 
 					<Sidebar.Text
@@ -102,21 +111,26 @@ const FilterSidebar = ({
 						onClick={() => handleFilterPriceChange("[400, 499]")}
 					>
 						$400 - $499
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
 					</Sidebar.Text>
 
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[500]")}
 						onClick={() => handleFilterPriceChange("[500]")}
-					>{`> $500`}</Sidebar.Text>
+					>
+						{`> $500`}
+						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
+					</Sidebar.Text>
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>
 
-			<Sidebar.Dropdown>
+			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>SIZES</Sidebar.DropdownHeader>
 
 				<Sidebar.DropdownMenu>
 					<SizeTable
+						filterSize={filterSize}
 						handleFilterSizeChange={handleFilterSizeChange}
 					/>
 				</Sidebar.DropdownMenu>

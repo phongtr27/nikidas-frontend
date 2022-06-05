@@ -33,6 +33,8 @@ export const Data = styled.td`
 	border: 1px solid #8e9194;
 	text-align: center;
 	padding: 10px;
+	${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
+	${({ active }) => active && { backgroundColor: "#eeeeee" }}
 `;
 
 export const Text = styled.p``;

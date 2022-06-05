@@ -36,7 +36,7 @@ const Discount = () => {
 	}
 
 	return (
-		<Card>
+		<Card center>
 			<Card.Title>HOT SALE</Card.Title>
 			<Card.List>
 				<Slider {...settings} ref={sliderRef}>

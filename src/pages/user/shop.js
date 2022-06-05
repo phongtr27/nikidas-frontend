@@ -12,6 +12,7 @@ const Shop = () => {
 	const { data: categories } = useFetch(`${apiUrl}/api/category`);
 	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
 
+	const [productLimit, setProductLimit] = useState(9);
 	const [filterCategory, setFilterCategory] = useState(
 		searchParams.get("category") ? [searchParams.get("category")] : []
 	);
@@ -21,6 +22,10 @@ const Shop = () => {
 	);
 	const [filterPrice, setFilterPrice] = useState([]);
 	const [filterSize, setFilterSize] = useState([]);
+
+	const handleLoadMore = () => {
+		setProductLimit(productLimit + 5);
+	};
 
 	const handleFilterCategoryChange = (item) => {
 		const newFilterCategory = [...filterCategory];
@@ -91,6 +96,7 @@ const Shop = () => {
 					filterSubCategory={filterSubCategory}
 					filterSale={filterSale}
 					filterPrice={filterPrice}
+					filterSize={filterSize}
 					handleFilterCategoryChange={handleFilterCategoryChange}
 					handleFilterSubCategoryChange={
 						handleFilterSubCategoryChange
@@ -100,7 +106,11 @@ const Shop = () => {
 					handleFilterSizeChange={handleFilterSizeChange}
 				/>
 
-				<ProductContainer products={filteredProducts} />
+				<ProductContainer
+					products={filteredProducts}
+					productLimit={productLimit}
+					handleLoadMore={handleLoadMore}
+				/>
 			</div>
 		</Fade>
 	);

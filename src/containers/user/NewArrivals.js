@@ -34,7 +34,7 @@ const NewArrivals = () => {
 	}
 
 	return (
-		<Card>
+		<Card center>
 			<Card.Title>NEW ARRIVALS</Card.Title>
 
 			<Card.List>

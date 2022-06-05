@@ -24,7 +24,7 @@ const Category = () => {
 	}
 
 	return (
-		<Card>
+		<Card center>
 			<Card.Title>WHAT DO YOU FANCY?</Card.Title>
 			<Card.List>
 				<Slider {...settings}>

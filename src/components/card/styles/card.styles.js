@@ -5,7 +5,7 @@ export const Container = styled.div`
 	padding-top: 60px;
 	padding-left: 60px;
 	padding-right: 60px;
-	text-align: center;
+	text-align: ${({ center }) => (center ? "center" : "left")};
 	position: relative;
 `;
 
@@ -100,4 +100,30 @@ export const NextButton = styled.i`
 	right: 10px;
 	top: 50%;
 	cursor: pointer;
+`;
+
+export const Button = styled.button`
+	display: block;
+	margin-top: 60px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px 20px;
+	background-color: black;
+	color: white;
+	font-weight: 700;
+	letter-spacing: 4px;
+	border: 1px solid black;
+	cursor: pointer;
+
+	:hover {
+		transition: 0.5s;
+		background-color: #f6aa8d;
+		color: white;
+		border: 1px solid #f6aa8d;
+	}
+
+	:disabled {
+		background-color: #d7d2d2;
+		border: 1px solid #d7d2d2;
+	}
 `;
