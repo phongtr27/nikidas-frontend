@@ -1,57 +1,62 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { apiUrl } from "../../constants/routes";
 import { SubCategoryTable } from "../../containers";
 import Pagination from "react-js-pagination";
+import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
 
 let PageSize = 7;
 
 const SubCategory = () => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [subCategories, setSubCategories] = useState([]);
+	const {
+		data: subCategories,
+		setData: setSubCategories,
+		isLoading,
+		error,
+	} = useFetch(`${apiUrl}/api/sub-category`);
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [activePage, setActivePage] = useState(1);
-
-	useEffect(() => {
-		fetch(`${apiUrl}/api/sub-category`)
-			.then((response) => response.json())
-			.then((data) => {
-				setSubCategories([...data]);
-				setIsLoading(false);
-			})
-			.catch((err) => toast.error("Internal Server Error."));
-	}, []);
 
 	const handlePageChange = (pageNumber) => {
 		setActivePage(pageNumber);
 	};
 
 	const handleDelete = async (id) => {
-		const response = await fetch(`${apiUrl}/api/sub-category/${id}`, {
-			method: "DELETE",
-			headers: {
-				"x-auth-token": localStorage.getItem("token"),
-			},
-		});
+		try {
+			const response = await fetch(`${apiUrl}/api/sub-category/${id}`, {
+				method: "DELETE",
+				headers: {
+					"x-auth-token": localStorage.getItem("token"),
+				},
+			});
 
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
+			}
+
+			setShowDeleteConfirmation(false);
+			setSubCategories(
+				subCategories.filter((subCategory) => subCategory._id !== id)
+			);
+			toast.success(message);
+			setActivePage(1);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		setShowDeleteConfirmation(false);
-		setSubCategories(
-			subCategories.filter((subCategory) => subCategory._id !== id)
-		);
-		toast.success(message);
-		setActivePage(1);
 	};
 
 	const firstPageIndex = (activePage - 1) * PageSize;
 	const lastPageIndex = firstPageIndex + PageSize;
-	const tableData = subCategories.slice(firstPageIndex, lastPageIndex);
+	const tableData = subCategories?.slice(firstPageIndex, lastPageIndex);
+
+	if (error) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<>
@@ -68,7 +73,7 @@ const SubCategory = () => {
 			<Pagination
 				activePage={activePage}
 				itemsCountPerPage={PageSize}
-				totalItemsCount={subCategories.length}
+				totalItemsCount={subCategories?.length || 0}
 				pageRangeDisplayed={5}
 				onChange={handlePageChange}
 				hideDisabled={true}

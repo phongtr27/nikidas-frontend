@@ -16,25 +16,29 @@ const SignIn = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch(`${apiUrl}/api/auth`, {
-			method: "POST",
-			headers: {
-				Accept: "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ email, password }),
-		});
+		try {
+			const response = await fetch(`${apiUrl}/api/auth`, {
+				method: "POST",
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password }),
+			});
 
-		if (response.status >= 400) {
-			const { message } = await response.json();
-			toast.error(message);
-			return;
+			if (response.status >= 400) {
+				const { message } = await response.json();
+				toast.error(message);
+				return;
+			}
+
+			const { token } = await response.json();
+			localStorage.setItem("token", token);
+			setUser(jwt_decode(token));
+			navigate(HOME);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		const { token } = await response.json();
-		localStorage.setItem("token", token);
-		setUser(jwt_decode(token));
-		navigate(HOME);
 	};
 
 	return (

@@ -2,54 +2,59 @@ import { useState, useEffect } from "react";
 import { apiUrl } from "../../constants/routes";
 import { ProductTable } from "../../containers";
 import Pagination from "react-js-pagination";
+import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
 
 let PageSize = 7;
 
 const Product = () => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [products, setProducts] = useState([]);
+	const {
+		data: products,
+		setData: setProducts,
+		isLoading,
+		error,
+	} = useFetch(`${apiUrl}/api/product`);
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [activePage, setActivePage] = useState(1);
-
-	useEffect(() => {
-		fetch(`${apiUrl}/api/product`)
-			.then((response) => response.json())
-			.then((data) => {
-				setProducts([...data]);
-				setIsLoading(false);
-			})
-			.catch((err) => toast.error("Internal Server Error."));
-	}, []);
 
 	const handlePageChange = (pageNumber) => {
 		setActivePage(pageNumber);
 	};
 
 	const handleDelete = async (id) => {
-		const response = await fetch(`${apiUrl}/api/product/${id}`, {
-			method: "DELETE",
-			headers: {
-				"x-auth-token": localStorage.getItem("token"),
-			},
-		});
+		try {
+			const response = await fetch(`${apiUrl}/api/product/${id}`, {
+				method: "DELETE",
+				headers: {
+					"x-auth-token": localStorage.getItem("token"),
+				},
+			});
 
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
+			}
+
+			setShowDeleteConfirmation(false);
+			setProducts(products.filter((product) => product._id !== id));
+			toast.success(message);
+			setActivePage(1);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		setShowDeleteConfirmation(false);
-		setProducts(products.filter((product) => product._id !== id));
-		toast.success(message);
-		setActivePage(1);
 	};
 
 	const firstPageIndex = (activePage - 1) * PageSize;
 	const lastPageIndex = firstPageIndex + PageSize;
-	const tableData = products.slice(firstPageIndex, lastPageIndex);
+	const tableData = products?.slice(firstPageIndex, lastPageIndex);
+
+	if (error) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<>
@@ -66,7 +71,7 @@ const Product = () => {
 			<Pagination
 				activePage={activePage}
 				itemsCountPerPage={PageSize}
-				totalItemsCount={products.length}
+				totalItemsCount={products?.length || 0}
 				pageRangeDisplayed={5}
 				onChange={handlePageChange}
 				hideDisabled={true}

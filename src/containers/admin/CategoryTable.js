@@ -29,7 +29,7 @@ const CategoryTable = ({
 					</Table.Head>
 
 					<Table.Body>
-						{categories.map((category, index) => (
+						{categories?.map((category, index) => (
 							<Table.Row key={index}>
 								<Table.Data>{index + 1}</Table.Data>
 

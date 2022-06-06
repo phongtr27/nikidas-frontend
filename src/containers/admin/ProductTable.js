@@ -30,7 +30,7 @@ const ProductTable = ({
 					</Table.Head>
 
 					<Table.Body>
-						{products.map((product, index) => (
+						{products?.map((product, index) => (
 							<Table.Row key={index}>
 								<Table.Data>{index + 1}</Table.Data>
 

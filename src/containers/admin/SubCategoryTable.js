@@ -28,7 +28,7 @@ const SubCategoryTable = ({
 					</Table.Head>
 
 					<Table.Body>
-						{subCategories.map((subCategory, index) => (
+						{subCategories?.map((subCategory, index) => (
 							<Table.Row key={index}>
 								<Table.Data>{index + 1}</Table.Data>
 

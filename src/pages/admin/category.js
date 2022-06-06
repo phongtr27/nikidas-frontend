@@ -1,55 +1,62 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { apiUrl } from "../../constants/routes";
 import { CategoryTable } from "../../containers";
 import Pagination from "react-js-pagination";
+import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
 
 let PageSize = 3;
 
 const Category = () => {
-	const [isLoading, setIsLoading] = useState(true);
-	const [categories, setCategories] = useState([]);
+	const {
+		data: categories,
+		setData: setCategories,
+		isLoading,
+		error,
+	} = useFetch(`${apiUrl}/api/category`);
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [activePage, setActivePage] = useState(1);
-
-	useEffect(() => {
-		fetch(`${apiUrl}/api/category`)
-			.then((response) => response.json())
-			.then((data) => {
-				setCategories([...data]);
-				setIsLoading(false);
-			})
-			.catch((err) => toast.error("Internal Server Error."));
-	}, []);
 
 	const handlePageChange = (pageNumber) => {
 		setActivePage(pageNumber);
 	};
 
 	const handleDelete = async (id) => {
-		const response = await fetch(`${apiUrl}/api/category/${id}`, {
-			method: "DELETE",
-			headers: {
-				"x-auth-token": localStorage.getItem("token"),
-			},
-		});
+		try {
+			const response = await fetch(`${apiUrl}/api/category/${id}`, {
+				method: "DELETE",
+				headers: {
+					"x-auth-token": localStorage.getItem("token"),
+				},
+			});
 
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
+			}
+
+			setShowDeleteConfirmation(false);
+			setCategories(
+				categories?.filter((category) => category._id !== id)
+			);
+			toast.success(message);
+			setActivePage(1);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		setShowDeleteConfirmation(false);
-		setCategories(categories.filter((category) => category._id !== id));
-		toast.success(message);
-		setActivePage(1);
 	};
 
 	const firstPageIndex = (activePage - 1) * PageSize;
 	const lastPageIndex = firstPageIndex + PageSize;
-	const tableData = categories.slice(firstPageIndex, lastPageIndex);
+	const tableData = categories?.slice(firstPageIndex, lastPageIndex);
+
+	if (error) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<>
@@ -66,7 +73,7 @@ const Category = () => {
 			<Pagination
 				activePage={activePage}
 				itemsCountPerPage={PageSize}
-				totalItemsCount={categories.length}
+				totalItemsCount={categories?.length || 0}
 				pageRangeDisplayed={3}
 				onChange={handlePageChange}
 				hideDisabled={true}
