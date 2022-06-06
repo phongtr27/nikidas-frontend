@@ -34,6 +34,7 @@ const ProductUser = () => {
 			navigate("/not-found");
 		} else {
 			toast.error("Internal Server Error.");
+			return;
 		}
 	}
 

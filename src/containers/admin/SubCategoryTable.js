@@ -4,6 +4,8 @@ import { DeleteConfirmation } from "../../containers";
 
 const SubCategoryTable = ({
 	isLoading,
+	PageSize,
+	activePage,
 	subCategories,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -30,7 +32,9 @@ const SubCategoryTable = ({
 					<Table.Body>
 						{subCategories?.map((subCategory, index) => (
 							<Table.Row key={index}>
-								<Table.Data>{index + 1}</Table.Data>
+								<Table.Data>
+									{PageSize * (activePage - 1) + index + 1}
+								</Table.Data>
 
 								<Table.Data>{subCategory.name}</Table.Data>
 

@@ -1,18 +1,11 @@
 import { useRef } from "react";
 import { Card } from "../../components";
 import { ProductCard } from "../../containers";
-import useFetch from "../../hooks/useFetch";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { apiUrl } from "../../constants/routes";
-import { toast } from "react-toastify";
 
-const Discount = () => {
-	const { data: products, error } = useFetch(
-		`${apiUrl}/api/product/discount`
-	);
-
+const ProductSlider = ({ title, products }) => {
 	const settings = {
 		arrows: false,
 		dots: false,
@@ -31,13 +24,10 @@ const Discount = () => {
 		sliderRef.current.slickPrev();
 	};
 
-	if (error) {
-		toast.error("Internal Server Error.");
-	}
-
 	return (
 		<Card center>
-			<Card.Title>HOT SALE</Card.Title>
+			<Card.Title>{title}</Card.Title>
+
 			<Card.List>
 				<Slider {...settings} ref={sliderRef}>
 					{products?.map((product, index) => (
@@ -59,4 +49,4 @@ const Discount = () => {
 	);
 };
 
-export default Discount;
+export default ProductSlider;

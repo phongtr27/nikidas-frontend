@@ -5,12 +5,17 @@ import { filterProduct } from "../../helpers/filterProduct";
 import { apiUrl } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
 import { useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Shop = () => {
 	const [searchParams] = useSearchParams();
-	let { data: products } = useFetch(`${apiUrl}/api/product`);
-	const { data: categories } = useFetch(`${apiUrl}/api/category`);
-	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
+	let { data: products, error: err1 } = useFetch(`${apiUrl}/api/product`);
+	const { data: categories, error: err2 } = useFetch(
+		`${apiUrl}/api/category`
+	);
+	const { data: subCategories, error: err3 } = useFetch(
+		`${apiUrl}/api/sub-category`
+	);
 
 	const [productLimit, setProductLimit] = useState(9);
 	const [filterCategory, setFilterCategory] = useState(
@@ -85,6 +90,11 @@ const Shop = () => {
 		filterPrice,
 		filterSize
 	);
+
+	if (err1 || err2 || err3) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<Fade triggerOnce>

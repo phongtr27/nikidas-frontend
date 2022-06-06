@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { apiUrl } from "../../constants/routes";
 import { ProductTable } from "../../containers";
 import Pagination from "react-js-pagination";
@@ -60,6 +60,8 @@ const Product = () => {
 		<>
 			<ProductTable
 				isLoading={isLoading}
+				PageSize={PageSize}
+				activePage={activePage}
 				products={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}

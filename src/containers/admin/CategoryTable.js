@@ -5,6 +5,8 @@ import { apiUrl } from "../../constants/routes";
 
 const CategoryTable = ({
 	isLoading,
+	PageSize,
+	activePage,
 	categories,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -31,7 +33,9 @@ const CategoryTable = ({
 					<Table.Body>
 						{categories?.map((category, index) => (
 							<Table.Row key={index}>
-								<Table.Data>{index + 1}</Table.Data>
+								<Table.Data>
+									{PageSize * (activePage - 1) + index + 1}
+								</Table.Data>
 
 								<Table.Data>{category.name}</Table.Data>
 

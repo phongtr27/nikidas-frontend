@@ -21,6 +21,7 @@ const Category = () => {
 
 	if (error) {
 		toast.error("Internal Server Error.");
+		return;
 	}
 
 	return (

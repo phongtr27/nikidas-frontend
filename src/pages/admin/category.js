@@ -62,6 +62,8 @@ const Category = () => {
 		<>
 			<CategoryTable
 				isLoading={isLoading}
+				PageSize={PageSize}
+				activePage={activePage}
 				categories={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}

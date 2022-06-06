@@ -62,6 +62,8 @@ const SubCategory = () => {
 		<>
 			<SubCategoryTable
 				isLoading={isLoading}
+				PageSize={PageSize}
+				activePage={activePage}
 				subCategories={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}

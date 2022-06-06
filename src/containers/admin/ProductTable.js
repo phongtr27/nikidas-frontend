@@ -4,6 +4,8 @@ import { DeleteConfirmation } from "../../containers";
 
 const ProductTable = ({
 	isLoading,
+	PageSize,
+	activePage,
 	products,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
@@ -32,7 +34,9 @@ const ProductTable = ({
 					<Table.Body>
 						{products?.map((product, index) => (
 							<Table.Row key={index}>
-								<Table.Data>{index + 1}</Table.Data>
+								<Table.Data>
+									{PageSize * (activePage - 1) + index + 1}
+								</Table.Data>
 
 								<Table.Data>{product.name}</Table.Data>
 
