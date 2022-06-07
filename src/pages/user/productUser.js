@@ -1,9 +1,8 @@
 import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { apiUrl } from "../../constants/routes";
+import { apiUrl, ERROR } from "../../constants/routes";
 import { ProductViewContainer } from "../../containers";
-import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 import { CartContext } from "../../context/cart";
 import { addToCart } from "../../helpers/addToCart";
@@ -31,10 +30,9 @@ const ProductUser = () => {
 
 	if (error) {
 		if (error.status >= 400) {
-			navigate("/not-found");
+			return navigate("/not-found");
 		} else {
-			toast.error("Internal Server Error.");
-			return;
+			return navigate(`${ERROR}`);
 		}
 	}
 

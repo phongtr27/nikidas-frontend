@@ -24,8 +24,12 @@ const ProductDetails = () => {
 		},
 	]);
 
-	const { data: categories } = useFetch(`${apiUrl}/api/category`);
-	const { data: subCategories } = useFetch(`${apiUrl}/api/sub-category`);
+	const { data: categories, error: err1 } = useFetch(
+		`${apiUrl}/api/category`
+	);
+	const { data: subCategories, error: err2 } = useFetch(
+		`${apiUrl}/api/sub-category`
+	);
 	const filteredSubCategories = subCategories?.filter(
 		(item) => item.category === category
 	);
@@ -49,8 +53,8 @@ const ProductDetails = () => {
 					setOptions(data.options);
 				})
 				.catch((err) => {
+					toast.error("Internal Server Error.");
 					navigate(`${ADMIN_PRODUCT}/new`);
-					toast.error(err.statusText);
 				});
 		} else {
 			setName("");
@@ -139,25 +143,36 @@ const ProductDetails = () => {
 			}
 		});
 
-		const response = await fetch(
-			`${apiUrl}/api/product/${id === "new" ? "" : id}`,
-			{
-				method: id === "new" ? "POST" : "PUT",
-				body: formData,
-				headers: {
-					Accept: "multipart/form-data",
-					"x-auth-token": localStorage.getItem("token"),
-				},
+		try {
+			const response = await fetch(
+				`${apiUrl}/api/product/${id === "new" ? "" : id}`,
+				{
+					method: id === "new" ? "POST" : "PUT",
+					body: formData,
+					headers: {
+						Accept: "multipart/form-data",
+						"x-auth-token": localStorage.getItem("token"),
+					},
+				}
+			);
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
 			}
-		);
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+
+			navigate(ADMIN_PRODUCT);
+			toast.success(message);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-		navigate(ADMIN_PRODUCT);
-		toast.success(message);
 	};
+
+	if (err1 || err2) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<ProductForm

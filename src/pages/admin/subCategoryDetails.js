@@ -12,7 +12,7 @@ const SubCategoryDetails = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
-	const { data: categories } = useFetch(`${apiUrl}/api/category`);
+	const { data: categories, error } = useFetch(`${apiUrl}/api/category`);
 
 	useEffect(() => {
 		if (id !== "new") {
@@ -28,8 +28,8 @@ const SubCategoryDetails = () => {
 					setCategory(data.category);
 				})
 				.catch((err) => {
+					toast.error("Internal Server Error.");
 					navigate(`${ADMIN_SUB_CATEGORY}/new`);
-					toast.error(err.statusText);
 				});
 		} else {
 			setName("");
@@ -45,28 +45,37 @@ const SubCategoryDetails = () => {
 		formData.append("name", name);
 		formData.append("category", category);
 
-		const response = await fetch(
-			`${apiUrl}/api/sub-category/${id === "new" ? "" : id}`,
-			{
-				method: id === "new" ? "POST" : "PUT",
-				body: JSON.stringify({ name, category }),
-				headers: {
-					Accept: "application/json",
-					"Content-Type": "application/json",
-					"x-auth-token": localStorage.getItem("token"),
-				},
+		try {
+			const response = await fetch(
+				`${apiUrl}/api/sub-category/${id === "new" ? "" : id}`,
+				{
+					method: id === "new" ? "POST" : "PUT",
+					body: JSON.stringify({ name, category }),
+					headers: {
+						Accept: "application/json",
+						"Content-Type": "application/json",
+						"x-auth-token": localStorage.getItem("token"),
+					},
+				}
+			);
+
+			const { message } = await response.json();
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
 			}
-		);
 
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+			navigate(ADMIN_SUB_CATEGORY);
+			toast.success(message);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		navigate(ADMIN_SUB_CATEGORY);
-		toast.success(message);
 	};
+
+	if (error) {
+		toast.error("Internal Server Error.");
+		return;
+	}
 
 	return (
 		<SubCategoryForm

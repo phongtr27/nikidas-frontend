@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ProductContainer, FilterSidebar } from "../../containers";
 import useFetch from "../../hooks/useFetch";
 import { filterProduct } from "../../helpers/filterProduct";
-import { apiUrl } from "../../constants/routes";
+import { apiUrl, ERROR } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
-import { useSearchParams } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Shop = () => {
+	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 	let { data: products, error: err1 } = useFetch(`${apiUrl}/api/product`);
 	const { data: categories, error: err2 } = useFetch(
@@ -92,8 +92,7 @@ const Shop = () => {
 	);
 
 	if (err1 || err2 || err3) {
-		toast.error("Internal Server Error.");
-		return;
+		return navigate(`${ERROR}`);
 	}
 
 	return (

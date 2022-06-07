@@ -18,12 +18,15 @@ import {
 	User,
 	ProductUser,
 	Contact,
+	NotFound,
+	ServerError,
 } from "./pages";
 import {
 	HOME,
 	SHOP,
 	LOGIN,
 	SIGNUP,
+	ERROR,
 	ADMIN,
 	ADMIN_CATEGORY,
 	ADMIN_SUB_CATEGORY,
@@ -34,7 +37,6 @@ import {
 import { UserContext } from "./context/user";
 import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
 import { getUser } from "./helpers/getUser";
-import NotFound from "./pages/user/notFound";
 
 function App() {
 	const [user, setUser] = useState(getUser());
@@ -79,6 +81,16 @@ function App() {
 						element={
 							<User>
 								<Contact />
+							</User>
+						}
+					/>
+
+					<Route
+						exact
+						path={ERROR}
+						element={
+							<User>
+								<ServerError />
 							</User>
 						}
 					/>

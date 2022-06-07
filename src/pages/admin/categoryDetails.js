@@ -33,8 +33,8 @@ const CategoryDetails = () => {
 					setImg(data.img);
 				})
 				.catch((err) => {
+					toast.error("Internal Server Error.");
 					navigate(`${ADMIN_CATEGORY}/new`);
-					toast.error(err.statusText);
 				});
 		} else {
 			setName("");
@@ -62,26 +62,31 @@ const CategoryDetails = () => {
 			formData.append("category", selectedFile);
 		}
 
-		const response = await fetch(
-			`${apiUrl}/api/category/${id === "new" ? "" : id}`,
-			{
-				method: id === "new" ? "POST" : "PUT",
-				body: formData,
-				headers: {
-					Accept: "multipart/form-data",
-					"x-auth-token": localStorage.getItem("token"),
-				},
+		try {
+			const response = await fetch(
+				`${apiUrl}/api/category/${id === "new" ? "" : id}`,
+				{
+					method: id === "new" ? "POST" : "PUT",
+					body: formData,
+					headers: {
+						Accept: "multipart/form-data",
+						"x-auth-token": localStorage.getItem("token"),
+					},
+				}
+			);
+
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
 			}
-		);
 
-		const { message } = await response.json();
-		if (response.status >= 400) {
-			toast.error(message);
-			return;
+			navigate(ADMIN_CATEGORY);
+			toast.success(message);
+		} catch (err) {
+			toast.error("Internal Server Error.");
 		}
-
-		navigate(ADMIN_CATEGORY);
-		toast.success(message);
 	};
 
 	return (

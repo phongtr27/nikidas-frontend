@@ -1,10 +1,11 @@
 import { BannerSlider, Category, ProductSlider } from "../../containers";
 import useFetch from "../../hooks/useFetch";
 import { Fade } from "react-awesome-reveal";
-import { apiUrl } from "../../constants/routes";
-import { toast } from "react-toastify";
+import { apiUrl, ERROR } from "../../constants/routes";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+	const navigate = useNavigate();
 	const { data: latestProducts, error: err1 } = useFetch(
 		`${apiUrl}/api/product/latest`
 	);
@@ -13,8 +14,7 @@ const Home = () => {
 	);
 
 	if (err1 || err2) {
-		toast.error("Internal Server Error.");
-		return;
+		return navigate(`${ERROR}`);
 	}
 
 	return (
