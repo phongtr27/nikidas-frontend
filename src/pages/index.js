@@ -14,5 +14,6 @@ export { default as Order } from "./admin/order";
 export { default as User } from "./user/user";
 export { default as ProductUser } from "./user/productUser";
 export { default as Contact } from "./user/contact";
+export { default as Cart } from "./user/cart";
 export { default as NotFound } from "./user/notFound";
 export { default as ServerError } from "./user/serverError";

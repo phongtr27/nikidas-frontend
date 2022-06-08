@@ -4,6 +4,7 @@ export const SHOP = "/shop";
 export const CONTACT = "/contact";
 export const LOGIN = "/login";
 export const SIGNUP = "/signup";
+export const CART = "/cart";
 export const ERROR = "/error";
 export const ADMIN = "/admin/";
 export const ADMIN_CATEGORY = "/admin/category";

@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const Base = styled.table`
 	width: 100%;
-	border: 1px solid #8e9194;
+	/* border: 1px solid #8e9194; */
 	border-collapse: collapse;
 `;
 
@@ -24,17 +24,26 @@ export const Body = styled.tbody``;
 export const Row = styled.tr``;
 
 export const Header = styled.th`
-	background-color: #f5faff;
+	/* background-color: #f5faff; */
 	padding: 16px;
-	border: 1px solid #8e9194;
+	/* border: 1px solid #8e9194; */
+	border-bottom: 0.5px solid #8e9194;
 `;
 
 export const Data = styled.td`
-	border: 1px solid #8e9194;
+	/* border: 1px solid #8e9194; */
+	border-bottom: 0.5px solid #8e9194;
 	text-align: center;
 	padding: 10px;
 	${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
 	${({ active }) => active && { backgroundColor: "#eeeeee" }}
+`;
+
+export const Flex = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	max-width: 400px;
 `;
 
 export const Text = styled.p``;

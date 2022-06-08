@@ -69,5 +69,9 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: space-between;
   }
 
-
+  .content {
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 60px;
+  }
 `;

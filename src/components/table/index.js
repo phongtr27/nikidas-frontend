@@ -8,6 +8,7 @@ import {
 	Header,
 	Data,
 	Text,
+	Flex,
 	Image,
 	Button,
 	ReactRouterLink,
@@ -47,6 +48,10 @@ Table.Data = function TableData({ children, ...restProps }) {
 
 Table.Text = function TableText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
+};
+
+Table.Flex = function TableFlex({ children, ...restProps }) {
+	return <Flex {...restProps}>{children}</Flex>;
 };
 
 Table.Image = function TableImage({ ...restProps }) {

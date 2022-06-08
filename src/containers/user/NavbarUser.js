@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Navbar } from "../../components";
 import { ProfileContainer } from "../../containers";
 import { UserContext } from "../../context/user";
-import { LOGIN, HOME, SHOP, CONTACT } from "../../constants/routes";
+import { LOGIN, HOME, SHOP, CONTACT, CART } from "../../constants/routes";
 import { CartContext } from "../../context/cart";
 
 const NavbarUser = () => {
@@ -25,7 +25,7 @@ const NavbarUser = () => {
 					<i className="fas fa-search"></i>
 				</Navbar.Link>
 
-				<Navbar.Link to="#">
+				<Navbar.Link to={CART}>
 					<i className="fas fa-shopping-bag"></i>
 					<Navbar.Tag>{cart.length}</Navbar.Tag>
 				</Navbar.Link>

@@ -20,6 +20,7 @@ import {
 	Contact,
 	NotFound,
 	ServerError,
+	Cart,
 } from "./pages";
 import {
 	HOME,
@@ -33,6 +34,7 @@ import {
 	ADMIN_PRODUCT,
 	ADMIN_ORDER,
 	CONTACT,
+	CART,
 } from "./constants/routes";
 import { UserContext } from "./context/user";
 import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
@@ -81,6 +83,16 @@ function App() {
 						element={
 							<User>
 								<Contact />
+							</User>
+						}
+					/>
+
+					<Route
+						exact
+						path={CART}
+						element={
+							<User>
+								<Cart />
 							</User>
 						}
 					/>
