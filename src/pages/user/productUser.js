@@ -8,7 +8,7 @@ import { CartContext } from "../../context/cart";
 import { addToCart } from "../../helpers/addToCart";
 
 const ProductUser = () => {
-	const { cart, setCart } = useContext(CartContext);
+	const { setCart } = useContext(CartContext);
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const { data: product, error } = useFetch(`${apiUrl}/api/product/${id}`);
@@ -23,9 +23,7 @@ const ProductUser = () => {
 	};
 
 	const handleAddToCart = (productId, color, size, quantity) => {
-		addToCart(productId, color, size, quantity);
-		const item = { productId, color, size, quantity };
-		setCart([...cart, item]);
+		addToCart(productId, color, size, quantity, setCart);
 	};
 
 	if (error) {

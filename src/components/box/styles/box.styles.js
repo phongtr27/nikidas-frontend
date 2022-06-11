@@ -1,7 +1,8 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-	background-color: grey;
+	min-width: 300px;
+	padding: 16px;
 `;
 
 export const Title = styled.h6`

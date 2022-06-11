@@ -37,13 +37,15 @@ export const Data = styled.td`
 	padding: 10px;
 	${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
 	${({ active }) => active && { backgroundColor: "#eeeeee" }}
+	${({ noBorder }) => noBorder && { borderBottom: "none" }}
 `;
 
-export const Flex = styled.div`
-	display: flex;
+export const Grid = styled.div`
+	display: grid;
 	align-items: center;
-	justify-content: space-around;
-	max-width: 400px;
+	justify-content: center;
+	grid-template-columns: 100px 150px;
+	grid-column-gap: 5px;
 `;
 
 export const Text = styled.p``;
@@ -57,9 +59,36 @@ export const Image = styled.img`
 export const Button = styled.span`
 	cursor: pointer;
 	padding: 5px;
+
+	${({ disable }) => disable && { color: "grey" }}
 `;
 
 export const ReactRouterLink = styled(Link)`
 	text-decoration: none;
 	color: black;
+`;
+
+export const BigButton = styled.button`
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 15px 20px;
+	background-color: white;
+	color: black;
+	font-weight: 700;
+	letter-spacing: 4px;
+	border: 1px solid #f0f0f0;
+	cursor: pointer;
+
+	:hover {
+		transition: 0.5s;
+		background-color: black;
+		color: white;
+		border: 1px solid black;
+	}
+
+	:disabled {
+		background-color: #d7d2d2;
+		border: 1px solid #d7d2d2;
+	}
 `;

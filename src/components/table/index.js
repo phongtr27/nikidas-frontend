@@ -8,9 +8,10 @@ import {
 	Header,
 	Data,
 	Text,
-	Flex,
+	Grid,
 	Image,
 	Button,
+	BigButton,
 	ReactRouterLink,
 } from "./styles/table.styles";
 
@@ -50,8 +51,8 @@ Table.Text = function TableText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>;
 };
 
-Table.Flex = function TableFlex({ children, ...restProps }) {
-	return <Flex {...restProps}>{children}</Flex>;
+Table.Grid = function TableGrid({ children, ...restProps }) {
+	return <Grid {...restProps}>{children}</Grid>;
 };
 
 Table.Image = function TableImage({ ...restProps }) {
@@ -60,6 +61,10 @@ Table.Image = function TableImage({ ...restProps }) {
 
 Table.Button = function TableButton({ children, ...restProps }) {
 	return <Button {...restProps}>{children}</Button>;
+};
+
+Table.BigButton = function TableBigButton({ children, ...restProps }) {
+	return <BigButton {...restProps}>{children}</BigButton>;
 };
 
 Table.Link = function TableLink({ children, ...restProps }) {
