@@ -21,3 +21,5 @@ export { default as ProductContainer } from "./user/ProductContainer";
 export { default as FilterSidebar } from "./user/FilterSidebar";
 export { default as SizeTable } from "./user/SizeTable";
 export { default as CartTable } from "./user/CartTable";
+export { default as SearchModal } from "./user/SearchModal";
+export { default as CheckoutContainer } from "./user/CheckoutContainer";

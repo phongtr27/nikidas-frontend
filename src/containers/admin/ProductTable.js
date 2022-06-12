@@ -19,7 +19,7 @@ const ProductTable = ({
 			<Table>
 				<Table.Title>Product Table</Table.Title>
 
-				<Table.Base>
+				<Table.Base fullBorder>
 					<Table.Head>
 						<Table.Row>
 							<Table.Header>No</Table.Header>

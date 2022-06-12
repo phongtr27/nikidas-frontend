@@ -21,6 +21,7 @@ import {
 	NotFound,
 	ServerError,
 	Cart,
+	Checkout,
 } from "./pages";
 import {
 	HOME,
@@ -35,6 +36,7 @@ import {
 	ADMIN_ORDER,
 	CONTACT,
 	CART,
+	CHECKOUT,
 } from "./constants/routes";
 import { UserContext } from "./context/user";
 import { ProtectedRoute, ProtectLogIn } from "./helpers/routes";
@@ -93,6 +95,16 @@ function App() {
 						element={
 							<User>
 								<Cart />
+							</User>
+						}
+					/>
+
+					<Route
+						exact
+						path={CHECKOUT}
+						element={
+							<User>
+								<Checkout />
 							</User>
 						}
 					/>

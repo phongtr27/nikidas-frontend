@@ -5,12 +5,6 @@ export const Container = styled.div`
 	padding: 30px 30px 0px 30px;
 `;
 
-export const Base = styled.table`
-	width: 100%;
-	/* border: 1px solid #8e9194; */
-	border-collapse: collapse;
-`;
-
 export const Title = styled.h2`
 	margin: 0;
 	margin-bottom: 30px;
@@ -38,6 +32,15 @@ export const Data = styled.td`
 	${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
 	${({ active }) => active && { backgroundColor: "#eeeeee" }}
 	${({ noBorder }) => noBorder && { borderBottom: "none" }}
+`;
+
+export const Base = styled.table`
+	width: 100%;
+	/* border: 1px solid #8e9194; */
+	border-collapse: collapse;
+	${({ fullBorder }) =>
+		fullBorder &&
+		`${Header} {border: 1px solid #e1e1e1;} ${Data} {border: 1px solid #e1e1e1;}`}
 `;
 
 export const Grid = styled.div`

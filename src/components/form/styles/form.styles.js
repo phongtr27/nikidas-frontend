@@ -51,6 +51,7 @@ export const TextArea = styled.textarea`
 	width: 100%;
 	height: 100px;
 	margin-bottom: 20px;
+	border: 1px solid #e1e1e1;
 `;
 
 export const Base = styled.form`
@@ -68,12 +69,14 @@ export const Input = styled.input`
 	padding: 10px 5px;
 	outline-color: #c3820a;
 	margin-bottom: 20px;
+	border: 1px solid #e1e1e1;
 `;
 
 export const ColorInput = styled.input`
 	height: 40px;
 	width: 100%;
 	margin-bottom: 20px;
+	border: 1px solid #e1e1e1;
 `;
 
 export const Button = styled.button`
@@ -102,7 +105,6 @@ export const Button = styled.button`
 export const Link = styled(ReactRouterLink)``;
 
 export const LabelFileInput = styled.label`
-	border: 1px solid #767676;
 	margin-bottom: 20px;
 	display: flex;
 	flex-direction: column;
@@ -126,6 +128,13 @@ export const Select = styled.select`
 	outline-color: #c3820a;
 	margin-bottom: 20px;
 	height: 40px;
+	border: 1px solid #e1e1e1;
 `;
 
 export const Option = styled.option``;
+
+export const Grid = styled.div`
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-column-gap: 10px;
+`;

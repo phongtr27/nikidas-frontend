@@ -174,7 +174,7 @@ const ProductForm = ({
 									)}
 							</Form.FileInput>
 
-							<Table.Base>
+							<Table.Base fullBorder>
 								<Table.Head>
 									<Table.Row>
 										<Table.Header>Size</Table.Header>

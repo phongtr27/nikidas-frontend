@@ -1,22 +1,41 @@
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
-	min-width: 300px;
-	padding: 16px;
+	padding: 20px;
+	background-color: #f3f2ee;
+	min-width: 350px;
 `;
 
 export const Title = styled.h6`
 	font-size: 16px;
 	margin-top: 0;
-	margin-bottom: 12px;
+	margin-bottom: 20px;
 `;
 
-export const Text = styled.p``;
+export const Text = styled.p`
+	margin-top: 0;
+	margin-bottom: 10px;
+	${({ color }) => color && { color: color }}
+	${({ fontWeight }) => fontWeight && { fontWeight: fontWeight }}
+`;
+
+export const Image = styled.img`
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+`;
+
+export const Grid = styled.div`
+	display: grid;
+	grid-template-columns: 100px 250px;
+	grid-column-gap: 15px;
+	margin-bottom: 20px;
+`;
 
 export const Button = styled.button`
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	margin-top: 40px;
+	width: 100%;
 	padding: 15px 20px;
 	background-color: black;
 	color: white;

@@ -18,6 +18,7 @@ import {
 	Image,
 	Select,
 	Option,
+	Grid,
 } from "./styles/form.styles";
 
 export default function Form({ children, ...restProps }) {
@@ -59,7 +60,10 @@ Form.Label = function FormLabel({ children, ...restProps }) {
 Form.FileInput = function FormFileInput({ children, ...restProps }) {
 	return (
 		<LabelFileInput>
-			<Input {...restProps} style={{ marginBottom: 0 }} />
+			<Input
+				{...restProps}
+				style={{ marginBottom: 0, border: "1px solid #e1e1e1" }}
+			/>
 			{children}
 		</LabelFileInput>
 	);
@@ -99,4 +103,8 @@ Form.Select = function FormSelect({ children, ...restProps }) {
 
 Form.Option = function FormOption({ children, ...restProps }) {
 	return <Option {...restProps}>{children}</Option>;
+};
+
+Form.Grid = function FormGrid({ children, ...restProps }) {
+	return <Grid {...restProps}>{children}</Grid>;
 };

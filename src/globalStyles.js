@@ -69,6 +69,12 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: space-between;
   }
 
+  .grid {
+    display: grid;
+    grid-template-columns: 800px 500px;
+    grid-column-gap: 40px;
+  }
+
   .content {
     margin-left: 60px;
     margin-right: 60px;

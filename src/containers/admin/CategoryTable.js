@@ -20,7 +20,7 @@ const CategoryTable = ({
 			<Table>
 				<Table.Title>Category Table</Table.Title>
 
-				<Table.Base>
+				<Table.Base fullBorder>
 					<Table.Head>
 						<Table.Row>
 							<Table.Header>No</Table.Header>

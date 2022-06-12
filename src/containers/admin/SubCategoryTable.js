@@ -19,7 +19,7 @@ const SubCategoryTable = ({
 			<Table>
 				<Table.Title>Sub-Category Table</Table.Title>
 
-				<Table.Base>
+				<Table.Base fullBorder>
 					<Table.Head>
 						<Table.Row>
 							<Table.Header>No</Table.Header>

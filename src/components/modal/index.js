@@ -7,11 +7,17 @@ import {
 	Button,
 } from "./styles/modal.styles";
 
-const Modal = ({ children, showModal, setShowModal }) => {
+const Modal = ({
+	children,
+	topPosition,
+	showModal,
+	setShowModal,
+	...restProps
+}) => {
 	return showModal
 		? ReactDOM.createPortal(
-				<Overlay>
-					<Inner>
+				<Overlay topPosition={topPosition}>
+					<Inner {...restProps}>
 						{children}
 						<Close onClick={() => setShowModal(false)}>
 							<i className="fas fa-times-circle"></i>

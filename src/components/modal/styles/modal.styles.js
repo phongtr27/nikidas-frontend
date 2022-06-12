@@ -4,6 +4,8 @@ export const Overlay = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	${({ topPosition }) =>
+		topPosition && { "justify-content": "flex-start", paddingTop: "20px" }}
 	align-items: center;
 	position: fixed;
 	top: 0;
@@ -14,7 +16,7 @@ export const Overlay = styled.div`
 `;
 
 export const Inner = styled.div`
-	border: 1px solid black;
+	border: 1px solid transparent;
 	background-color: white;
 	width: 400px;
 	height: 200px;
@@ -23,6 +25,8 @@ export const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	${({ displayNormal }) => displayNormal && { justifyContent: "flex-start" }}
 `;
 
 export const Close = styled.button`

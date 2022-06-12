@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { CartContext } from "../../context/cart";
 import useFetch from "../../hooks/useFetch";
-import { deleteFromCart } from "../../helpers/deleteFromCart";
-import { apiUrl, CHECKOUT, ERROR, SHOP } from "../../constants/routes";
-import { CartTable } from "../../containers";
+import { apiUrl, ERROR } from "../../constants/routes";
+import { CheckoutContainer } from "../../containers";
 import { Fade } from "react-awesome-reveal";
 
-const Cart = () => {
+const Checkout = () => {
 	const navigate = useNavigate();
-	const { cart, setCart } = useContext(CartContext);
+	const { cart } = useContext(CartContext);
 	const { data: products, error } = useFetch(`${apiUrl}/api/product`);
 
 	const cartToRender = [];
@@ -27,33 +26,15 @@ const Cart = () => {
 		});
 	});
 
-	const handleDeleteItem = (index) => {
-		deleteFromCart(index, setCart);
-	};
-
-	const continueShopping = () => {
-		navigate(SHOP);
-	};
-
-	const proceedToCheckout = () => {
-		navigate(CHECKOUT);
-	};
-
 	if (error) {
 		return navigate(`${ERROR}`);
 	}
 
 	return (
 		<Fade triggerOnce>
-			<CartTable
-				cart={cartToRender}
-				setCart={setCart}
-				handleDeleteItem={handleDeleteItem}
-				continueShopping={continueShopping}
-				proceedToCheckout={proceedToCheckout}
-			/>
+			<CheckoutContainer cart={cartToRender} />
 		</Fade>
 	);
 };
 
-export default Cart;
+export default Checkout;

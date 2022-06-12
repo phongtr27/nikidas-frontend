@@ -2,7 +2,13 @@ import { Table, Card } from "../../components";
 import { addQuantity, subtractQuantity } from "../../helpers/updateCart";
 import { apiUrl } from "../../constants/routes";
 
-const CartTable = ({ cart, setCart, handleDeleteItem, continueShopping }) => {
+const CartTable = ({
+	cart,
+	setCart,
+	handleDeleteItem,
+	continueShopping,
+	proceedToCheckout,
+}) => {
 	return (
 		<div className="content flex">
 			<Table.Base>
@@ -92,7 +98,10 @@ const CartTable = ({ cart, setCart, handleDeleteItem, continueShopping }) => {
 						</Table.Data>
 
 						<Table.Data noBorder>
-							<Card.Button style={{ marginTop: 0 }}>
+							<Card.Button
+								style={{ marginTop: 0 }}
+								onClick={proceedToCheckout}
+							>
 								PROCEED TO CHECKOUT
 							</Card.Button>
 						</Table.Data>
