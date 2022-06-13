@@ -1,15 +1,23 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/user";
 import { CartContext } from "../../context/cart";
 import useFetch from "../../hooks/useFetch";
 import { apiUrl, ERROR } from "../../constants/routes";
 import { CheckoutContainer } from "../../containers";
+import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 
 const Checkout = () => {
 	const navigate = useNavigate();
+	const { user } = useContext(UserContext);
 	const { cart } = useContext(CartContext);
 	const { data: products, error } = useFetch(`${apiUrl}/api/product`);
+	const [name, setName] = useState(user?.name || "");
+	const [phone, setPhone] = useState("");
+	const [email, setEmail] = useState(user?.email || "");
+	const [note, setNote] = useState("");
+	const [address, setAddress] = useState(user?.address || "");
 
 	const cartToRender = [];
 
@@ -26,13 +34,61 @@ const Checkout = () => {
 		});
 	});
 
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		if (cart.length === 0) {
+			toast.warn("No item in cart.");
+			return;
+		}
+
+		const data =
+			note.length > 0
+				? { name, phone, email, note, address, cart }
+				: { name, phone, email, address, cart };
+
+		try {
+			const response = await fetch(`${apiUrl}/api/order`, {
+				method: "POST",
+				body: JSON.stringify(data),
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+			});
+
+			const { message } = await response.json();
+
+			if (response.status >= 400) {
+				toast.error(message);
+				return;
+			}
+			toast.success(message);
+		} catch (err) {
+			toast.error("Internal Server Error.");
+		}
+	};
+
 	if (error) {
 		return navigate(`${ERROR}`);
 	}
 
 	return (
 		<Fade triggerOnce>
-			<CheckoutContainer cart={cartToRender} />
+			<CheckoutContainer
+				cart={cartToRender}
+				name={name}
+				setName={setName}
+				phone={phone}
+				setPhone={setPhone}
+				email={email}
+				setEmail={setEmail}
+				note={note}
+				setNote={setNote}
+				address={address}
+				setAddress={setAddress}
+				handleSubmit={handleSubmit}
+			/>
 		</Fade>
 	);
 };

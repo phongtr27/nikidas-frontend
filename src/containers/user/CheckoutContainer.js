@@ -1,26 +1,73 @@
 import { Box, Form } from "../../components";
 import { apiUrl } from "../../constants/routes";
 
-const CheckoutContainer = ({ cart }) => {
+const CheckoutContainer = ({
+	cart,
+	name,
+	setName,
+	phone,
+	setPhone,
+	email,
+	setEmail,
+	note,
+	setNote,
+	address,
+	setAddress,
+	handleSubmit,
+}) => {
 	return (
 		<div className="content flex">
 			<Form.Base width="800px">
 				<Form.Title>BILLING DETAILS</Form.Title>
 
 				<Form.Label htmlFor="name">Full Name</Form.Label>
-				<Form.Input type="text" name="name" id="name" required />
+				<Form.Input
+					type="text"
+					name="name"
+					id="name"
+					value={name}
+					required
+					onChange={({ target }) => setName(target.value)}
+				/>
 
 				<Form.Label htmlFor="phone">Phone</Form.Label>
-				<Form.Input type="text" name="phone" id="phone" required />
+				<Form.Input
+					type="text"
+					name="phone"
+					id="phone"
+					value={phone}
+					required
+					onChange={({ target }) => setPhone(target.value)}
+				/>
 
 				<Form.Label htmlFor="email">Email</Form.Label>
-				<Form.Input type="text" name="email" id="email" required />
+				<Form.Input
+					type="text"
+					name="email"
+					id="email"
+					value={email}
+					required
+					onChange={({ target }) => setEmail(target.value)}
+				/>
 
 				<Form.Label htmlFor="note">Order Notes</Form.Label>
-				<Form.Input type="text" name="note" id="note" />
+				<Form.Input
+					type="text"
+					name="note"
+					id="note"
+					value={note}
+					onChange={({ target }) => setNote(target.value)}
+				/>
 
 				<Form.Label htmlFor="address">Address</Form.Label>
-				<Form.Input type="text" name="address" id="address" required />
+				<Form.Input
+					type="text"
+					name="address"
+					id="address"
+					value={address}
+					required
+					onChange={({ target }) => setAddress(target.value)}
+				/>
 			</Form.Base>
 
 			<Box>
@@ -69,7 +116,7 @@ const CheckoutContainer = ({ cart }) => {
 					</Box.Text>
 				</div>
 
-				<Box.Button>PLACE ORDER</Box.Button>
+				<Box.Button onClick={handleSubmit}>PLACE ORDER</Box.Button>
 			</Box>
 		</div>
 	);
