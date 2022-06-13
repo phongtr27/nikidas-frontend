@@ -96,7 +96,7 @@ const Shop = () => {
 	}
 
 	return (
-		<Fade triggerOnce>
+		<Fade>
 			<div className="flex">
 				<FilterSidebar
 					categories={categories}

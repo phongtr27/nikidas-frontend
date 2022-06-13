@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Navbar } from "../../components";
 import { ProfileContainer, SearchModal } from "../../containers";
 import { UserContext } from "../../context/user";
@@ -11,12 +11,15 @@ import {
 	CHECKOUT,
 } from "../../constants/routes";
 import { CartContext } from "../../context/cart";
-import { Bounce } from "react-awesome-reveal";
+import { useLocation } from "react-router-dom";
 
 const NavbarUser = () => {
+	const { pathname } = useLocation();
 	const { user, setUser } = useContext(UserContext);
 	const { cart } = useContext(CartContext);
 	const [showSearchModal, setShowSearchModal] = useState(false);
+
+	useEffect(() => setShowSearchModal(false), [pathname]);
 
 	return (
 		<div>
@@ -51,12 +54,10 @@ const NavbarUser = () => {
 				</Navbar.Wrapper>
 			</Navbar>
 
-			<Bounce top>
-				<SearchModal
-					showSearchModal={showSearchModal}
-					setShowSearchModal={setShowSearchModal}
-				/>
-			</Bounce>
+			<SearchModal
+				showSearchModal={showSearchModal}
+				setShowSearchModal={setShowSearchModal}
+			/>
 		</div>
 	);
 };

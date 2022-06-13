@@ -14,7 +14,7 @@ const ProductUser = () => {
 	const { data: product, error } = useFetch(`${apiUrl}/api/product/${id}`);
 	const [option, setOption] = useState(0);
 	const [size, setSize] = useState(null);
-	const [quantity, setQuantity] = useState("1");
+	const [quantity, setQuantity] = useState(1);
 
 	const handleOptionChange = (index) => {
 		setOption(index);
@@ -35,7 +35,7 @@ const ProductUser = () => {
 	}
 
 	return (
-		<Fade triggerOnce>
+		<Fade>
 			<ProductViewContainer
 				product={product}
 				optionIndex={option}

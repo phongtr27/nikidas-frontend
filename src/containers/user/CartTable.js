@@ -43,7 +43,7 @@ const CartTable = ({
 									</div>
 								</Table.Grid>
 							</Table.Data>
-
+							{console.log(+product.quantity === 1)}
 							<Table.Data>
 								<Table.Button
 									onClick={() =>

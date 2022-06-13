@@ -19,7 +19,7 @@ export const Inner = styled.div`
 	border: 1px solid transparent;
 	background-color: white;
 	width: 400px;
-	height: 200px;
+	min-height: 200px;
 	padding: 30px;
 	position: relative;
 	display: flex;
