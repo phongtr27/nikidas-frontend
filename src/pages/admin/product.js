@@ -59,6 +59,7 @@ const Product = () => {
 	return (
 		<>
 			<ProductTable
+				title="Product Table"
 				isLoading={isLoading}
 				PageSize={PageSize}
 				activePage={activePage}

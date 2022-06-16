@@ -14,6 +14,7 @@ const Category = () => {
 		isLoading,
 		error,
 	} = useFetch(`${apiUrl}/api/category`);
+
 	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [activePage, setActivePage] = useState(1);

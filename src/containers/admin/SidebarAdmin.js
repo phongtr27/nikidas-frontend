@@ -98,7 +98,7 @@ const SidebarAdmin = () => {
 
 			<Sidebar.Link
 				to={ADMIN_ORDER}
-				active={pathname === ADMIN_ORDER ? 1 : 0}
+				active={pathname.includes("order") ? 1 : 0}
 				hovercolor="#794aff"
 			>
 				<Sidebar.Icon className="fas fa-bags-shopping" />

@@ -12,7 +12,11 @@ const SubCategoryDetails = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [name, setName] = useState("");
 	const [category, setCategory] = useState("");
-	const { data: categories, error } = useFetch(`${apiUrl}/api/category`);
+	const {
+		data: categories,
+		error,
+		isLoading: isLoading1,
+	} = useFetch(`${apiUrl}/api/category`);
 
 	useEffect(() => {
 		if (id !== "new") {
@@ -40,10 +44,6 @@ const SubCategoryDetails = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-		const formData = new FormData();
-		formData.append("name", name);
-		formData.append("category", category);
 
 		try {
 			const response = await fetch(
@@ -81,6 +81,7 @@ const SubCategoryDetails = () => {
 		<SubCategoryForm
 			id={id}
 			isLoading={isLoading}
+			isLoading1={isLoading1}
 			name={name}
 			setName={setName}
 			category={category}

@@ -42,10 +42,14 @@ const Checkout = () => {
 			return;
 		}
 
+		const price = +cartToRender
+			.reduce((a, b) => a + +b.price * +b.quantity, 0)
+			.toFixed(2);
+
 		const data =
 			note.length > 0
-				? { name, phone, email, note, address, cart }
-				: { name, phone, email, address, cart };
+				? { name, phone, email, note, address, cart, price }
+				: { name, phone, email, address, cart, price };
 
 		try {
 			const response = await fetch(`${apiUrl}/api/order`, {

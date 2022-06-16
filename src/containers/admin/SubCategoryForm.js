@@ -3,6 +3,7 @@ import { Form, Loading } from "../../components";
 const SubCategoryForm = ({
 	id,
 	isLoading,
+	isLoading1,
 	name,
 	setName,
 	category,
@@ -12,7 +13,7 @@ const SubCategoryForm = ({
 }) => {
 	return (
 		<div className="main">
-			{isLoading ? <Loading /> : null}
+			{isLoading || isLoading1 ? <Loading /> : null}
 			<Form.BigContainer>
 				{id === "new" ? (
 					<Form.Title>New Sub-Category</Form.Title>

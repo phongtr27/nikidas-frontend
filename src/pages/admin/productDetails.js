@@ -24,12 +24,16 @@ const ProductDetails = () => {
 		},
 	]);
 
-	const { data: categories, error: err1 } = useFetch(
-		`${apiUrl}/api/category`
-	);
-	const { data: subCategories, error: err2 } = useFetch(
-		`${apiUrl}/api/sub-category`
-	);
+	const {
+		data: categories,
+		error: err1,
+		isLoading: isLoading1,
+	} = useFetch(`${apiUrl}/api/category`);
+	const {
+		data: subCategories,
+		error: err2,
+		isLoading: isLoading2,
+	} = useFetch(`${apiUrl}/api/sub-category`);
 	const filteredSubCategories = subCategories?.filter(
 		(item) => item.category === category
 	);
@@ -178,6 +182,8 @@ const ProductDetails = () => {
 		<ProductForm
 			id={id}
 			isLoading={isLoading}
+			isLoading1={isLoading1}
+			isLoading2={isLoading2}
 			name={name}
 			setName={setName}
 			category={category}

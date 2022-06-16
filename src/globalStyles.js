@@ -61,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .main {
-    margin-left: 15%
+    margin-left: 15%;
   }
 
   .flex {

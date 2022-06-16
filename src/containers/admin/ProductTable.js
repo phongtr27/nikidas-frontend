@@ -1,8 +1,10 @@
 import React from "react";
+import { ADMIN_PRODUCT } from "../../constants/routes";
 import { Loading, Table } from "../../components";
 import { DeleteConfirmation } from "../../containers";
 
 const ProductTable = ({
+	title,
 	isLoading,
 	PageSize,
 	activePage,
@@ -17,14 +19,15 @@ const ProductTable = ({
 		<div className="main">
 			{isLoading ? <Loading /> : null}
 			<Table>
-				<Table.Title>Product Table</Table.Title>
+				<Table.Title>{title}</Table.Title>
 
 				<Table.Base fullBorder>
 					<Table.Head>
 						<Table.Row>
 							<Table.Header>No</Table.Header>
 							<Table.Header>Name</Table.Header>
-							<Table.Header>Price</Table.Header>
+							<Table.Header>Price ($)</Table.Header>
+							<Table.Header>Discount (%)</Table.Header>
 							<Table.Header>Category</Table.Header>
 							<Table.Header>Sub-Category</Table.Header>
 							<Table.Header>Action</Table.Header>
@@ -42,13 +45,17 @@ const ProductTable = ({
 
 								<Table.Data>{product.price}</Table.Data>
 
+								<Table.Data>{product.discount}</Table.Data>
+
 								<Table.Data>{product.category}</Table.Data>
 
 								<Table.Data>{product.subCategory}</Table.Data>
 
 								<Table.Data>
 									<Table.Button>
-										<Table.Link to={`${product._id}`}>
+										<Table.Link
+											to={`${ADMIN_PRODUCT}/${product._id}`}
+										>
 											<i className="fas fa-edit"></i>
 										</Table.Link>
 									</Table.Button>

@@ -19,18 +19,40 @@ const NavbarUser = () => {
 	const { cart } = useContext(CartContext);
 	const [showSearchModal, setShowSearchModal] = useState(false);
 
+	console.log(pathname);
+
 	useEffect(() => setShowSearchModal(false), [pathname]);
 
 	return (
 		<div>
 			<Navbar side_padding="60px">
-				<Navbar.Logo to="/">NIKIDAS</Navbar.Logo>
+				<Navbar.Logo to={HOME}>NIKIDAS</Navbar.Logo>
 
 				<Navbar.Wrapper width="30%">
-					<Navbar.Link to={HOME}>Home</Navbar.Link>
-					<Navbar.Link to={SHOP}>Shop</Navbar.Link>
-					<Navbar.Link to={CONTACT}>Contact Us</Navbar.Link>
-					<Navbar.Link to={CHECKOUT}>Checkout</Navbar.Link>
+					<Navbar.Link to={HOME} active={pathname === HOME ? 1 : 0}>
+						Home
+					</Navbar.Link>
+
+					<Navbar.Link
+						to={SHOP}
+						active={pathname.includes(SHOP) ? 1 : 0}
+					>
+						Shop
+					</Navbar.Link>
+
+					<Navbar.Link
+						to={CONTACT}
+						active={pathname === CONTACT ? 1 : 0}
+					>
+						Contact Us
+					</Navbar.Link>
+
+					<Navbar.Link
+						to={CHECKOUT}
+						active={pathname === CHECKOUT ? 1 : 0}
+					>
+						Checkout
+					</Navbar.Link>
 				</Navbar.Wrapper>
 
 				<Navbar.Wrapper width="126px">

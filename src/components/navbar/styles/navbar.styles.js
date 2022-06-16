@@ -36,6 +36,18 @@ export const Link = styled(ReactRouterLink)`
 	text-decoration: none;
 	color: black;
 	position: relative;
+
+	${({ active }) =>
+		active &&
+		`:after {
+		position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #e53637;
+    content: "";
+	}`}
 `;
 
 export const Tag = styled.span`

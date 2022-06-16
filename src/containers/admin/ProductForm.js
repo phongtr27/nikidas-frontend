@@ -4,6 +4,8 @@ import { apiUrl } from "../../constants/routes";
 const ProductForm = ({
 	id,
 	isLoading,
+	isLoading1,
+	isLoading2,
 	name,
 	setName,
 	category,
@@ -31,7 +33,8 @@ const ProductForm = ({
 }) => {
 	return (
 		<div className="main">
-			{isLoading ? <Loading /> : null}
+			{isLoading || isLoading1 || isLoading2 ? <Loading /> : null}
+
 			<Form.BigContainer>
 				{id === "new" ? (
 					<Form.Title>New Product</Form.Title>

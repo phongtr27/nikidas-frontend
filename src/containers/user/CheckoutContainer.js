@@ -73,7 +73,7 @@ const CheckoutContainer = ({
 			<Box>
 				<Box.Title>ORDER SUMMARY</Box.Title>
 
-				{cart.map((product, index) => (
+				{cart?.map((product, index) => (
 					<Box.Grid key={index}>
 						<Box.Image
 							src={
@@ -107,11 +107,7 @@ const CheckoutContainer = ({
 					<Box.Text>TOTAL</Box.Text>
 					<Box.Text color="#e64445" fontWeight="700">
 						{`$${cart
-							.reduce(
-								(a, b) =>
-									a + Number(b.price) * Number(b.quantity),
-								0
-							)
+							.reduce((a, b) => a + +b.price * +b.quantity, 0)
 							.toFixed(2)}`}
 					</Box.Text>
 				</div>

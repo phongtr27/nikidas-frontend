@@ -15,6 +15,7 @@ import {
 	Product,
 	ProductDetails,
 	Order,
+	OrderDetails,
 	User,
 	ProductUser,
 	Contact,
@@ -250,6 +251,21 @@ function App() {
 							element={
 								<Admin>
 									<Order />
+								</Admin>
+							}
+						/>
+					</Route>
+
+					<Route
+						exact
+						path={`${ADMIN_ORDER}/:id`}
+						element={<ProtectedRoute user={user} />}
+					>
+						<Route
+							path={`${ADMIN_ORDER}/:id`}
+							element={
+								<Admin>
+									<OrderDetails />
 								</Admin>
 							}
 						/>

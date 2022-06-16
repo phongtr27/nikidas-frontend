@@ -88,12 +88,7 @@ const CartTable = ({
 
 						<Table.Data noBorder>
 							{`$${cart
-								.reduce(
-									(a, b) =>
-										a +
-										Number(b.price) * Number(b.quantity),
-									0
-								)
+								.reduce((a, b) => a + +b.price * +b.quantity, 0)
 								.toFixed(2)}`}
 						</Table.Data>
 
