@@ -1,12 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
+  html {
+    overflow-y: scroll;
+  }
+
   html, body {
     height: 100%;
     margin: 0;
     font-family: 'Tahoma', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 14px;
+	}
 };
 
   .pagination {
@@ -62,22 +70,47 @@ export const GlobalStyles = createGlobalStyle`
 
   .main {
     margin-left: 15%;
+
+    @media only screen and (max-width: 1280px) {
+      margin-left: 17%;
+	}
+
+    @media only screen and (max-width: 1024px) {
+		margin-left: 20%;
+	}
+
+    @media only screen and (max-width: 768px) {
+	  margin-left: 0
+	}
+
   }
 
   .flex {
     display: flex;
     justify-content: space-between;
-  }
+}
 
   .grid {
     display: grid;
-    grid-template-columns: 800px 500px;
+    grid-template-columns: auto 400px;
     grid-column-gap: 40px;
+
+    @media only screen and (max-width: 768px) {
+		grid-template-columns: auto;
+    row-gap: 20px;
+	}
+
   }
 
   .content {
     margin-left: 60px;
     margin-right: 60px;
     margin-top: 60px;
+
+    @media only screen and (max-width: 1280px) {
+		margin-left: 30px;
+    margin-right: 30px;
+	}
+
   }
 `;

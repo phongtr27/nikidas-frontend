@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 	padding: 30px 30px 0px 30px;
+	overflow: auto;
 `;
 
 export const Title = styled.h2`
@@ -18,14 +19,11 @@ export const Body = styled.tbody``;
 export const Row = styled.tr``;
 
 export const Header = styled.th`
-	/* background-color: #f5faff; */
 	padding: 16px;
-	/* border: 1px solid #8e9194; */
 	border-bottom: 0.5px solid #8e9194;
 `;
 
 export const Data = styled.td`
-	/* border: 1px solid #8e9194; */
 	border-bottom: 0.5px solid #8e9194;
 	text-align: center;
 	padding: 10px;
@@ -36,7 +34,6 @@ export const Data = styled.td`
 
 export const Base = styled.table`
 	width: 100%;
-	/* border: 1px solid #8e9194; */
 	border-collapse: collapse;
 	${({ fullBorder }) =>
 		fullBorder &&
@@ -93,5 +90,10 @@ export const BigButton = styled.button`
 	:disabled {
 		background-color: #d7d2d2;
 		border: 1px solid #d7d2d2;
+	}
+
+	@media only screen and (max-width: 768px) {
+		padding: 7px 14px;
+		letter-spacing: 2px;
 	}
 `;

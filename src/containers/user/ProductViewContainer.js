@@ -14,6 +14,7 @@ const ProductViewContainer = ({
 	quantity,
 	handleQuantityChange,
 	handleAddToCart,
+	width,
 }) => {
 	const settings = {
 		arrows: false,
@@ -21,6 +22,16 @@ const ProductViewContainer = ({
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
+		responsive: [
+			{
+				breakpoint: 481,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					dots: false,
+				},
+			},
+		],
 	};
 
 	const sliderRef = useRef();
@@ -60,6 +71,30 @@ const ProductViewContainer = ({
 				<ProductView.Text italic={true}>
 					{product?.description}
 				</ProductView.Text>
+
+				{width <= 480 && (
+					<ProductView.Wrapper>
+						<Slider {...settings} ref={sliderRef}>
+							{product?.options[optionIndex].img.map(
+								(image, index) => (
+									<ProductView.Image
+										key={index}
+										src={`${apiUrl}/public${image}`}
+									/>
+								)
+							)}
+						</Slider>
+
+						<ProductView.PrevButton
+							className="fas fa-chevron-left"
+							onClick={goToPrevious}
+						/>
+						<ProductView.NextButton
+							className="fas fa-chevron-right"
+							onClick={goToNext}
+						/>
+					</ProductView.Wrapper>
+				)}
 
 				{product?.options.map((option, index) => (
 					<ProductView.ImagePreview
@@ -110,25 +145,29 @@ const ProductViewContainer = ({
 				</ProductView.Button>
 			</ProductView.Wrapper>
 
-			<ProductView.Wrapper>
-				<Slider {...settings} ref={sliderRef}>
-					{product?.options[optionIndex].img.map((image, index) => (
-						<ProductView.Image
-							key={index}
-							src={`${apiUrl}/public${image}`}
-						/>
-					))}
-				</Slider>
+			{width > 480 && (
+				<ProductView.Wrapper>
+					<Slider {...settings} ref={sliderRef}>
+						{product?.options[optionIndex].img.map(
+							(image, index) => (
+								<ProductView.Image
+									key={index}
+									src={`${apiUrl}/public${image}`}
+								/>
+							)
+						)}
+					</Slider>
 
-				<ProductView.PrevButton
-					className="fas fa-chevron-left"
-					onClick={goToPrevious}
-				/>
-				<ProductView.NextButton
-					className="fas fa-chevron-right"
-					onClick={goToNext}
-				/>
-			</ProductView.Wrapper>
+					<ProductView.PrevButton
+						className="fas fa-chevron-left"
+						onClick={goToPrevious}
+					/>
+					<ProductView.NextButton
+						className="fas fa-chevron-right"
+						onClick={goToNext}
+					/>
+				</ProductView.Wrapper>
+			)}
 		</ProductView>
 	);
 };

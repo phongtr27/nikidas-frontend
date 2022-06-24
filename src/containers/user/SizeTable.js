@@ -2,7 +2,13 @@ import { Table } from "../../components";
 
 const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 	return (
-		<div style={{ marginTop: "16px" }}>
+		<div
+			style={{
+				marginTop: "16px",
+				marginRight: "16px",
+				marginBottom: "20px",
+			}}
+		>
 			<Table.Base>
 				<Table.Body>
 					<Table.Row>

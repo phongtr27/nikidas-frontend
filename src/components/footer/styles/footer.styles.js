@@ -8,6 +8,17 @@ export const Container = styled.div`
 	display: grid;
 	grid-template-columns: auto auto auto;
 	column-gap: 100px;
+
+	@media only screen and (max-width: 1280px) {
+		column-gap: 60px;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	@media only screen and (max-width: 768px) {
+		grid-template-columns: auto;
+		row-gap: 30px;
+	}
 `;
 
 export const Item = styled.div`
@@ -42,6 +53,10 @@ export const Text = styled.p`
 
 export const Image = styled.img`
 	margin-top: 25px;
+
+	@media only screen and (max-width: 768px) {
+		width: 100%;
+	}
 `;
 
 export const Link = styled(ReactRouterLink)`

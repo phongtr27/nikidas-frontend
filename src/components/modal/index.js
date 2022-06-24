@@ -5,6 +5,8 @@ import {
 	Close,
 	GroupButton,
 	Button,
+	SideInner,
+	SideOverlay,
 } from "./styles/modal.styles";
 
 const Modal = ({
@@ -35,6 +37,27 @@ Modal.GroupButton = function ModalGroupButton({ children, ...restProps }) {
 
 Modal.Button = function ModalButton({ children, ...restProps }) {
 	return <Button {...restProps}>{children}</Button>;
+};
+
+Modal.SideModal = function ModalSide({
+	children,
+	showModal,
+	setShowModal,
+	...restProps
+}) {
+	return showModal
+		? ReactDOM.createPortal(
+				<SideOverlay>
+					<SideInner {...restProps}>
+						{children}
+						<Close onClick={() => setShowModal(false)}>
+							<i className="fas fa-times-circle"></i>
+						</Close>
+					</SideInner>
+				</SideOverlay>,
+				document.body
+		  )
+		: null;
 };
 
 export default Modal;

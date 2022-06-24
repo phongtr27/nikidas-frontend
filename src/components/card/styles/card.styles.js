@@ -7,6 +7,16 @@ export const Container = styled.div`
 	padding-right: 60px;
 	text-align: ${({ center }) => (center ? "center" : "left")};
 	position: relative;
+	${({ width }) => width && { width: width }}
+
+	@media only screen and (max-width: 1280px) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+
+	@media only screen and (max-width: 480px) {
+		padding-top: 30px;
+	}
 `;
 
 export const Title = styled.h3`
@@ -24,6 +34,19 @@ export const Grid = styled.div`
 	grid-template-columns: repeat(3, minmax(0, 1fr));
 	column-gap: 20px;
 	row-gap: 20px;
+
+	@media only screen and (max-width: 1024px) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@media only screen and (max-width: 768px) {
+		column-gap: 60px;
+	}
+
+	@media only screen and (max-width: 768px) {
+		grid-template-columns: auto;
+		justify-items: center;
+	}
 `;
 
 export const Item = styled(ReactRouterLink)`
@@ -53,6 +76,11 @@ export const Image = styled.img`
 	&:hover {
 		transform: scale(1.1);
 		opacity: 0.7;
+	}
+
+	@media only screen and (max-width: 768px) {
+		/* height: 320px; */
+		width: 320px;
 	}
 `;
 
@@ -125,5 +153,10 @@ export const Button = styled.button`
 	:disabled {
 		background-color: #d7d2d2;
 		border: 1px solid #d7d2d2;
+	}
+
+	@media only screen and (max-width: 768px) {
+		padding: 7px 14px;
+		letter-spacing: 2px;
 	}
 `;

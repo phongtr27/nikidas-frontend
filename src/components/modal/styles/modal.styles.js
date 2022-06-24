@@ -27,6 +27,10 @@ export const Inner = styled.div`
 	justify-content: space-between;
 
 	${({ displayNormal }) => displayNormal && { justifyContent: "flex-start" }}
+
+	@media only screen and (max-width: 480px) {
+		width: 300px;
+	}
 `;
 
 export const Close = styled.button`
@@ -67,4 +71,26 @@ export const Button = styled.button`
 export const GroupButton = styled.div`
 	display: flex;
 	justify-content: space-between;
+`;
+
+export const SideOverlay = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.27);
+`;
+
+export const SideInner = styled.div`
+	height: 100vh;
+	background-color: white;
+	width: 35%;
+	overflow-x: scroll;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	@media only screen and (max-width: 480px) {
+		width: 50%;
+	}
 `;

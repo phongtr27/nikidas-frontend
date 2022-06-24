@@ -16,6 +16,11 @@ export const Container = styled.div`
 		side_padding ? side_padding : "30px"};
 	padding-right: ${({ side_padding }) =>
 		side_padding ? side_padding : "30px"};
+
+	@media only screen and (max-width: 1280px) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 `;
 
 export const Logo = styled(ReactRouterLink)`
@@ -30,6 +35,10 @@ export const Wrapper = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	width: ${({ width }) => width ?? width};
+
+	@media only screen and (max-width: 768px) {
+		visibility: hidden;
+	}
 `;
 
 export const Link = styled(ReactRouterLink)`
@@ -64,4 +73,8 @@ export const Tag = styled.span`
 	position: absolute;
 	bottom: -9px;
 	left: 7px;
+`;
+
+export const Button = styled.div`
+	cursor: pointer;
 `;

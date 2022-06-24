@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Banner } from "../../components";
 import BannerContainer from "./BannerContainer";
 import Slider from "react-slick";
@@ -6,6 +6,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const BannerSlider = () => {
+	const [width, setWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		window.addEventListener("resize", () => setWidth(window.innerWidth));
+
+		return () =>
+			window.removeEventListener("resize", () =>
+				setWidth(window.innerWidth)
+			);
+	}, [width]);
+
 	const settings = {
 		infinite: true,
 		arrows: false,
@@ -34,14 +45,19 @@ const BannerSlider = () => {
 				<BannerContainer url="/images/banners/background_2.jpeg" />
 			</Slider>
 
-			<Banner.PrevButton
-				className="fas fa-chevron-left"
-				onClick={goToPrevious}
-			/>
-			<Banner.NextButton
-				className="fas fa-chevron-right"
-				onClick={goToNext}
-			/>
+			{width > 768 && (
+				<Banner.PrevButton
+					className="fas fa-chevron-left"
+					onClick={goToPrevious}
+				/>
+			)}
+
+			{width > 768 && (
+				<Banner.NextButton
+					className="fas fa-chevron-right"
+					onClick={goToNext}
+				/>
+			)}
 		</>
 	);
 };

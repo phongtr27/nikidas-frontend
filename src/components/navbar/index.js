@@ -1,4 +1,11 @@
-import { Container, Logo, Wrapper, Link, Tag } from "./styles/navbar.styles";
+import {
+	Container,
+	Logo,
+	Wrapper,
+	Link,
+	Tag,
+	Button,
+} from "./styles/navbar.styles";
 
 const Navbar = ({ children, ...restProps }) => {
 	return <Container {...restProps}>{children}</Container>;
@@ -18,6 +25,10 @@ Navbar.Link = function NavbarLink({ children, ...restProps }) {
 
 Navbar.Tag = function NavbarTag({ children, ...restProps }) {
 	return <Tag {...restProps}>{children}</Tag>;
+};
+
+Navbar.Button = function NavbarButton({ children, ...restProps }) {
+	return <Button {...restProps}>{children}</Button>;
 };
 
 export default Navbar;

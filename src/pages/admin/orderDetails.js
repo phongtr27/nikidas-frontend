@@ -67,7 +67,7 @@ const OrderDetails = () => {
 	}
 
 	return (
-		<div style={{ paddingBottom: "60px" }}>
+		<div style={{ paddingBottom: "30px" }}>
 			<OrderForm
 				isLoading={isLoading}
 				order={order}

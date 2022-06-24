@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ProductContainer, FilterSidebar } from "../../containers";
+import { useState, useEffect } from "react";
+import { ProductContainer, FilterSidebar, FilterModal } from "../../containers";
 import useFetch from "../../hooks/useFetch";
 import { filterProduct } from "../../helpers/filterProduct";
 import { apiUrl, ERROR } from "../../constants/routes";
@@ -8,24 +8,45 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Shop = () => {
 	const navigate = useNavigate();
+
+	const [width, setWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		window.addEventListener("resize", () => setWidth(window.innerWidth));
+		return () =>
+			window.removeEventListener("resize", () =>
+				setWidth(window.innerWidth)
+			);
+	}, [width]);
+
+	const [showFilterModal, setShowFilterModal] = useState(false);
+
 	const [searchParams] = useSearchParams();
-	let { data: products, error: err1 } = useFetch(`${apiUrl}/api/product`);
+
+	const { data: products, error: err1 } = useFetch(`${apiUrl}/api/product`);
+
 	const { data: categories, error: err2 } = useFetch(
 		`${apiUrl}/api/category`
 	);
+
 	const { data: subCategories, error: err3 } = useFetch(
 		`${apiUrl}/api/sub-category`
 	);
 
 	const [productLimit, setProductLimit] = useState(9);
+
 	const [filterCategory, setFilterCategory] = useState(
 		searchParams.get("category") ? [searchParams.get("category")] : []
 	);
+
 	const [filterSubCategory, setFilterSubCategory] = useState([]);
+
 	const [filterSale, setFilterSale] = useState(
 		searchParams.get("sale") ? true : false
 	);
+
 	const [filterPrice, setFilterPrice] = useState([]);
+
 	const [filterSize, setFilterSize] = useState([]);
 
 	const handleLoadMore = () => {
@@ -119,7 +140,30 @@ const Shop = () => {
 					products={filteredProducts}
 					productLimit={productLimit}
 					handleLoadMore={handleLoadMore}
+					setShowFilterModal={setShowFilterModal}
+					width={width}
 				/>
+
+				{width <= 768 && (
+					<FilterModal
+						showFilterModal={showFilterModal}
+						setShowFilterModal={setShowFilterModal}
+						categories={categories}
+						subCategories={subCategories}
+						filterCategory={filterCategory}
+						filterSubCategory={filterSubCategory}
+						filterSale={filterSale}
+						filterPrice={filterPrice}
+						filterSize={filterSize}
+						handleFilterCategoryChange={handleFilterCategoryChange}
+						handleFilterSubCategoryChange={
+							handleFilterSubCategoryChange
+						}
+						handleFilterSaleChange={handleFilterSaleChange}
+						handleFilterPriceChange={handleFilterPriceChange}
+						handleFilterSizeChange={handleFilterSizeChange}
+					/>
+				)}
 			</div>
 		</Fade>
 	);

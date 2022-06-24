@@ -10,13 +10,16 @@ const CartTable = ({
 	proceedToCheckout,
 }) => {
 	return (
-		<div className="content flex">
+		<div className="content flex" style={{ overflow: "auto" }}>
 			<Table.Base>
 				<Table.Head>
 					<Table.Row>
 						<Table.Header>PRODUCT</Table.Header>
+
 						<Table.Header>QUANTITY</Table.Header>
+
 						<Table.Header>TOTAL</Table.Header>
+
 						<Table.Header>ACTION</Table.Header>
 					</Table.Row>
 				</Table.Head>
@@ -34,16 +37,19 @@ const CartTable = ({
 										}
 										alt={product.name}
 									/>
+
 									<div style={{ textAlign: "left" }}>
 										<Table.Text>{product.name}</Table.Text>
+
 										<Table.Text>
 											{`$${product.price}`}
 										</Table.Text>
+
 										<Table.Text>{`Size: ${product.size}`}</Table.Text>
 									</div>
 								</Table.Grid>
 							</Table.Data>
-							{console.log(+product.quantity === 1)}
+
 							<Table.Data>
 								<Table.Button
 									onClick={() =>

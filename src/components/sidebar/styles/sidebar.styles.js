@@ -7,13 +7,43 @@ export const ContainerFixed = styled.div`
 	left: 0;
 	height: 100%;
 	width: 15%;
+
+	@media only screen and (max-width: 1280px) {
+		width: 17%;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		width: 20%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
 `;
 
 export const Container = styled.div`
 	padding-top: 60px;
 	padding-left: 30px;
-	max-width: 15%;
+	width: 15%;
 	height: 100%;
+
+	@media only screen and (max-width: 1280px) {
+		padding-left: 0;
+		width: 17%;
+	}
+
+	@media only screen and (max-width: 1024px) {
+		padding-left: 0;
+		width: 20%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
 `;
 
 export const Logo = styled.img`
@@ -43,7 +73,7 @@ export const Link = styled(ReactRouterLink)`
 	display: flex;
 	align-items: center;
 	text-decoration: none;
-	color: ${({ active }) => (active ? "#794aff" : "#797f91")};
+	color: ${({ active, hovercolor }) => (active ? hovercolor : "#797f91")};
 	padding-left: 30px;
 	&:hover {
 		color: ${({ hovercolor }) => hovercolor};
@@ -80,5 +110,6 @@ export const DropdownMenu = styled.div`
 		:hover {
 			${({ hoverbox }) => hoverbox && { backgroundColor: "#eeeeee" }}
 		}
+		width: 150px;
 	}
 `;

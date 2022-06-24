@@ -16,8 +16,8 @@ const CheckoutContainer = ({
 	handleSubmit,
 }) => {
 	return (
-		<div className="content flex">
-			<Form.Base width="800px">
+		<div className="content grid">
+			<Form.Base>
 				<Form.Title>BILLING DETAILS</Form.Title>
 
 				<Form.Label htmlFor="name">Full Name</Form.Label>

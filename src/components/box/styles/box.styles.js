@@ -10,6 +10,10 @@ export const Title = styled.h6`
 	font-size: 16px;
 	margin-top: 0;
 	margin-bottom: 20px;
+
+	@media only screen and (max-width: 768px) {
+		font-size: 14px;
+	}
 `;
 
 export const Text = styled.p`
@@ -27,7 +31,7 @@ export const Image = styled.img`
 
 export const Grid = styled.div`
 	display: grid;
-	grid-template-columns: 100px 250px;
+	grid-template-columns: 100px auto;
 	grid-column-gap: 15px;
 	margin-bottom: 20px;
 `;

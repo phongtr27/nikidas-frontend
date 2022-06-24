@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../context/user";
 import { CartContext } from "../../context/cart";
 import useFetch from "../../hooks/useFetch";
-import { apiUrl, ERROR } from "../../constants/routes";
+import { apiUrl, ERROR, SHOP } from "../../constants/routes";
 import { CheckoutContainer } from "../../containers";
 import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
@@ -11,7 +11,7 @@ import { Fade } from "react-awesome-reveal";
 const Checkout = () => {
 	const navigate = useNavigate();
 	const { user } = useContext(UserContext);
-	const { cart } = useContext(CartContext);
+	const { cart, setCart } = useContext(CartContext);
 	const { data: products, error } = useFetch(`${apiUrl}/api/product`);
 	const [name, setName] = useState(user?.name || "");
 	const [phone, setPhone] = useState("");
@@ -67,6 +67,10 @@ const Checkout = () => {
 				toast.error(message);
 				return;
 			}
+
+			localStorage.removeItem("cart");
+			setCart([]);
+			navigate(SHOP);
 			toast.success(message);
 		} catch (err) {
 			toast.error("Internal Server Error.");

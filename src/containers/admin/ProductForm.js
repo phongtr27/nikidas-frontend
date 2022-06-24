@@ -177,70 +177,77 @@ const ProductForm = ({
 									)}
 							</Form.FileInput>
 
-							<Table.Base fullBorder>
-								<Table.Head>
-									<Table.Row>
-										<Table.Header>Size</Table.Header>
-										<Table.Header>Quantity</Table.Header>
-										<Table.Header>Action</Table.Header>
-									</Table.Row>
-								</Table.Head>
-								<Table.Body>
-									{option.quantityPerSize.map(
-										(item, index) => (
-											<Table.Row key={index}>
-												<Table.Data>
-													<Form.Input
-														type="text"
-														id="size"
-														name="size"
-														required
-														value={item.size}
-														onChange={(e) =>
-															handleQuantityPerSizeChange(
-																outerIndex,
-																index,
-																e
-															)
-														}
-													/>
-												</Table.Data>
+							<div style={{ overflow: "auto" }}>
+								<Table.Base fullBorder>
+									<Table.Head>
+										<Table.Row>
+											<Table.Header>Size</Table.Header>
+											<Table.Header>
+												Quantity
+											</Table.Header>
+											<Table.Header>Action</Table.Header>
+										</Table.Row>
+									</Table.Head>
+									<Table.Body>
+										{option.quantityPerSize.map(
+											(item, index) => (
+												<Table.Row key={index}>
+													<Table.Data>
+														<Form.Input
+															type="text"
+															id="size"
+															name="size"
+															required
+															value={item.size}
+															onChange={(e) =>
+																handleQuantityPerSizeChange(
+																	outerIndex,
+																	index,
+																	e
+																)
+															}
+														/>
+													</Table.Data>
 
-												<Table.Data>
-													<Form.Input
-														type="number"
-														id="quantity"
-														name="quantity"
-														min={1}
-														required
-														value={item.quantity}
-														onChange={(e) =>
-															handleQuantityPerSizeChange(
-																outerIndex,
-																index,
-																e
-															)
-														}
-													/>
-												</Table.Data>
+													<Table.Data>
+														<Form.Input
+															type="number"
+															id="quantity"
+															name="quantity"
+															min={1}
+															required
+															value={
+																item.quantity
+															}
+															onChange={(e) =>
+																handleQuantityPerSizeChange(
+																	outerIndex,
+																	index,
+																	e
+																)
+															}
+														/>
+													</Table.Data>
 
-												<Table.Data>
-													<Table.Button
-														onClick={() =>
-															deleteSize(
-																outerIndex,
-																index
-															)
-														}
-													>
-														<i className="fas fa-trash-alt"></i>
-													</Table.Button>
-												</Table.Data>
-											</Table.Row>
-										)
-									)}
-								</Table.Body>
-							</Table.Base>
+													<Table.Data>
+														<Table.Button
+															onClick={() =>
+																deleteSize(
+																	outerIndex,
+																	index
+																)
+															}
+														>
+															<i className="fas fa-trash-alt"></i>
+														</Table.Button>
+													</Table.Data>
+												</Table.Row>
+											)
+										)}
+									</Table.Body>
+								</Table.Base>
+							</div>
+
 							<Form.SmallButton
 								onClick={() => addSize(outerIndex)}
 							>
