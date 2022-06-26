@@ -4,24 +4,17 @@ import { Navbar } from "../../components";
 import { ProfileContainer } from "../../containers";
 import { UserContext } from "../../context/user";
 import SidebarModalAdmin from "./SidebarModalAdmin";
+import useWidth from "../../hooks/useWidth";
 
 const NavBarAdmin = () => {
 	const { pathname } = useLocation();
 	const { user, setUser } = useContext(UserContext);
 	const [showSidebarModal, setShowSidebarModal] = useState(false);
-	const [width, setWidth] = useState(window.innerWidth);
+	const { width } = useWidth();
 
 	useEffect(() => {
 		setShowSidebarModal(false);
 	}, [pathname]);
-
-	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
-		return () =>
-			window.removeEventListener("resize", () =>
-				setWidth(window.innerWidth)
-			);
-	}, [width]);
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");

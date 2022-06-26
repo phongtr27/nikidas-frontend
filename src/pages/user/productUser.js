@@ -1,6 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import useWidth from "../../hooks/useWidth";
 import { apiUrl, ERROR } from "../../constants/routes";
 import { ProductViewContainer } from "../../containers";
 import { Fade } from "react-awesome-reveal";
@@ -15,16 +16,7 @@ const ProductUser = () => {
 	const [option, setOption] = useState(0);
 	const [size, setSize] = useState(null);
 	const [quantity, setQuantity] = useState(1);
-	const [width, setWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
-
-		return () =>
-			window.removeEventListener("resize", () =>
-				setWidth(window.innerWidth)
-			);
-	}, [width]);
+	const { width } = useWidth();
 
 	const handleOptionChange = (index) => {
 		setOption(index);

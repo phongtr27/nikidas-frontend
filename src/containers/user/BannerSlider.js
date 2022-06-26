@@ -1,21 +1,13 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 import { Banner } from "../../components";
+import useWidth from "../../hooks/useWidth";
 import BannerContainer from "./BannerContainer";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const BannerSlider = () => {
-	const [width, setWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
-
-		return () =>
-			window.removeEventListener("resize", () =>
-				setWidth(window.innerWidth)
-			);
-	}, [width]);
+	const { width } = useWidth();
 
 	const settings = {
 		infinite: true,

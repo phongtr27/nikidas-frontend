@@ -1,7 +1,8 @@
 import { Card } from "../../components";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { CategoryCard } from "../../containers";
 import useFetch from "../../hooks/useFetch";
+import useWidth from "../../hooks/useWidth";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,16 +11,7 @@ import { toast } from "react-toastify";
 
 const Category = () => {
 	const { data: categories, error } = useFetch(`${apiUrl}/api/category`);
-	const [width, setWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
-
-		return () =>
-			window.removeEventListener("resize", () =>
-				setWidth(window.innerWidth)
-			);
-	}, [width]);
+	const { width } = useWidth();
 
 	const settings = {
 		arrows: false,

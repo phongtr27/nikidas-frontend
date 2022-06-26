@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ProductContainer, FilterSidebar, FilterModal } from "../../containers";
 import useFetch from "../../hooks/useFetch";
+import useWidth from "../../hooks/useWidth";
 import { filterProduct } from "../../helpers/filterProduct";
 import { apiUrl, ERROR } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
@@ -9,15 +10,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const Shop = () => {
 	const navigate = useNavigate();
 
-	const [width, setWidth] = useState(window.innerWidth);
-
-	useEffect(() => {
-		window.addEventListener("resize", () => setWidth(window.innerWidth));
-		return () =>
-			window.removeEventListener("resize", () =>
-				setWidth(window.innerWidth)
-			);
-	}, [width]);
+	const { width } = useWidth();
 
 	const [showFilterModal, setShowFilterModal] = useState(false);
 
