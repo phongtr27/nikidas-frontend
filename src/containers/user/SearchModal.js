@@ -15,7 +15,7 @@ const SearchModal = ({ showSearchModal, setShowSearchModal, modalRef }) => {
 		setFilteredProducts([]);
 	}, [pathname]);
 
-	const searchItems = (searchValue) => {
+	const handleItemSearch = (searchValue) => {
 		setSearchTerm(searchValue);
 		if (searchValue.length >= 3) {
 			const filteredData = products?.filter((product) =>
@@ -40,7 +40,7 @@ const SearchModal = ({ showSearchModal, setShowSearchModal, modalRef }) => {
 				name="searchTerm"
 				id="searchTerm"
 				value={searchTerm}
-				onChange={({ target }) => searchItems(target.value)}
+				onChange={({ target }) => handleItemSearch(target.value)}
 				placeholder="Search here..."
 			/>
 			{filteredProducts?.map((product, index) => (

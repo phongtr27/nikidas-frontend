@@ -8,8 +8,8 @@ const CategoryForm = ({
 	setName,
 	img,
 	selectedFile,
-	handleFileUpload,
-	handleSubmit,
+	onFileUpload,
+	onSubmit,
 }) => {
 	return (
 		<div className="main">
@@ -21,7 +21,7 @@ const CategoryForm = ({
 					<Form.Title>Category</Form.Title>
 				)}
 
-				<Form.Base onSubmit={handleSubmit}>
+				<Form.Base onSubmit={onSubmit}>
 					<Form.Label htmlFor="name">Category Name</Form.Label>
 					<Form.Input
 						type="text"
@@ -39,7 +39,7 @@ const CategoryForm = ({
 						id="image"
 						accept="image/*"
 						multiple
-						onChange={(e) => handleFileUpload(e)}
+						onChange={(e) => onFileUpload(e)}
 					>
 						{selectedFile && (
 							<Form.Image src={selectedFile.preview} />

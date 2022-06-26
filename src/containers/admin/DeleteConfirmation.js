@@ -4,7 +4,7 @@ const DeleteConfirmation = ({
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
 	modalRef,
-	handleDelete,
+	onDelete,
 	idToDelete,
 }) => {
 	return (
@@ -19,10 +19,7 @@ const DeleteConfirmation = ({
 					Cancel
 				</Modal.Button>
 
-				<Modal.Button
-					bg="#e50914"
-					onClick={() => handleDelete(idToDelete)}
-				>
+				<Modal.Button bg="#e50914" onClick={() => onDelete(idToDelete)}>
 					Confirm
 				</Modal.Button>
 			</Modal.GroupButton>

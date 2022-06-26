@@ -13,7 +13,7 @@ const SidebarModalAdmin = ({
 	showSidebarModal,
 	setShowSidebarModal,
 	sideModalRef,
-	handleLogout,
+	onLogout,
 }) => {
 	return (
 		<Modal.SideModal
@@ -123,7 +123,7 @@ const SidebarModalAdmin = ({
 				<Sidebar.Text>Orders</Sidebar.Text>
 			</Sidebar.Link>
 
-			<Sidebar.Link to="#" hovercolor="#794aff" onClick={handleLogout}>
+			<Sidebar.Link to="#" hovercolor="#794aff" onClick={onLogout}>
 				<Sidebar.Icon className="fas fa-sign-out" />
 				<Sidebar.Text>Log Out</Sidebar.Text>
 			</Sidebar.Link>

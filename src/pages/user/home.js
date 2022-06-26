@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 	const navigate = useNavigate();
+
 	const { data: latestProducts, error: err1 } = useFetch(
 		`${apiUrl}/api/product/latest`
 	);
+
 	const { data: saleProducts, error: err2 } = useFetch(
 		`${apiUrl}/api/product/discount`
 	);

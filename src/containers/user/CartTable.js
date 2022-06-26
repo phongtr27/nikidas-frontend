@@ -5,7 +5,7 @@ import { apiUrl } from "../../constants/routes";
 const CartTable = ({
 	cart,
 	setCart,
-	handleDeleteItem,
+	onItemDelete,
 	continueShopping,
 	proceedToCheckout,
 }) => {
@@ -75,7 +75,7 @@ const CartTable = ({
 
 							<Table.Data>
 								<Table.Button
-									onClick={() => handleDeleteItem(index)}
+									onClick={() => onItemDelete(index)}
 								>
 									<i className="fas fa-times-circle"></i>
 								</Table.Button>

@@ -5,7 +5,7 @@ const ProductContainer = ({
 	width,
 	products,
 	productLimit,
-	handleLoadMore,
+	onLoadMore,
 	setShowFilterModal,
 }) => {
 	return (
@@ -32,7 +32,7 @@ const ProductContainer = ({
 			</Card.Grid>
 
 			{products?.length > productLimit && (
-				<Card.Button onClick={handleLoadMore}>LOAD MORE</Card.Button>
+				<Card.Button onClick={onLoadMore}>LOAD MORE</Card.Button>
 			)}
 		</Card>
 	);

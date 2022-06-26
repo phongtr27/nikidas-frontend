@@ -12,11 +12,11 @@ const FilterModal = ({
 	filterSale,
 	filterPrice,
 	filterSize,
-	handleFilterCategoryChange,
-	handleFilterSubCategoryChange,
-	handleFilterSaleChange,
-	handleFilterPriceChange,
-	handleFilterSizeChange,
+	onFilterCategoryChange,
+	onFilterSubCategoryChange,
+	onFilterSaleChange,
+	onFilterPriceChange,
+	onFilterSizeChange,
 }) => {
 	return (
 		<Modal.SideModal
@@ -34,7 +34,7 @@ const FilterModal = ({
 							paddingLeft="30px"
 							active={filterCategory.includes(category.name)}
 							onClick={() =>
-								handleFilterCategoryChange(category.name)
+								onFilterCategoryChange(category.name)
 							}
 						>
 							{category.name}
@@ -56,7 +56,7 @@ const FilterModal = ({
 								subCategory.name
 							)}
 							onClick={() =>
-								handleFilterSubCategoryChange(subCategory.name)
+								onFilterSubCategoryChange(subCategory.name)
 							}
 						>
 							{subCategory.name}
@@ -73,7 +73,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterSale}
-						onClick={handleFilterSaleChange}
+						onClick={onFilterSaleChange}
 					>
 						Sale
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -88,7 +88,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[0, 200]")}
-						onClick={() => handleFilterPriceChange("[0, 200]")}
+						onClick={() => onFilterPriceChange("[0, 200]")}
 					>
 						{`< $200`}
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -97,7 +97,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[200, 299]")}
-						onClick={() => handleFilterPriceChange("[200, 299]")}
+						onClick={() => onFilterPriceChange("[200, 299]")}
 					>
 						$200 - $299
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -106,7 +106,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[300, 399]")}
-						onClick={() => handleFilterPriceChange("[300, 399]")}
+						onClick={() => onFilterPriceChange("[300, 399]")}
 					>
 						$300 - $399
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -115,7 +115,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[400, 499]")}
-						onClick={() => handleFilterPriceChange("[400, 499]")}
+						onClick={() => onFilterPriceChange("[400, 499]")}
 					>
 						$400 - $499
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -124,7 +124,7 @@ const FilterModal = ({
 					<Sidebar.Text
 						paddingLeft="30px"
 						active={filterPrice.includes("[500]")}
-						onClick={() => handleFilterPriceChange("[500]")}
+						onClick={() => onFilterPriceChange("[500]")}
 					>
 						{`> $500`}
 						<Sidebar.Icon className="fas fa-times"></Sidebar.Icon>
@@ -138,7 +138,7 @@ const FilterModal = ({
 				<Sidebar.DropdownMenu style={{ paddingBottom: "20px" }}>
 					<SizeTable
 						filterSize={filterSize}
-						handleFilterSizeChange={handleFilterSizeChange}
+						onFilterSizeChange={onFilterSizeChange}
 					/>
 				</Sidebar.DropdownMenu>
 			</Sidebar.Dropdown>

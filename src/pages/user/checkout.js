@@ -95,7 +95,7 @@ const Checkout = () => {
 				setNote={setNote}
 				address={address}
 				setAddress={setAddress}
-				handleSubmit={handleSubmit}
+				onSubmit={handleSubmit}
 			/>
 		</Fade>
 	);

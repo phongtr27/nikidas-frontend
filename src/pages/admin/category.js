@@ -75,7 +75,7 @@ const Category = () => {
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
 				modalRef={modalRef}
-				handleDelete={handleDelete}
+				onDelete={handleDelete}
 				idToDelete={idToDelete}
 				setIdToDelete={setIdToDelete}
 			/>

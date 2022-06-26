@@ -20,14 +20,14 @@ const ProductForm = ({
 	setDiscount,
 	selectedFile,
 	options,
-	addOption,
-	deleteOption,
-	addSize,
-	deleteSize,
-	handleColorChange,
-	handleFileUpload,
-	handleQuantityPerSizeChange,
-	handleSubmit,
+	onOptionAdd,
+	onOptionDelete,
+	onSizeAdd,
+	onSizeDelete,
+	onColorChange,
+	onFileUpload,
+	onQuantityPerSizeChange,
+	onSubmit,
 	categories,
 	subCategories,
 }) => {
@@ -42,7 +42,7 @@ const ProductForm = ({
 					<Form.Title>Product</Form.Title>
 				)}
 
-				<Form.Base onSubmit={handleSubmit}>
+				<Form.Base onSubmit={onSubmit}>
 					<Form.Label htmlFor="name">Product Name</Form.Label>
 					<Form.Input
 						type="text"
@@ -122,7 +122,7 @@ const ProductForm = ({
 
 					<Form.Label>
 						Product Attributes{"  "}
-						<Form.SmallButton onClick={addOption}>
+						<Form.SmallButton onClick={onOptionAdd}>
 							{" "}
 							<i className="fas fa-plus-square"></i>
 						</Form.SmallButton>
@@ -133,7 +133,7 @@ const ProductForm = ({
 							<Form.Text>
 								{`Option ${outerIndex + 1}`}{" "}
 								<Form.SmallButton
-									onClick={() => deleteOption(outerIndex)}
+									onClick={() => onOptionDelete(outerIndex)}
 								>
 									<i className="fas fa-minus-square"></i>
 								</Form.SmallButton>
@@ -145,9 +145,7 @@ const ProductForm = ({
 								name="color"
 								id="color"
 								value={option.color}
-								onChange={(e) =>
-									handleColorChange(outerIndex, e)
-								}
+								onChange={(e) => onColorChange(outerIndex, e)}
 							/>
 
 							<Form.Label htmlFor="image">Image</Form.Label>
@@ -156,9 +154,7 @@ const ProductForm = ({
 								name="image"
 								id="image"
 								accept="image/*"
-								onChange={(e) =>
-									handleFileUpload(outerIndex, e)
-								}
+								onChange={(e) => onFileUpload(outerIndex, e)}
 								multiple
 							>
 								{option.img &&
@@ -200,7 +196,7 @@ const ProductForm = ({
 															required
 															value={item.size}
 															onChange={(e) =>
-																handleQuantityPerSizeChange(
+																onQuantityPerSizeChange(
 																	outerIndex,
 																	index,
 																	e
@@ -220,7 +216,7 @@ const ProductForm = ({
 																item.quantity
 															}
 															onChange={(e) =>
-																handleQuantityPerSizeChange(
+																onQuantityPerSizeChange(
 																	outerIndex,
 																	index,
 																	e
@@ -232,7 +228,7 @@ const ProductForm = ({
 													<Table.Data>
 														<Table.Button
 															onClick={() =>
-																deleteSize(
+																onSizeDelete(
 																	outerIndex,
 																	index
 																)
@@ -249,7 +245,7 @@ const ProductForm = ({
 							</div>
 
 							<Form.SmallButton
-								onClick={() => addSize(outerIndex)}
+								onClick={() => onSizeAdd(outerIndex)}
 							>
 								Add more...
 							</Form.SmallButton>

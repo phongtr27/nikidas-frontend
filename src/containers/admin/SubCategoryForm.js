@@ -8,7 +8,7 @@ const SubCategoryForm = ({
 	setName,
 	category,
 	setCategory,
-	handleSubmit,
+	onSubmit,
 	categories,
 }) => {
 	return (
@@ -21,7 +21,7 @@ const SubCategoryForm = ({
 					<Form.Title>Sub-Category</Form.Title>
 				)}
 
-				<Form.Base onSubmit={handleSubmit}>
+				<Form.Base onSubmit={onSubmit}>
 					<Form.Label htmlFor="name">Sub-Category Name</Form.Label>
 					<Form.Input
 						type="text"

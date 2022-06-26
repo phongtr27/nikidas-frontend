@@ -12,7 +12,7 @@ const ProductTable = ({
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
 	modalRef,
-	handleDelete,
+	onDelete,
 	idToDelete,
 	setIdToDelete,
 }) => {
@@ -80,7 +80,7 @@ const ProductTable = ({
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
 				modalRef={modalRef}
-				handleDelete={handleDelete}
+				onDelete={onDelete}
 				idToDelete={idToDelete}
 			/>
 		</div>

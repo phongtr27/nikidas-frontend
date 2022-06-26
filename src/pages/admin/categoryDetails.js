@@ -97,8 +97,8 @@ const CategoryDetails = () => {
 			setName={setName}
 			img={img}
 			selectedFile={selectedFile}
-			handleFileUpload={handleFileUpload}
-			handleSubmit={handleSubmit}
+			onFileUpload={handleFileUpload}
+			onSubmit={handleSubmit}
 		/>
 	);
 };

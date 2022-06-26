@@ -73,7 +73,7 @@ const OrderDetails = () => {
 				order={order}
 				setOrder={setOrder}
 				cart={cartToRender}
-				handleSubmit={handleSubmit}
+				onSubmit={handleSubmit}
 			/>
 		</div>
 	);

@@ -48,7 +48,7 @@ const Cart = () => {
 			<CartTable
 				cart={cartToRender}
 				setCart={setCart}
-				handleDeleteItem={handleDeleteItem}
+				onItemDelete={handleDeleteItem}
 				continueShopping={continueShopping}
 				proceedToCheckout={proceedToCheckout}
 			/>

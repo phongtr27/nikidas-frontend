@@ -41,12 +41,12 @@ const ProductUser = () => {
 			<ProductViewContainer
 				product={product}
 				optionIndex={option}
-				handleOptionChange={handleOptionChange}
+				onOptionChange={handleOptionChange}
 				size={size}
-				handleSizeChange={setSize}
+				onSizeChange={setSize}
 				quantity={quantity}
-				handleQuantityChange={setQuantity}
-				handleAddToCart={handleAddToCart}
+				onQuantityChange={setQuantity}
+				onAddToCart={handleAddToCart}
 				width={width}
 			/>
 		</Fade>

@@ -13,7 +13,7 @@ const CheckoutContainer = ({
 	setNote,
 	address,
 	setAddress,
-	handleSubmit,
+	onSubmit,
 }) => {
 	return (
 		<div className="content grid">
@@ -112,7 +112,7 @@ const CheckoutContainer = ({
 					</Box.Text>
 				</div>
 
-				<Box.Button onClick={handleSubmit}>PLACE ORDER</Box.Button>
+				<Box.Button onClick={onSubmit}>PLACE ORDER</Box.Button>
 			</Box>
 		</div>
 	);

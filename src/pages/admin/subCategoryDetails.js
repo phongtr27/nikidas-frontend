@@ -10,8 +10,11 @@ const SubCategoryDetails = () => {
 	const navigate = useNavigate();
 
 	const [isLoading, setIsLoading] = useState(true);
+
 	const [name, setName] = useState("");
+
 	const [category, setCategory] = useState("");
+
 	const {
 		data: categories,
 		error,
@@ -86,7 +89,7 @@ const SubCategoryDetails = () => {
 			setName={setName}
 			category={category}
 			setCategory={setCategory}
-			handleSubmit={handleSubmit}
+			onSubmit={handleSubmit}
 			categories={categories}
 		/>
 	);

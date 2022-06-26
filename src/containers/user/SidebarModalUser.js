@@ -17,7 +17,7 @@ const SidebarModalUser = ({
 	showSidebarModal,
 	setShowSidebarModal,
 	sideModalRef,
-	handleLogout,
+	onLogout,
 }) => {
 	return (
 		<Modal.SideModal
@@ -41,7 +41,7 @@ const SidebarModalUser = ({
 					<Sidebar.Link
 						to="#"
 						hovercolor="#e53637"
-						onClick={handleLogout}
+						onClick={onLogout}
 					>
 						<Sidebar.Icon className="fas fa-sign-out" />
 						<Sidebar.Text>Log Out</Sidebar.Text>

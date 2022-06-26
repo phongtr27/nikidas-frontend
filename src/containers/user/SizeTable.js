@@ -1,6 +1,6 @@
 import { Table } from "../../components";
 
-const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
+const SizeTable = ({ filterSize, onFilterSizeChange }) => {
 	return (
 		<div
 			style={{
@@ -13,7 +13,7 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 				<Table.Body>
 					<Table.Row>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("S")}
+							onClick={() => onFilterSizeChange("S")}
 							hoverable
 							active={filterSize.includes("S")}
 						>
@@ -21,7 +21,7 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 						</Table.Data>
 
 						<Table.Data
-							onClick={() => handleFilterSizeChange("M")}
+							onClick={() => onFilterSizeChange("M")}
 							hoverable
 							active={filterSize.includes("M")}
 						>
@@ -29,7 +29,7 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 						</Table.Data>
 
 						<Table.Data
-							onClick={() => handleFilterSizeChange("L")}
+							onClick={() => onFilterSizeChange("L")}
 							hoverable
 							active={filterSize.includes("L")}
 						>
@@ -37,7 +37,7 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 						</Table.Data>
 
 						<Table.Data
-							onClick={() => handleFilterSizeChange("XL")}
+							onClick={() => onFilterSizeChange("XL")}
 							hoverable
 							active={filterSize.includes("XL")}
 						>
@@ -47,28 +47,28 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 
 					<Table.Row>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("35")}
+							onClick={() => onFilterSizeChange("35")}
 							hoverable
 							active={filterSize.includes("35")}
 						>
 							35
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("36")}
+							onClick={() => onFilterSizeChange("36")}
 							hoverable
 							active={filterSize.includes("36")}
 						>
 							36
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("37")}
+							onClick={() => onFilterSizeChange("37")}
 							hoverable
 							active={filterSize.includes("37")}
 						>
 							37
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("38")}
+							onClick={() => onFilterSizeChange("38")}
 							hoverable
 							active={filterSize.includes("38")}
 						>
@@ -78,28 +78,28 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 
 					<Table.Row>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("39")}
+							onClick={() => onFilterSizeChange("39")}
 							hoverable
 							active={filterSize.includes("39")}
 						>
 							39
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("40")}
+							onClick={() => onFilterSizeChange("40")}
 							hoverable
 							active={filterSize.includes("40")}
 						>
 							40
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("41")}
+							onClick={() => onFilterSizeChange("41")}
 							hoverable
 							active={filterSize.includes("41")}
 						>
 							41
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("42")}
+							onClick={() => onFilterSizeChange("42")}
 							hoverable
 							active={filterSize.includes("42")}
 						>
@@ -109,28 +109,28 @@ const SizeTable = ({ filterSize, handleFilterSizeChange }) => {
 
 					<Table.Row>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("43")}
+							onClick={() => onFilterSizeChange("43")}
 							hoverable
 							active={filterSize.includes("43")}
 						>
 							43
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("44")}
+							onClick={() => onFilterSizeChange("44")}
 							hoverable
 							active={filterSize.includes("44")}
 						>
 							44
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("45")}
+							onClick={() => onFilterSizeChange("45")}
 							hoverable
 							active={filterSize.includes("45")}
 						>
 							45
 						</Table.Data>
 						<Table.Data
-							onClick={() => handleFilterSizeChange("46")}
+							onClick={() => onFilterSizeChange("46")}
 							hoverable
 							active={filterSize.includes("46")}
 						>

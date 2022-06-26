@@ -10,7 +10,7 @@ const SubCategoryTable = ({
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
 	modalRef,
-	handleDelete,
+	onDelete,
 	idToDelete,
 	setIdToDelete,
 }) => {
@@ -67,7 +67,7 @@ const SubCategoryTable = ({
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
 				modalRef={modalRef}
-				handleDelete={handleDelete}
+				onDelete={onDelete}
 				idToDelete={idToDelete}
 			/>
 		</div>

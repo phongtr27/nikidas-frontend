@@ -125,19 +125,17 @@ const Shop = () => {
 					filterSale={filterSale}
 					filterPrice={filterPrice}
 					filterSize={filterSize}
-					handleFilterCategoryChange={handleFilterCategoryChange}
-					handleFilterSubCategoryChange={
-						handleFilterSubCategoryChange
-					}
-					handleFilterSaleChange={handleFilterSaleChange}
-					handleFilterPriceChange={handleFilterPriceChange}
-					handleFilterSizeChange={handleFilterSizeChange}
+					onFilterCategoryChange={handleFilterCategoryChange}
+					onFilterSubCategoryChange={handleFilterSubCategoryChange}
+					onFilterSaleChange={handleFilterSaleChange}
+					onFilterPriceChange={handleFilterPriceChange}
+					onFilterSizeChange={handleFilterSizeChange}
 				/>
 
 				<ProductContainer
 					products={filteredProducts}
 					productLimit={productLimit}
-					handleLoadMore={handleLoadMore}
+					onLoadMore={handleLoadMore}
 					setShowFilterModal={setShowFilterModal}
 					width={width}
 				/>
@@ -154,13 +152,13 @@ const Shop = () => {
 						filterSale={filterSale}
 						filterPrice={filterPrice}
 						filterSize={filterSize}
-						handleFilterCategoryChange={handleFilterCategoryChange}
-						handleFilterSubCategoryChange={
+						onFilterCategoryChange={handleFilterCategoryChange}
+						onFilterSubCategoryChange={
 							handleFilterSubCategoryChange
 						}
-						handleFilterSaleChange={handleFilterSaleChange}
-						handleFilterPriceChange={handleFilterPriceChange}
-						handleFilterSizeChange={handleFilterSizeChange}
+						onFilterSaleChange={handleFilterSaleChange}
+						onFilterPriceChange={handleFilterPriceChange}
+						onFilterSizeChange={handleFilterSizeChange}
 					/>
 				)}
 			</div>

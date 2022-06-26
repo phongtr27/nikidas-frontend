@@ -53,7 +53,7 @@ const NavBarAdmin = () => {
 					setShowSidebarModal={setShowSidebarModal}
 					sideModalRef={sideModalRef}
 					pathname={pathname}
-					handleLogout={handleLogout}
+					onLogout={handleLogout}
 				/>
 			)}
 		</>

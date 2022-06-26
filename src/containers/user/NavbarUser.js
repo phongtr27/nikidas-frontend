@@ -65,7 +65,7 @@ const NavbarUser = () => {
 					showSidebarModal={showSidebarModal}
 					setShowSidebarModal={setShowSidebarModal}
 					sideModalRef={sideModalRef}
-					handleLogout={handleLogout}
+					onLogout={handleLogout}
 				/>
 			)}
 		</div>

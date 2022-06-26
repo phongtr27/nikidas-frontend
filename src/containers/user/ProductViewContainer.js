@@ -8,12 +8,12 @@ import { apiUrl } from "../../constants/routes";
 const ProductViewContainer = ({
 	product,
 	optionIndex,
-	handleOptionChange,
+	onOptionChange,
 	size,
-	handleSizeChange,
+	onSizeChange,
 	quantity,
-	handleQuantityChange,
-	handleAddToCart,
+	onQuantityChange,
+	onAddToCart,
 	width,
 }) => {
 	const settings = {
@@ -100,7 +100,7 @@ const ProductViewContainer = ({
 					<ProductView.ImagePreview
 						key={index}
 						src={`${apiUrl}/public${option.img[0]}`}
-						onClick={() => handleOptionChange(index)}
+						onClick={() => onOptionChange(index)}
 						active={optionIndex === index}
 					/>
 				))}
@@ -111,7 +111,7 @@ const ProductViewContainer = ({
 					(item, index) => (
 						<ProductView.Option
 							key={index}
-							onClick={() => handleSizeChange(item.size)}
+							onClick={() => onSizeChange(item.size)}
 							active={size === item.size}
 						>
 							{item.size}
@@ -125,15 +125,13 @@ const ProductViewContainer = ({
 					value={quantity}
 					min={1}
 					required
-					onChange={({ target }) =>
-						handleQuantityChange(target.value)
-					}
+					onChange={({ target }) => onQuantityChange(target.value)}
 				/>
 
 				<ProductView.Button
 					disabled={size === null}
 					onClick={() =>
-						handleAddToCart(
+						onAddToCart(
 							product._id,
 							product.options[optionIndex].color,
 							size,

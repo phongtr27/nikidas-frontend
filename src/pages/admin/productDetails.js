@@ -29,11 +29,13 @@ const ProductDetails = () => {
 		error: err1,
 		isLoading: isLoading1,
 	} = useFetch(`${apiUrl}/api/category`);
+
 	const {
 		data: subCategories,
 		error: err2,
 		isLoading: isLoading2,
 	} = useFetch(`${apiUrl}/api/sub-category`);
+
 	const filteredSubCategories = subCategories?.filter(
 		(item) => item.category === category
 	);
@@ -83,7 +85,7 @@ const ProductDetails = () => {
 		setSelectedFile(newSelectedFile);
 	};
 
-	const addOption = () => {
+	const handleOptionAdd = () => {
 		const newOption = {
 			color: "#ffffff",
 			quantityPerSize: [{ size: "", quantity: 0 }],
@@ -91,7 +93,7 @@ const ProductDetails = () => {
 		setOptions([...options, newOption]);
 	};
 
-	const deleteOption = (index) => {
+	const handleOptionDelete = (index) => {
 		const newOptions = [...options];
 		if (newOptions.length > 1) {
 			newOptions.splice(index, 1);
@@ -99,14 +101,14 @@ const ProductDetails = () => {
 		}
 	};
 
-	const addSize = (index) => {
+	const handleSizeAdd = (index) => {
 		const newSize = { size: "", quantity: 0 };
 		const newOptions = [...options];
 		newOptions[index].quantityPerSize.push(newSize);
 		setOptions(newOptions);
 	};
 
-	const deleteSize = (outerIndex, index) => {
+	const handleSizeDelete = (outerIndex, index) => {
 		const newOptions = [...options];
 		if (newOptions[outerIndex].quantityPerSize.length > 1) {
 			newOptions[outerIndex].quantityPerSize.splice(index, 1);
@@ -198,14 +200,14 @@ const ProductDetails = () => {
 			setDiscount={setDiscount}
 			selectedFile={selectedFile}
 			options={options}
-			addOption={addOption}
-			deleteOption={deleteOption}
-			addSize={addSize}
-			deleteSize={deleteSize}
-			handleColorChange={handleColorChange}
-			handleFileUpload={handleFileUpload}
-			handleQuantityPerSizeChange={handleQuantityPerSizeChange}
-			handleSubmit={handleSubmit}
+			onOptionAdd={handleOptionAdd}
+			onOptionDelete={handleOptionDelete}
+			onSizeAdd={handleSizeAdd}
+			onSizeDelete={handleSizeDelete}
+			onColorChange={handleColorChange}
+			onFileUpload={handleFileUpload}
+			onQuantityPerSizeChange={handleQuantityPerSizeChange}
+			onSubmit={handleSubmit}
 			categories={categories}
 			subCategories={filteredSubCategories}
 		/>

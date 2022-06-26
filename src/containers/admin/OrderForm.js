@@ -1,7 +1,7 @@
 import { Form, Table, Loading } from "../../components";
 import { apiUrl } from "../../constants/routes";
 
-const OrderForm = ({ order, setOrder, cart, isLoading, handleSubmit }) => {
+const OrderForm = ({ order, setOrder, cart, isLoading, onSubmit }) => {
 	return (
 		<div className="main">
 			{isLoading ? <Loading /> : null}
@@ -9,7 +9,7 @@ const OrderForm = ({ order, setOrder, cart, isLoading, handleSubmit }) => {
 			<Form.BigContainer>
 				<Form.Title>Order</Form.Title>
 
-				<Form.Base onSubmit={handleSubmit}>
+				<Form.Base onSubmit={onSubmit}>
 					<Form.Label htmlFor="id">Order ID</Form.Label>
 					<Form.Input
 						type="text"
