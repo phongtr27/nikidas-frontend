@@ -43,7 +43,7 @@ export const Grid = styled.div`
 		column-gap: 60px;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 480px) {
 		grid-template-columns: auto;
 		justify-items: center;
 	}
@@ -153,10 +153,5 @@ export const Button = styled.button`
 	:disabled {
 		background-color: #d7d2d2;
 		border: 1px solid #d7d2d2;
-	}
-
-	@media only screen and (max-width: 768px) {
-		padding: 7px 14px;
-		letter-spacing: 2px;
 	}
 `;

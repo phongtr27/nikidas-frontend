@@ -91,9 +91,4 @@ export const BigButton = styled.button`
 		background-color: #d7d2d2;
 		border: 1px solid #d7d2d2;
 	}
-
-	@media only screen and (max-width: 768px) {
-		padding: 7px 14px;
-		letter-spacing: 2px;
-	}
 `;

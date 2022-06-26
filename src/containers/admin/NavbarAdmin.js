@@ -1,20 +1,26 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Navbar } from "../../components";
 import { ProfileContainer } from "../../containers";
 import { UserContext } from "../../context/user";
 import SidebarModalAdmin from "./SidebarModalAdmin";
 import useWidth from "../../hooks/useWidth";
+import useComponentVisible from "../../hooks/useComponentVisible";
 
 const NavBarAdmin = () => {
 	const { pathname } = useLocation();
 	const { user, setUser } = useContext(UserContext);
-	const [showSidebarModal, setShowSidebarModal] = useState(false);
 	const { width } = useWidth();
+
+	const {
+		isComponentVisible: showSidebarModal,
+		setIsComponentVisible: setShowSidebarModal,
+		ref: sideModalRef,
+	} = useComponentVisible(false);
 
 	useEffect(() => {
 		setShowSidebarModal(false);
-	}, [pathname]);
+	}, [pathname, setShowSidebarModal]);
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
@@ -45,6 +51,7 @@ const NavBarAdmin = () => {
 				<SidebarModalAdmin
 					showSidebarModal={showSidebarModal}
 					setShowSidebarModal={setShowSidebarModal}
+					sideModalRef={sideModalRef}
 					pathname={pathname}
 					handleLogout={handleLogout}
 				/>

@@ -3,6 +3,7 @@ import { apiUrl } from "../../constants/routes";
 import { CategoryTable } from "../../containers";
 import Pagination from "react-js-pagination";
 import useFetch from "../../hooks/useFetch";
+import useComponentVisible from "../../hooks/useComponentVisible";
 import { toast } from "react-toastify";
 
 let PageSize = 3;
@@ -15,7 +16,12 @@ const Category = () => {
 		error,
 	} = useFetch(`${apiUrl}/api/category`);
 
-	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+	const {
+		isComponentVisible: showDeleteConfirmation,
+		setIsComponentVisible: setShowDeleteConfirmation,
+		ref: modalRef,
+	} = useComponentVisible(false);
+
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [activePage, setActivePage] = useState(1);
 
@@ -68,6 +74,7 @@ const Category = () => {
 				categories={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				modalRef={modalRef}
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 				setIdToDelete={setIdToDelete}

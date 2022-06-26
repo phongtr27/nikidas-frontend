@@ -14,12 +14,13 @@ const Modal = ({
 	topPosition,
 	showModal,
 	setShowModal,
+	modalRef,
 	...restProps
 }) => {
 	return showModal
 		? ReactDOM.createPortal(
 				<Overlay topPosition={topPosition}>
-					<Inner {...restProps}>
+					<Inner {...restProps} ref={modalRef}>
 						{children}
 						<Close onClick={() => setShowModal(false)}>
 							<i className="fas fa-times-circle"></i>
@@ -43,16 +44,14 @@ Modal.SideModal = function ModalSide({
 	children,
 	showModal,
 	setShowModal,
+	sideModalRef,
 	...restProps
 }) {
 	return showModal
 		? ReactDOM.createPortal(
 				<SideOverlay>
-					<SideInner {...restProps}>
+					<SideInner {...restProps} ref={sideModalRef}>
 						{children}
-						<Close onClick={() => setShowModal(false)}>
-							<i className="fas fa-times-circle"></i>
-						</Close>
 					</SideInner>
 				</SideOverlay>,
 				document.body

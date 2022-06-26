@@ -1,4 +1,5 @@
-import { useState, createContext, useContext } from "react";
+import { createContext, useContext } from "react";
+import useComponentVisible from "../../hooks/useComponentVisible";
 import {
 	Container,
 	Dropdown,
@@ -12,30 +13,41 @@ import {
 const ToggleContext = createContext();
 
 const Profile = ({ children, ...restProps }) => {
-	const [toggleShow, setToggleShow] = useState(false);
+	const { ref, isComponentVisible, setIsComponentVisible } =
+		useComponentVisible(false);
 
 	return (
-		<ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
+		<ToggleContext.Provider
+			value={{ ref, isComponentVisible, setIsComponentVisible }}
+		>
 			<Container {...restProps}>{children}</Container>
 		</ToggleContext.Provider>
 	);
 };
 
 Profile.Dropdown = function ProfileDropdown({ children, ...restProps }) {
-	const { toggleShow } = useContext(ToggleContext);
+	const { isComponentVisible, ref } = useContext(ToggleContext);
 
 	return (
-		<Dropdown className={toggleShow ? "open" : "closed"} {...restProps}>
+		<Dropdown
+			className={isComponentVisible ? "open" : "closed"}
+			{...restProps}
+			ref={ref}
+		>
 			{children}
 		</Dropdown>
 	);
 };
 
 Profile.Name = function ProfileName({ children, ...restProps }) {
-	const { toggleShow, setToggleShow } = useContext(ToggleContext);
+	const { isComponentVisible, setIsComponentVisible } =
+		useContext(ToggleContext);
 
 	return (
-		<Name {...restProps} onClick={() => setToggleShow(!toggleShow)}>
+		<Name
+			{...restProps}
+			onClick={() => setIsComponentVisible(!isComponentVisible)}
+		>
 			{children}
 		</Name>
 	);

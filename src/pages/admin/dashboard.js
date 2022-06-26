@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { apiUrl } from "../../constants/routes";
 import useFetch from "../../hooks/useFetch";
+import useComponentVisible from "../../hooks/useComponentVisible";
 import { ProductTable, OrderTable } from "../../containers";
 import Pagination from "react-js-pagination";
 import { toast } from "react-toastify";
@@ -14,9 +15,16 @@ const Dashboard = () => {
 		error: err1,
 		isLoading: isLoading1,
 	} = useFetch(`${apiUrl}/api/product/topseller`);
+
 	const [activePage, setActivePage] = useState(1);
-	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
 	const [idToDelete, setIdToDelete] = useState(null);
+
+	const {
+		isComponentVisible: showDeleteConfirmation,
+		setIsComponentVisible: setShowDeleteConfirmation,
+		ref: modalRef,
+	} = useComponentVisible(false);
 
 	const {
 		data: orders,
@@ -72,6 +80,7 @@ const Dashboard = () => {
 				products={products}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				modalRef={modalRef}
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 				setIdToDelete={setIdToDelete}

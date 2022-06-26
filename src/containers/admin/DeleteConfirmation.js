@@ -3,6 +3,7 @@ import { Modal } from "../../components";
 const DeleteConfirmation = ({
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
+	modalRef,
 	handleDelete,
 	idToDelete,
 }) => {
@@ -10,6 +11,7 @@ const DeleteConfirmation = ({
 		<Modal
 			showModal={showDeleteConfirmation}
 			setShowModal={setShowDeleteConfirmation}
+			modalRef={modalRef}
 		>
 			Are you sure you want to delete?
 			<Modal.GroupButton>

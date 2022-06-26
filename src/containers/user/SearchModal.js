@@ -4,7 +4,7 @@ import { Modal, Form } from "../../components";
 import { apiUrl, SHOP } from "../../constants/routes";
 import { useLocation } from "react-router-dom";
 
-const SearchModal = ({ showSearchModal, setShowSearchModal }) => {
+const SearchModal = ({ showSearchModal, setShowSearchModal, modalRef }) => {
 	const { pathname } = useLocation();
 	const [searchTerm, setSearchTerm] = useState("");
 	const [filteredProducts, setFilteredProducts] = useState([]);
@@ -31,6 +31,7 @@ const SearchModal = ({ showSearchModal, setShowSearchModal }) => {
 		<Modal
 			showModal={showSearchModal}
 			setShowModal={setShowSearchModal}
+			modalRef={modalRef}
 			topPosition={true}
 			displayNormal
 		>

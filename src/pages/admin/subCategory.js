@@ -3,6 +3,7 @@ import { apiUrl } from "../../constants/routes";
 import { SubCategoryTable } from "../../containers";
 import Pagination from "react-js-pagination";
 import useFetch from "../../hooks/useFetch";
+import useComponentVisible from "../../hooks/useComponentVisible";
 import { toast } from "react-toastify";
 
 let PageSize = 7;
@@ -14,9 +15,16 @@ const SubCategory = () => {
 		isLoading,
 		error,
 	} = useFetch(`${apiUrl}/api/sub-category`);
-	const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
 	const [idToDelete, setIdToDelete] = useState(null);
+
 	const [activePage, setActivePage] = useState(1);
+
+	const {
+		isComponentVisible: showDeleteConfirmation,
+		setIsComponentVisible: setShowDeleteConfirmation,
+		ref: modalRef,
+	} = useComponentVisible(false);
 
 	const handlePageChange = (pageNumber) => {
 		setActivePage(pageNumber);
@@ -67,6 +75,7 @@ const SubCategory = () => {
 				subCategories={tableData}
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				modalRef={modalRef}
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 				setIdToDelete={setIdToDelete}

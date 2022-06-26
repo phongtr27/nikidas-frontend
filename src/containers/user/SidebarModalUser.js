@@ -16,12 +16,14 @@ const SidebarModalUser = ({
 	setShowSearchModal,
 	showSidebarModal,
 	setShowSidebarModal,
+	sideModalRef,
 	handleLogout,
 }) => {
 	return (
 		<Modal.SideModal
 			showModal={showSidebarModal}
 			setShowModal={setShowSidebarModal}
+			sideModalRef={sideModalRef}
 		>
 			{user ? (
 				<>

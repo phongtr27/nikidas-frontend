@@ -103,7 +103,7 @@ const CartTable = ({
 								style={{ marginTop: 0 }}
 								onClick={proceedToCheckout}
 							>
-								PROCEED TO CHECKOUT
+								CHECKOUT
 							</Card.Button>
 						</Table.Data>
 					</Table.Row>

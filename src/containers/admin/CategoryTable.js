@@ -10,6 +10,7 @@ const CategoryTable = ({
 	categories,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
+	modalRef,
 	handleDelete,
 	idToDelete,
 	setIdToDelete,
@@ -71,6 +72,7 @@ const CategoryTable = ({
 			<DeleteConfirmation
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				modalRef={modalRef}
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 			/>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ProductContainer, FilterSidebar, FilterModal } from "../../containers";
 import useFetch from "../../hooks/useFetch";
 import useWidth from "../../hooks/useWidth";
+import useComponentVisible from "../../hooks/useComponentVisible";
 import { filterProduct } from "../../helpers/filterProduct";
 import { apiUrl, ERROR } from "../../constants/routes";
 import { Fade } from "react-awesome-reveal";
@@ -12,7 +13,11 @@ const Shop = () => {
 
 	const { width } = useWidth();
 
-	const [showFilterModal, setShowFilterModal] = useState(false);
+	const {
+		isComponentVisible: showFilterModal,
+		setIsComponentVisible: setShowFilterModal,
+		ref: sideModalRef,
+	} = useComponentVisible(false);
 
 	const [searchParams] = useSearchParams();
 
@@ -141,6 +146,7 @@ const Shop = () => {
 					<FilterModal
 						showFilterModal={showFilterModal}
 						setShowFilterModal={setShowFilterModal}
+						sideModalRef={sideModalRef}
 						categories={categories}
 						subCategories={subCategories}
 						filterCategory={filterCategory}

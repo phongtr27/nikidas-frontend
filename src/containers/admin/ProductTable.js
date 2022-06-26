@@ -11,6 +11,7 @@ const ProductTable = ({
 	products,
 	showDeleteConfirmation,
 	setShowDeleteConfirmation,
+	modalRef,
 	handleDelete,
 	idToDelete,
 	setIdToDelete,
@@ -78,6 +79,7 @@ const ProductTable = ({
 			<DeleteConfirmation
 				showDeleteConfirmation={showDeleteConfirmation}
 				setShowDeleteConfirmation={setShowDeleteConfirmation}
+				modalRef={modalRef}
 				handleDelete={handleDelete}
 				idToDelete={idToDelete}
 			/>

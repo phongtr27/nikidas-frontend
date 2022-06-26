@@ -4,6 +4,7 @@ import { SizeTable } from "../../containers";
 const FilterModal = ({
 	showFilterModal,
 	setShowFilterModal,
+	sideModalRef,
 	categories,
 	subCategories,
 	filterCategory,
@@ -21,6 +22,7 @@ const FilterModal = ({
 		<Modal.SideModal
 			showModal={showFilterModal}
 			setShowModal={setShowFilterModal}
+			sideModalRef={sideModalRef}
 		>
 			<Sidebar.Dropdown defaultToggleShow={true}>
 				<Sidebar.DropdownHeader>CATEGORIES</Sidebar.DropdownHeader>

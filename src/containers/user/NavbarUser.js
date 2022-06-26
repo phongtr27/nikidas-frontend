@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import {
 	NavbarUserContainer,
 	SearchModal,
@@ -8,19 +8,30 @@ import { UserContext } from "../../context/user";
 import { CartContext } from "../../context/cart";
 import { useLocation } from "react-router-dom";
 import useWidth from "../../hooks/useWidth";
+import useComponentVisible from "../../hooks/useComponentVisible";
 
 const NavbarUser = () => {
 	const { pathname } = useLocation();
 	const { user, setUser } = useContext(UserContext);
 	const { cart } = useContext(CartContext);
-	const [showSidebarModal, setShowSidebarModal] = useState(false);
-	const [showSearchModal, setShowSearchModal] = useState(false);
 	const { width } = useWidth();
+
+	const {
+		isComponentVisible: showSearchModal,
+		setIsComponentVisible: setShowSearchModal,
+		ref: modalRef,
+	} = useComponentVisible(false);
+
+	const {
+		isComponentVisible: showSidebarModal,
+		setIsComponentVisible: setShowSidebarModal,
+		ref: sideModalRef,
+	} = useComponentVisible(false);
 
 	useEffect(() => {
 		setShowSearchModal(false);
 		setShowSidebarModal(false);
-	}, [pathname]);
+	}, [pathname, setShowSearchModal, setShowSidebarModal]);
 
 	const handleLogout = () => {
 		localStorage.removeItem("token");
@@ -42,6 +53,7 @@ const NavbarUser = () => {
 			<SearchModal
 				showSearchModal={showSearchModal}
 				setShowSearchModal={setShowSearchModal}
+				modalRef={modalRef}
 			/>
 
 			{width <= 768 && (
@@ -52,6 +64,7 @@ const NavbarUser = () => {
 					setShowSearchModal={setShowSearchModal}
 					showSidebarModal={showSidebarModal}
 					setShowSidebarModal={setShowSidebarModal}
+					sideModalRef={sideModalRef}
 					handleLogout={handleLogout}
 				/>
 			)}

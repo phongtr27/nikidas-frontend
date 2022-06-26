@@ -12,12 +12,14 @@ const SidebarModalAdmin = ({
 	pathname,
 	showSidebarModal,
 	setShowSidebarModal,
+	sideModalRef,
 	handleLogout,
 }) => {
 	return (
 		<Modal.SideModal
 			showModal={showSidebarModal}
 			setShowModal={setShowSidebarModal}
+			sideModalRef={sideModalRef}
 			style={{ marginTop: "60px" }}
 		>
 			<Sidebar.Link
