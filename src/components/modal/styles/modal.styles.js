@@ -93,4 +93,8 @@ export const SideInner = styled.div`
 	@media only screen and (max-width: 480px) {
 		width: 50%;
 	}
+
+	@media only screen and (max-width: 422px) {
+		padding-right: 20px;
+	}
 `;

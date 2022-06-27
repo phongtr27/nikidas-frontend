@@ -111,5 +111,9 @@ export const DropdownMenu = styled.div`
 			${({ hoverbox }) => hoverbox && { backgroundColor: "#eeeeee" }}
 		}
 		width: 150px;
+
+		@media only screen and (max-width: 422px) {
+			width: auto;
+		}
 	}
 `;

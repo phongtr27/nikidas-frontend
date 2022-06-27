@@ -8,6 +8,10 @@ export const ContainerBG = styled.div`
 	flex-direction: column;
 	background-image: ${({ bg }) => (bg ? `url(${bg})` : null)};
 	background-size: cover;
+
+	@media only screen and (max-width: 1280px) {
+		background-size: auto;
+	}
 `;
 
 export const SmallContainer = styled.div`
@@ -20,6 +24,18 @@ export const SmallContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	@media only screen and (max-width: 1024px) {
+		width: 23%;
+	}
+
+	@media only screen and (max-width: 768px) {
+		width: 30%;
+	}
+
+	@media only screen and (max-width: 480px) {
+		width: 60%;
+	}
 `;
 
 export const BigContainer = styled.div`

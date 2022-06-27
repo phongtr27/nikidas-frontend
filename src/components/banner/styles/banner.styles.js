@@ -25,8 +25,7 @@ export const Content = styled.div`
 	}
 
 	@media only screen and (max-width: 480px) {
-		padding-top: 23px;
-		padding-left: 30px;
+		visibility: hidden;
 	}
 `;
 

@@ -4,6 +4,10 @@ export const Container = styled.div`
 	padding: 20px;
 	background-color: #f3f2ee;
 	min-width: 350px;
+
+	@media only screen and (max-width: 480px) {
+		min-width: auto;
+	}
 `;
 
 export const Title = styled.h6`
