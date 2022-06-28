@@ -4,8 +4,10 @@ import { ProductCard } from "../../containers";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const ProductSlider = ({ title, products }) => {
+const ProductSlider = ({ title, products, isLoading }) => {
 	const settings = {
 		arrows: false,
 		dots: false,
@@ -52,27 +54,37 @@ const ProductSlider = ({ title, products }) => {
 	};
 
 	return (
-		<Card center>
-			<Card.Title>{title}</Card.Title>
+		<>
+			{isLoading ? (
+				<Card center>
+					<Card.Title>{title}</Card.Title>
 
-			<Card.List>
-				<Slider {...settings} ref={sliderRef}>
-					{products?.map((product, index) => (
-						<ProductCard key={index} product={product} />
-					))}
-				</Slider>
-			</Card.List>
+					<Skeleton height={300} />
+				</Card>
+			) : (
+				<Card center>
+					<Card.Title>{title}</Card.Title>
 
-			<Card.PrevButton
-				className="fas fa-chevron-left"
-				onClick={goToPrevious}
-			/>
+					<Card.List>
+						<Slider {...settings} ref={sliderRef}>
+							{products?.map((product, index) => (
+								<ProductCard key={index} product={product} />
+							))}
+						</Slider>
+					</Card.List>
 
-			<Card.NextButton
-				className="fas fa-chevron-right"
-				onClick={goToNext}
-			/>
-		</Card>
+					<Card.PrevButton
+						className="fas fa-chevron-left"
+						onClick={goToPrevious}
+					/>
+
+					<Card.NextButton
+						className="fas fa-chevron-right"
+						onClick={goToNext}
+					/>
+				</Card>
+			)}
+		</>
 	);
 };
 

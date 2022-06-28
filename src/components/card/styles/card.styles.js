@@ -65,8 +65,6 @@ export const Name = styled.h5`
 
 export const Image = styled.img`
 	width: 100%;
-	/* min-height: 400px; */
-	/* max-height: 482px; */
 	height: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -79,7 +77,6 @@ export const Image = styled.img`
 	}
 
 	@media only screen and (max-width: 768px) {
-		/* height: 320px; */
 		width: 320px;
 	}
 `;

@@ -12,7 +12,11 @@ const ProductUser = () => {
 	const { setCart } = useContext(CartContext);
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const { data: product, error } = useFetch(`${apiUrl}/api/product/${id}`);
+	const {
+		data: product,
+		error,
+		isLoading,
+	} = useFetch(`${apiUrl}/api/product/${id}`);
 	const [option, setOption] = useState(0);
 	const [size, setSize] = useState(null);
 	const [quantity, setQuantity] = useState(1);
@@ -40,6 +44,7 @@ const ProductUser = () => {
 		<Fade>
 			<ProductViewContainer
 				product={product}
+				isLoading={isLoading}
 				optionIndex={option}
 				onOptionChange={handleOptionChange}
 				size={size}

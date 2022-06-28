@@ -7,15 +7,25 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
 	const navigate = useNavigate();
 
-	const { data: latestProducts, error: err1 } = useFetch(
-		`${apiUrl}/api/product/latest`
-	);
+	const {
+		data: categories,
+		error: err1,
+		isLoading: isLoading1,
+	} = useFetch(`${apiUrl}/api/category`);
 
-	const { data: saleProducts, error: err2 } = useFetch(
-		`${apiUrl}/api/product/discount`
-	);
+	const {
+		data: latestProducts,
+		error: err2,
+		isLoading: isLoading2,
+	} = useFetch(`${apiUrl}/api/product/latest`);
 
-	if (err1 || err2) {
+	const {
+		data: saleProducts,
+		error: err3,
+		isLoading: isLoading3,
+	} = useFetch(`${apiUrl}/api/product/discount`);
+
+	if (err1 || err2 || err3) {
 		return navigate(`${ERROR}`);
 	}
 
@@ -26,15 +36,23 @@ const Home = () => {
 			</Fade>
 
 			<Fade triggerOnce>
-				<Category />
+				<Category categories={categories} isLoading={isLoading1} />
 			</Fade>
 
 			<Fade triggerOnce>
-				<ProductSlider title="NEW ARRIVALS" products={latestProducts} />
+				<ProductSlider
+					title="NEW ARRIVALS"
+					products={latestProducts}
+					isLoading={isLoading2}
+				/>
 			</Fade>
 
 			<Fade triggerOnce>
-				<ProductSlider title="HOT SALE" products={saleProducts} />
+				<ProductSlider
+					title="HOT SALE"
+					products={saleProducts}
+					isLoading={isLoading3}
+				/>
 			</Fade>
 		</>
 	);

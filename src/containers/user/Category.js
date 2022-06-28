@@ -1,16 +1,14 @@
 import { Card } from "../../components";
 import { useRef } from "react";
 import { CategoryCard } from "../../containers";
-import useFetch from "../../hooks/useFetch";
 import useWidth from "../../hooks/useWidth";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { apiUrl } from "../../constants/routes";
-import { toast } from "react-toastify";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
-const Category = () => {
-	const { data: categories, error } = useFetch(`${apiUrl}/api/category`);
+const Category = ({ categories, isLoading }) => {
 	const { width } = useWidth();
 
 	const settings = {
@@ -49,36 +47,41 @@ const Category = () => {
 		sliderRef.current.slickPrev();
 	};
 
-	if (error) {
-		toast.error("Internal Server Error.");
-		return;
-	}
-
 	return (
-		<Card center>
-			<Card.Title>WHAT DO YOU FANCY?</Card.Title>
-			<Card.List>
-				<Slider {...settings} ref={sliderRef}>
-					{categories?.map((category, index) => (
-						<CategoryCard key={index} category={category} />
-					))}
-				</Slider>
-			</Card.List>
+		<>
+			{isLoading ? (
+				<Card center>
+					<Card.Title>WHAT DO YOU FANCY?</Card.Title>
+					<Skeleton height={300} />
+				</Card>
+			) : (
+				<Card center>
+					<Card.Title>WHAT DO YOU FANCY?</Card.Title>
 
-			{width <= 768 && (
-				<Card.PrevButton
-					className="fas fa-chevron-left"
-					onClick={goToPrevious}
-				/>
-			)}
+					<Card.List>
+						<Slider {...settings} ref={sliderRef}>
+							{categories?.map((category, index) => (
+								<CategoryCard key={index} category={category} />
+							))}
+						</Slider>
+					</Card.List>
 
-			{width <= 768 && (
-				<Card.NextButton
-					className="fas fa-chevron-right"
-					onClick={goToNext}
-				/>
+					{width <= 768 && (
+						<Card.PrevButton
+							className="fas fa-chevron-left"
+							onClick={goToPrevious}
+						/>
+					)}
+
+					{width <= 768 && (
+						<Card.NextButton
+							className="fas fa-chevron-right"
+							onClick={goToNext}
+						/>
+					)}
+				</Card>
 			)}
-		</Card>
+		</>
 	);
 };
 

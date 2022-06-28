@@ -21,15 +21,23 @@ const Shop = () => {
 
 	const [searchParams] = useSearchParams();
 
-	const { data: products, error: err1 } = useFetch(`${apiUrl}/api/product`);
+	const {
+		data: products,
+		error: err1,
+		isLoading: isLoading1,
+	} = useFetch(`${apiUrl}/api/product`);
 
-	const { data: categories, error: err2 } = useFetch(
-		`${apiUrl}/api/category`
-	);
+	const {
+		data: categories,
+		error: err2,
+		isLoading: isLoading2,
+	} = useFetch(`${apiUrl}/api/category`);
 
-	const { data: subCategories, error: err3 } = useFetch(
-		`${apiUrl}/api/sub-category`
-	);
+	const {
+		data: subCategories,
+		error: err3,
+		isLoading: isLoading3,
+	} = useFetch(`${apiUrl}/api/sub-category`);
 
 	const [productLimit, setProductLimit] = useState(9);
 
@@ -119,7 +127,9 @@ const Shop = () => {
 			<div className="flex">
 				<FilterSidebar
 					categories={categories}
+					isLoading2={isLoading2}
 					subCategories={subCategories}
+					isLoading3={isLoading3}
 					filterCategory={filterCategory}
 					filterSubCategory={filterSubCategory}
 					filterSale={filterSale}
@@ -134,6 +144,7 @@ const Shop = () => {
 
 				<ProductContainer
 					products={filteredProducts}
+					isLoading={isLoading1}
 					productLimit={productLimit}
 					onLoadMore={handleLoadMore}
 					setShowFilterModal={setShowFilterModal}
@@ -146,7 +157,9 @@ const Shop = () => {
 						setShowFilterModal={setShowFilterModal}
 						sideModalRef={sideModalRef}
 						categories={categories}
+						isLoading2={isLoading2}
 						subCategories={subCategories}
+						isLoading3={isLoading3}
 						filterCategory={filterCategory}
 						filterSubCategory={filterSubCategory}
 						filterSale={filterSale}
