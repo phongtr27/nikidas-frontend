@@ -5,6 +5,7 @@ import Pagination from "react-js-pagination";
 import useFetch from "../../hooks/useFetch";
 import useComponentVisible from "../../hooks/useComponentVisible";
 import { toast } from "react-toastify";
+import { useMemo } from "react";
 
 let PageSize = 3;
 
@@ -56,9 +57,12 @@ const Category = () => {
 		}
 	};
 
-	const firstPageIndex = (activePage - 1) * PageSize;
-	const lastPageIndex = firstPageIndex + PageSize;
-	const tableData = categories?.slice(firstPageIndex, lastPageIndex);
+	const tableData = useMemo(() => {
+		const firstPageIndex = (activePage - 1) * PageSize;
+		const lastPageIndex = firstPageIndex + PageSize;
+		const tableData = categories?.slice(firstPageIndex, lastPageIndex);
+		return tableData;
+	}, [activePage, categories]);
 
 	if (error) {
 		toast.error("Internal Server Error.");

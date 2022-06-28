@@ -5,6 +5,7 @@ import useComponentVisible from "../../hooks/useComponentVisible";
 import { ProductTable, OrderTable } from "../../containers";
 import Pagination from "react-js-pagination";
 import { toast } from "react-toastify";
+import { useMemo } from "react";
 
 let PageSize = 5;
 
@@ -61,9 +62,12 @@ const Dashboard = () => {
 		}
 	};
 
-	const firstPageIndex = (activePage - 1) * PageSize;
-	const lastPageIndex = firstPageIndex + PageSize;
-	const ordersData = orders?.slice(firstPageIndex, lastPageIndex);
+	const ordersData = useMemo(() => {
+		const firstPageIndex = (activePage - 1) * PageSize;
+		const lastPageIndex = firstPageIndex + PageSize;
+		const ordersData = orders?.slice(firstPageIndex, lastPageIndex);
+		return ordersData;
+	}, [activePage, orders]);
 
 	if (err1 || err2) {
 		toast.error("Internal Server Error.");

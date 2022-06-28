@@ -6,7 +6,7 @@ import { UserContext } from "../../context/user";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
-const SignIn = () => {
+const LogIn = () => {
 	const navigate = useNavigate();
 
 	const { setUser } = useContext(UserContext);
@@ -77,4 +77,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default LogIn;

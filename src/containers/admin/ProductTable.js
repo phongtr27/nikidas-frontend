@@ -1,4 +1,3 @@
-import React from "react";
 import { ADMIN_PRODUCT } from "../../constants/routes";
 import { Loading, Table } from "../../components";
 import { DeleteConfirmation } from "../../containers";

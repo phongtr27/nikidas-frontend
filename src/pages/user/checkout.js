@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useMemo } from "react";
 import { UserContext } from "../../context/user";
 import { CartContext } from "../../context/cart";
 import useFetch from "../../hooks/useFetch";
@@ -19,20 +19,34 @@ const Checkout = () => {
 	const [note, setNote] = useState("");
 	const [address, setAddress] = useState(user?.address || "");
 
-	const cartToRender = [];
+	const cartToRender = useMemo(() => {
+		const temp = [];
 
-	cart.forEach((item) => {
-		const product = products?.find((i) => i._id === item.productId);
-		cartToRender.push({
-			name: product?.name,
-			size: item.size,
-			quantity: item.quantity,
-			price: (product?.price * (1 - product?.discount / 100)).toFixed(2),
-			image: product?.options.find(
-				(option) => option.color === item.color
-			).img[0],
+		cart.forEach((item) => {
+			const product = products?.find((i) => i._id === item.productId);
+			temp.push({
+				name: product?.name,
+				size: item.size,
+				quantity: item.quantity,
+				price: (product?.price * (1 - product?.discount / 100)).toFixed(
+					2
+				),
+				image: product?.options.find(
+					(option) => option.color === item.color
+				).img[0],
+			});
 		});
-	});
+
+		return temp;
+	}, [cart, products]);
+
+	const price = useMemo(() => {
+		const total = +cartToRender
+			.reduce((a, b) => a + +b.price * +b.quantity, 0)
+			.toFixed(2);
+
+		return total;
+	}, [cartToRender]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -41,10 +55,6 @@ const Checkout = () => {
 			toast.warn("No item in cart.");
 			return;
 		}
-
-		const price = +cartToRender
-			.reduce((a, b) => a + +b.price * +b.quantity, 0)
-			.toFixed(2);
 
 		const data =
 			note.length > 0
