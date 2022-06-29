@@ -47,16 +47,19 @@ const SignUp = () => {
 					<Form.Input
 						type="text"
 						placeholder="Name"
+						value={name}
 						onChange={({ target }) => setName(target.value)}
 					/>
 					<Form.Input
 						type="text"
 						placeholder="Email Address"
+						value={email}
 						onChange={({ target }) => setEmail(target.value)}
 					/>
 					<Form.Input
 						type="password"
 						placeholder="Password"
+						value={password}
 						onChange={({ target }) => setPassword(target.value)}
 					/>
 					<Form.Button

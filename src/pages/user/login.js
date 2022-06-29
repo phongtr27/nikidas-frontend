@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiUrl, HOME, SIGNUP } from "../../constants/routes";
 import { Form } from "../../components";
@@ -10,8 +10,19 @@ const LogIn = () => {
 	const navigate = useNavigate();
 
 	const { setUser } = useContext(UserContext);
+	const [continueAsAdmin, setContinueAsAdmin] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+	useEffect(() => {
+		if (continueAsAdmin) {
+			setEmail("Phong@gmail.com");
+			setPassword("123456");
+		} else {
+			setEmail("");
+			setPassword("");
+		}
+	}, [continueAsAdmin]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -50,14 +61,30 @@ const LogIn = () => {
 					<Form.Input
 						type="text"
 						placeholder="Email Address"
+						value={email}
 						onChange={({ target }) => setEmail(target.value)}
 					/>
 
 					<Form.Input
 						type="password"
 						placeholder="Password"
+						value={password}
 						onChange={({ target }) => setPassword(target.value)}
 					/>
+
+					<div style={{ display: "flex" }}>
+						<Form.Input
+							type="checkbox"
+							id="admin"
+							value={continueAsAdmin}
+							onChange={() =>
+								setContinueAsAdmin(!continueAsAdmin)
+							}
+						/>
+						<Form.Label htmlFor="admin">
+							Continue as Admin.
+						</Form.Label>
+					</div>
 
 					<Form.Button
 						type="submit"
