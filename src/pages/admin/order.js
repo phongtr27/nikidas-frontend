@@ -25,7 +25,7 @@ const Order = () => {
 	}
 
 	return (
-		<>
+		<div className="paddingBot">
 			<OrderTable
 				title="Orders Table"
 				orders={ordersData}
@@ -47,7 +47,7 @@ const Order = () => {
 				prevPageText={<i className="fas fa-chevron-left"></i>}
 				nextPageText={<i className="fas fa-chevron-right"></i>}
 			/>
-		</>
+		</div>
 	);
 };
 

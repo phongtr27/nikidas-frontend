@@ -23,7 +23,10 @@ const FilterSidebar = ({
 		<>
 			{isLoading2 || isLoading3 ? (
 				<Sidebar>
-					<Skeleton count={40} style={{ marginBottom: "10px" }} />
+					<Skeleton
+						count={40}
+						style={{ marginBottom: "10px", marginLeft: "20px" }}
+					/>
 				</Sidebar>
 			) : (
 				<Sidebar>

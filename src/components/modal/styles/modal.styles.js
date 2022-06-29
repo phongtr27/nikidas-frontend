@@ -1,4 +1,5 @@
-import styled from "styled-components/macro";
+import styled, { keyframes } from "styled-components/macro";
+import { slideInLeft, zoomIn } from "react-animations";
 
 export const Overlay = styled.div`
 	display: flex;
@@ -15,6 +16,8 @@ export const Overlay = styled.div`
 	background: rgba(0, 0, 0, 0.27);
 `;
 
+const ZoomIn = keyframes`${zoomIn}`;
+
 export const Inner = styled.div`
 	border: 1px solid transparent;
 	background-color: white;
@@ -25,6 +28,7 @@ export const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	animation: 0.2s ${ZoomIn};
 
 	${({ displayNormal }) => displayNormal && { justifyContent: "flex-start" }}
 
@@ -82,6 +86,8 @@ export const SideOverlay = styled.div`
 	background: rgba(0, 0, 0, 0.27);
 `;
 
+const SlideInLeft = keyframes`${slideInLeft}`;
+
 export const SideInner = styled.div`
 	height: 100vh;
 	background-color: white;
@@ -89,7 +95,7 @@ export const SideInner = styled.div`
 	overflow-x: scroll;
 	padding-top: 20px;
 	padding-bottom: 20px;
-
+	animation: 0.2s ${SlideInLeft};
 	@media only screen and (max-width: 480px) {
 		width: 50%;
 	}

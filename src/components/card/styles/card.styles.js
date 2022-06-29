@@ -71,13 +71,19 @@ export const Image = styled.img`
 	object-fit: cover;
 	transition: 0.5s;
 
-	&:hover {
-		transform: scale(1.1);
-		opacity: 0.7;
+	@media only screen and (min-width: 768px) {
+		&:hover {
+			transform: scale(1.1);
+			opacity: 0.7;
+		}
 	}
 
 	@media only screen and (max-width: 768px) {
 		width: 320px;
+	}
+
+	@media only screen and (max-width: 480px) {
+		width: 300px;
 	}
 `;
 

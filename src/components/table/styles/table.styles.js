@@ -21,13 +21,21 @@ export const Row = styled.tr``;
 export const Header = styled.th`
 	padding: 16px;
 	border-bottom: 0.5px solid #8e9194;
+
+	@media only screen and (max-width: 480px) {
+		padding: 9px;
+	}
 `;
 
 export const Data = styled.td`
 	border-bottom: 0.5px solid #8e9194;
 	text-align: center;
 	padding: 10px;
-	${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
+
+	@media only screen and (min-width: 768px) {
+		${({ hoverable }) => hoverable && `:hover {background-color: #eeeeee}`}
+	}
+
 	${({ active }) => active && { backgroundColor: "#eeeeee" }}
 	${({ noBorder }) => noBorder && { borderBottom: "none" }}
 `;

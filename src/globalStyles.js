@@ -11,6 +11,13 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Tahoma', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     @media only screen and (max-width: 768px) {
       font-size: 14px;
@@ -111,6 +118,10 @@ export const GlobalStyles = createGlobalStyle`
 		margin-left: 30px;
     margin-right: 30px;
 	}
+
+  .paddingBot {
+    padding-bottom: 60px;
+  }
 
   }
 `;

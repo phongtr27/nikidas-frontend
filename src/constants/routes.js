@@ -1,4 +1,4 @@
-export const apiUrl = "http://localhost:5000";
+export const apiUrl = "https://nikidas-api.herokuapp.com";
 export const HOME = "/";
 export const SHOP = "/shop";
 export const CONTACT = "/contact";

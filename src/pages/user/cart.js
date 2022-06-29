@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart";
 import useFetch from "../../hooks/useFetch";
+import useWidth from "../../hooks/useWidth";
 import { deleteFromCart } from "../../helpers/deleteFromCart";
 import { apiUrl, CHECKOUT, ERROR, SHOP } from "../../constants/routes";
 import { CartTable } from "../../containers";
@@ -11,6 +12,8 @@ const Cart = () => {
 	const navigate = useNavigate();
 	const { cart, setCart } = useContext(CartContext);
 	const { data: products, error } = useFetch(`${apiUrl}/api/product`);
+
+	const { width } = useWidth();
 
 	const cartToRender = [];
 
@@ -51,6 +54,7 @@ const Cart = () => {
 				onItemDelete={handleDeleteItem}
 				continueShopping={continueShopping}
 				proceedToCheckout={proceedToCheckout}
+				width={width}
 			/>
 		</Fade>
 	);

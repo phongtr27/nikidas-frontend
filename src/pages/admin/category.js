@@ -70,7 +70,7 @@ const Category = () => {
 	}
 
 	return (
-		<>
+		<div className="paddingBot">
 			<CategoryTable
 				isLoading={isLoading}
 				PageSize={PageSize}
@@ -97,7 +97,7 @@ const Category = () => {
 				prevPageText={<i className="fas fa-chevron-left"></i>}
 				nextPageText={<i className="fas fa-chevron-right"></i>}
 			/>
-		</>
+		</div>
 	);
 };
 
