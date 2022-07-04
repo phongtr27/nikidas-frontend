@@ -73,6 +73,10 @@ export const GlobalStyles = createGlobalStyle`
       color: black;
     }
 
+    @media only screen and (max-width: 768px) {
+	  margin-left: 0
+	}
+
   }
 
   .main {
@@ -119,9 +123,9 @@ export const GlobalStyles = createGlobalStyle`
     margin-right: 30px;
 	}
 
-  .paddingBot {
-    padding-bottom: 60px;
   }
 
+  .paddingBot {
+    padding-bottom: 60px;
   }
 `;

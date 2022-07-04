@@ -75,7 +75,7 @@ const Dashboard = () => {
 	}
 
 	return (
-		<div style={{ paddingBottom: "60px" }}>
+		<div className="paddingBot">
 			<ProductTable
 				title="Top Selling Products"
 				isLoading={isLoading1}
